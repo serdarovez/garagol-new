@@ -23,7 +23,7 @@ const ConnectUs = () => {
         All of our services are designed to help your business to get noticed.
       </div>
       <div className="flex  mt-10  gap-10">
-        {services.map((service, index) => (
+        {services.map((service) => (
           <div className="  bg-[#2C3E50] aspect-square w-full rounded-[100px] p-5 shadow-md font-[400]  text-white overflow-hidden hover:shadow-lg transition-shadow duration-300  flex flex-col">
             <div className="p-2 flex-1 ">
               <h3 className="text-3xl font-bold   mb-5">{service.title}</h3>
