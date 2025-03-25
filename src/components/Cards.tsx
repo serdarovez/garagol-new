@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import StackedCard from "./StackedCard";
+import { useEffect, useRef } from "react";
 import web from "../assets/web.png";
 import ui from "../assets/ui.png";
 import devops from "../assets/devops.png";
