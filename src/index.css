@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+body {
+  position: relative;
+  background-color: #f9f7f5;
+}
+.title {
+  @apply text-4xl md:text-5xl lg:text-6xl font-[600] text-[#2C3E50] mb-8;
+}
+.paragraph {
+  @apply text-xl md:text-2xl lg:text-2xl font-[600] text-[#090825] mb-12;
+}
