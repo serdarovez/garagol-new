@@ -123,16 +123,16 @@ const Cards = () => {
           All of our services are designed to help your business stand out.
         </div>
       </div>
-      <div ref={containerRef} className="w-full relative flex flex-col gap-5 ">
+      <div ref={containerRef} className="w-full  flex flex-col gap-5 ">
         {services.map((service, index) => (
           <div
             ref={(el: any) => (serviceRefs.current[index] = el)}
             style={{ backgroundColor: service.background }}
-            className=" sticky top-30 rounded-[100px] p-10 shadow-md font-[400] w-full text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
+            className=" sticky top-30 -z-10 rounded-[100px] p-10 shadow-md font-[400] w-full text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
           >
             <div className="p-6 flex-1 ">
               <h3 className="text-3xl font-bold  mb-5">{service.title}</h3>
-              <div className="flex items-start justify-between">
+              <div className=" items-start lg:flex-row xl:flex-row md:flex gap-5 flex-col justify-between">
                 <div>
                   <p className=" mb-4 text-2xl">{service.description}</p>
 

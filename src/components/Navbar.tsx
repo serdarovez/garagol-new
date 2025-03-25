@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const Navbar = () => {
   return (
-    <div className="w-full bg-white p-3 z-50  top-0 flex justify-between items-center">
+    <div className="w-full bg-white fixed  p-3 z-50  top-0 flex justify-between items-center">
       <img src={logo} alt="" className="w-58" />
       <div>
         <div className="hidden md:flex gap-x-10 2xl:gap-x-10 items-center text-gray-700 font-medium text-lg ">
