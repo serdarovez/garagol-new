@@ -4,6 +4,7 @@ import ui from "../assets/ui.png";
 import devops from "../assets/devops.png";
 import cyber from "../assets/cyber.png";
 import it from "../assets/it.png";
+import { Squircle } from "react-ios-corners";
 
 const Cards = () => {
   const services = [
@@ -125,28 +126,33 @@ const Cards = () => {
       </div>
       <div ref={containerRef} className="w-full  flex flex-col gap-5 ">
         {services.map((service, index) => (
-          <div
-            ref={(el: any) => (serviceRefs.current[index] = el)}
-            style={{ backgroundColor: service.background }}
-            className=" sticky top-60  rounded-[100px] p-10 shadow-md font-[400] w-full text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
+          <div ref={(el: any) => (serviceRefs.current[index] = el)}
+          className=" sticky top-60  rounded-[100px]   font-[400] w-full text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
           >
-            <div className="p-6 flex-1 ">
-              <h3 className="text-3xl font-bold  mb-5">{service.title}</h3>
-              <div className=" items-start lg:flex-row xl:flex-row md:flex gap-5 flex-col justify-between">
-                <div>
-                  <p className=" mb-4 text-2xl">{service.description}</p>
+            <Squircle
+              style={{ backgroundColor: service.background }}
+              className="p-14"
+            >
+              <div className="p-6 flex-1 ">
+                <h3 className="text-3xl font-bold  mb-5">{service.title}</h3>
+                <div className=" items-start lg:flex-row xl:flex-row md:flex gap-5 flex-col justify-between">
+                  <div>
+                    <p className=" mb-4 text-2xl">{service.description}</p>
 
-                  <ul className="space-y-2 list-disc list-inside">
-                    {service.features.map((feature: string, index: number) => (
-                      <li key={index} className=" ">
-                        <span className="text-2xl">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="space-y-2 list-disc list-inside">
+                      {service.features.map(
+                        (feature: string, index: number) => (
+                          <li key={index} className=" ">
+                            <span className="text-2xl">{feature}</span>
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
+                  <img src={service.image} alt="" />
                 </div>
-                <img src={service.image} alt="" />
               </div>
-            </div>
+            </Squircle>
           </div>
         ))}
       </div>

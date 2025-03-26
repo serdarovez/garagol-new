@@ -3,8 +3,8 @@ import Button from "./Button";
 
 const Navbar = () => {
   return (
-    <div className="w-full bg-white fixed  p-3 z-50  top-0 flex justify-between items-center">
-      <img src={logo} alt="" className="w-48" />
+    <div className="w-full bg-white fixed  p-2 z-50  top-0 flex justify-between items-center">
+      <img src={logo} alt="" className="w-40" />
       <div>
         <div className="hidden md:flex gap-x-10 2xl:gap-x-10 items-center text-gray-700 font-medium text-lg ">
           <div  className="hover:text-blue-500">

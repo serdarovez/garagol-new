@@ -1,10 +1,11 @@
+import { Squircle } from "react-ios-corners";
 import Button from "./Button";
 
 const Contact = () => {
   return (
     <div>
-      <div className="  rounded-[100px] p-10 shadow-md font-[400] max-w-7xl mx-auto my-30 w-full bg-[#E1A631] text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-        <div className="p-6 flex-1 w-3/5 ">
+      <Squircle className="  rounded-[100px] p-10 shadow-md font-[400] max-w-7xl mx-auto my-30 w-full bg-[#E1A631] text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
+        <div className="p-10 flex-1 w-3/5 ">
           <h3 className="text-3xl font-bold  mb-5">
             Ready to build something secure, scalable, and extraordinary?
           </h3>
@@ -16,7 +17,7 @@ const Contact = () => {
 
           <Button title="Send us a message" class=" mt-10" />
         </div>
-      </div>
+      </Squircle>
     </div>
   );
 };
