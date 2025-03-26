@@ -127,11 +127,12 @@ const Cards = () => {
       <div ref={containerRef} className="w-full  flex flex-col gap-5 ">
         {services.map((service, index) => (
           <div ref={(el: any) => (serviceRefs.current[index] = el)}
-          className=" sticky top-60  rounded-[100px]   font-[400] w-full text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
+          className=" sticky top-60    font-[400] w-full text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
           >
             <Squircle
               style={{ backgroundColor: service.background }}
               className="p-14"
+              radius={80}
             >
               <div className="p-6 flex-1 ">
                 <h3 className="text-3xl font-bold  mb-5">{service.title}</h3>

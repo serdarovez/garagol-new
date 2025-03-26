@@ -31,7 +31,7 @@ const ConnectUs = () => {
             key={index}
             className="bg-[#2C3E50] aspect-square w-full p-8 shadow-lg font-normal text-white overflow-hidden 
                        transition-all duration-300 flex flex-col "
-            radius={60} // Controls the overall corner radius
+            radius={80} // Controls the overall corner radius
             // roundness={1} // Controls the squircle effect (0 = square, 1 = circle)
           >
             <div className="p-2 flex-1 flex flex-col">
