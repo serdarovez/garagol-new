@@ -18,7 +18,7 @@ const Home = () => {
             minutes.
           </div>
         </div>
-        <Button class="mt-5" title="Secure your project" />
+        <Button class="mt-5 mx-auto" title="Secure your project" />
       </div>
     </div>
   );

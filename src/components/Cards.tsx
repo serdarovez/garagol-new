@@ -116,8 +116,8 @@ const Cards = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <div className="flex  items-center flex-col justify-center max-w-7xl mx-auto">
-      <div className="">
+    <div className="flex relative -z-10 items-center flex-col justify-center max-w-7xl mx-auto">
+      <div className="sticky  top-20">
         <div className="title">Built from the ground up</div>
         <div className="paragraph">
           All of our services are designed to help your business stand out.
@@ -128,7 +128,7 @@ const Cards = () => {
           <div
             ref={(el: any) => (serviceRefs.current[index] = el)}
             style={{ backgroundColor: service.background }}
-            className=" sticky top-30 -z-10 rounded-[100px] p-10 shadow-md font-[400] w-full text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
+            className=" sticky top-60  rounded-[100px] p-10 shadow-md font-[400] w-full text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
           >
             <div className="p-6 flex-1 ">
               <h3 className="text-3xl font-bold  mb-5">{service.title}</h3>

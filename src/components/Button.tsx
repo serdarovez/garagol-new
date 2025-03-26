@@ -8,7 +8,7 @@ const Button = ({
 }) => {
   return (
     <div
-      className={`bg-[#090825] w-max mx-auto rounded-full py-3 px-5 cursor-pointer text-white ${
+      className={`bg-[#090825] w-max  rounded-full py-3 px-5 cursor-pointer text-white ${
         className || ""
       }`}
     >
