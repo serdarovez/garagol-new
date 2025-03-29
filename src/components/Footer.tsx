@@ -1,4 +1,3 @@
-import logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
@@ -8,7 +7,6 @@ const Footer = () => {
         <div className="hover:text-blue-500">Process</div>
         <div className="hover:text-blue-500">Guarentees</div>
       </div>
-      <img src={logo} alt="" className="w-48" />
     </div>
   );
 };
