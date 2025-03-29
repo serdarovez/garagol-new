@@ -15,7 +15,7 @@ const Contact = () => {
             every step.
           </p>
 
-          <Button title="Send us a message" class=" mt-10" />
+          {/* <Button title="Send us a message" class=" mt-10" /> */}
         </div>
       </Squircle>
     </div>
