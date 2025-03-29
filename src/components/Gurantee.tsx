@@ -50,8 +50,8 @@ const Gurantee = () => {
         <div className="grid grid-cols-2   mt-10  gap-5">
           {services.map((service) => (
             <div className="  w-full  p-5  font-[400] items-start gap-5  flex ">
-              <div className="w-16 h-16 rounded-full bg-[#D9D9D9]">
-                {service.icon}
+              <div className="">
+                <img src={service.icon} alt="" />
               </div>
               <div className="p-2 flex-1 text-start ">
                 <h3 className="text-3xl font-bold ">{service.title}</h3>
