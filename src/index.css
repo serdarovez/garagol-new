@@ -1,11 +1,26 @@
 @import "tailwindcss";
+@font-face {
+  font-family: AtkinsonBold;
+  src: url("./assets/AtkinsonHyperlegible-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: AtkinsonItalic;
+  src: url("./assets/AtkinsonHyperlegible-Italic.ttf") format("truetype");
+  font-style: italic;
+}
+@font-face {
+  font-family: AtkinsonRegular;
+  src: url("./assets/AtkinsonHyperlegible-Regular.ttf") format("truetype");
+}
 
 body {
+  font-family: "AtkinsonRegular";
   position: relative;
   background-color: #f9f7f5;
 }
 .title {
-  @apply text-4xl md:text-5xl lg:text-6xl font-[700] text-[#242424] mb-5;
+  @apply text-4xl md:text-5xl lg:text-6xl font-[700] text-[#242424] mb-5 font-[AtkinsonBold] ;
 }
 .paragraph {
   @apply text-xl md:text-2xl lg:text-2xl font-[400] text-[#242424] mb-12;

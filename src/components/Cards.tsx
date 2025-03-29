@@ -67,11 +67,8 @@ const Cards = () => {
 
         if (overlap < 1) {
           const scale = 0.9 + 0.1 * overlap;
-          const rotate = -3 * (1 - overlap);
           const translateY = -10 * (1 - overlap);
-          card.style.transform = `scale(${scale}) rotate(${
-            index % 2 == 0 ? `${rotate}` : -rotate
-          }deg) translateY(${translateY}px)`;
+          card.style.transform = `scale(${scale})  translateY(${translateY}px)`;
         } else {
           card.style.transform = "none";
           // card.style.opacity = "1";

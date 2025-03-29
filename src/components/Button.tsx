@@ -14,7 +14,7 @@ const Button = ({
   };
   return (
     <div
-      className={` w-max  py-2 px-5  ${className || ""} ${
+      className={`   py-2 px-5  ${className || ""} ${
         variantStyles[variant]
       } `}
     >
