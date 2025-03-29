@@ -1,80 +1,48 @@
 import { useEffect, useRef } from "react";
-import web from "../assets/web.png";
-import ui from "../assets/ui.png";
-import devops from "../assets/devops.png";
-import cyber from "../assets/cyber.png";
-import it from "../assets/it.png";
-import { Squircle } from "react-ios-corners";
+import Button from "./Button";
 
 const Cards = () => {
   const services = [
     {
-      title: "Web & Mobile Development",
+      title: "Full-Service Digital Solutions",
       description:
-        "Build secure, high-performance digital experiences tailored to your brand’s unique goals.",
+        "From custom web and mobile development to data science and cloud optimization, we deliver secure, user-centered solutions tailored to your business needs.",
       features: [
-        "Custom websites & mobile apps",
-        "Cross-platform compatibility",
-        "User-focused development",
+        "Web & Mobile Development",
+        "Data Science",
+        "Analytics",
+        "Cloud  Solutions",
       ],
-      background: "#2C3E50",
-      image: web,
+      background: "#8675F2",
+      type: "primary",
     },
     {
-      title: "UI/UX Design & Branding",
+      title: "Design, Build, Secure, and Optimize",
       description:
-        "Create user-centered designs that enhance engagement and build brand loyalty.",
+        "We craft intuitive digital experiences, develop scalable solutions, ensure cybersecurity compliance, and provide expert IT consulting to keep your business ahead.",
       features: [
-        "Intuitive interfaces",
-        "Brand identity design",
-        "Usability optimization",
+        "UI/UX Design",
+        "Cybersecurity",
+        // "Usability optimization",
       ],
-      background: "#D6654F",
-      image: ui,
+      background: "#EDD750",
+      type: "secondary",
     },
     {
-      title: "DevOps & Cloud Solutions",
+      title: "Innovative Technology & Design Services",
       description:
-        "Accelerate delivery with automated, scalable, and secure cloud systems.",
-      features: [
-        "CI/CD pipelines",
-        "Automated deployments",
-        "Cloud optimization",
-      ],
-      background: "#8A9A5B",
-      image: devops,
+        "Empowering your business with cutting-edge web and mobile development, user-focused design, advanced data analytics, and secure, scalable cloud infrastructure.",
+      features: ["Analytics", "Data Science", "DevOps"],
+      background: "#8675F2",
+      type: "primary",
     },
     {
-      title: "Cybersecurity & Compliance",
+      title: "End-to-End Digital Transformation",
       description:
-        "Protect your digital assets with comprehensive security frameworks and testing.",
-      features: ["Threat analysis", "Compliance audits", "Penetration testing"],
-      background: "#4A4A4A",
-      image: cyber,
-    },
-    {
-      title: "Data Science & Analytics",
-      description:
-        "Unlock insights and drive decisions through advanced data analysis and AI.",
-      features: [
-        "Machine learning models",
-        "Business intelligence dashboards",
-        "Predictive analytics",
-      ],
-      background: "#9C89B8",
-      image: cyber,
-    },
-    {
-      title: "IT Consulting & Strategy",
-      description:
-        "Align your technology with business goals through expert strategy and insights.",
-      features: [
-        "Digital transformation",
-        "Emerging tech guidance",
-        "Sustainable IT practices",
-      ],
-      background: "#E1A631",
-      image: it,
+        "We guide your business through digital evolution—offering bespoke development, brand-focused design, data insights, cybersecurity, and strategic consulting.",
+      features: ["Strategy", "Branding", "IT Consulting"],
+      background: "#EDD750",
+      type: "secondary",
     },
   ];
   const containerRef = useRef<HTMLDivElement>(null);
@@ -99,8 +67,8 @@ const Cards = () => {
 
         if (overlap < 1) {
           const scale = 0.9 + 0.1 * overlap;
-          const rotate = -5 * (1 - overlap);
-          const translateY = -20 * (1 - overlap);
+          const rotate = -3 * (1 - overlap);
+          const translateY = -10 * (1 - overlap);
           card.style.transform = `scale(${scale}) rotate(${
             index % 2 == 0 ? `${rotate}` : -rotate
           }deg) translateY(${translateY}px)`;
@@ -117,43 +85,48 @@ const Cards = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <div className="flex relative -z-10 items-center flex-col justify-center max-w-7xl mx-auto">
-      <div className="sticky  top-20">
-        <div className="title">Built from the ground up</div>
+    <div className="flex relative -z-10  flex-col justify-center container ">
+      <div className="sticky w-3/5 mt-20 top-20">
+        <div className="title">Our services</div>
         <div className="paragraph">
-          All of our services are designed to help your business stand out.
+          We design, develop, and deliver secure, high-performance solutions
+          tailored to your business needs.
         </div>
       </div>
-      <div ref={containerRef} className="w-full  flex flex-col gap-5 ">
+      <div ref={containerRef} className="w-full mt-20  flex flex-col gap-5 ">
         {services.map((service, index) => (
-          <div ref={(el: any) => (serviceRefs.current[index] = el)}
-          className=" sticky top-60    font-[400] w-full text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
+          <div
+            ref={(el: any) => (serviceRefs.current[index] = el)}
+            className=" sticky top-60    font-[400] w-full text-white overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
           >
-            <Squircle
+            <div
               style={{ backgroundColor: service.background }}
-              className="p-14"
-              radius={80}
+              className={`p-14 ${
+                service.type !== "primary" ? "text-black" : "text-white"
+              } `}
             >
-              <div className="p-6 flex-1 ">
-                <h3 className="text-3xl font-bold  mb-5">{service.title}</h3>
-                <div className=" items-start lg:flex-row xl:flex-row md:flex gap-5 flex-col justify-between">
-                  <div>
-                    <p className=" mb-4 text-2xl">{service.description}</p>
-
-                    <ul className="space-y-2 list-disc list-inside">
-                      {service.features.map(
-                        (feature: string, index: number) => (
-                          <li key={index} className=" ">
-                            <span className="text-2xl">{feature}</span>
-                          </li>
-                        )
-                      )}
-                    </ul>
+              <div className="p-6 flex justify-between items-end ">
+                <div className=" w-3/5">
+                  <h3 className="text-6xl font-[700]  mb-8">{service.title}</h3>
+                  <p className=" mb-4 text-4xl font-[400] ">
+                    {service.description}
+                  </p>
+                </div>
+                <div className="2/5">
+                  <div className="flex w-2/3 mx-auto justify-end flex-wrap gap-3 ">
+                    {service.features.map((feature: string, index: number) => (
+                      <Button
+                        variant={service.type}
+                        title={feature}
+                        key={index}
+                      >
+                        {/* <span className="text-2xl">{feature}</span> */}
+                      </Button>
+                    ))}
                   </div>
-                  <img src={service.image} alt="" />
                 </div>
               </div>
-            </Squircle>
+            </div>
           </div>
         ))}
       </div>

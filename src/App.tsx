@@ -5,11 +5,9 @@ import Main from "./pages/Main";
 const App = () => {
   return (
     <div className=" ">
-      <div className="fixed w-full">
-        <Navbar />
-      </div>
+      <Navbar />
       <Main />
-      <Footer/>
+      <Footer />
     </div>
   );
 };

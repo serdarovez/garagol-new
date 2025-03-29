@@ -1,55 +1,51 @@
-import { Squircle } from 'react-ios-corners';
+import { Squircle } from "react-ios-corners";
 
 const ConnectUs = () => {
   const services = [
     {
       title: "1. Connect",
-      description: "Discovery & Consultation",
-      features: ["Understand your goals", "Research & Strategy Development"],
+      description:
+        "Start with a discovery call where we dive deep into your vision, challenges, and business goals to lay a strong foundation for success.",
     },
     {
       title: "2. Collaborate",
-      description: "Design & Build",
-      features: ["Development & Integration", "Development & Integration"],
+      description:
+        "We work closely with you through design and development, delivering custom solutions that align perfectly with your business needs.",
     },
     {
       title: "3. Create",
-      description: "Delivery & Support",
-      features: ["Testing & Optimization", "Deployment & Continuous Support"],
+      description:
+        "Through rigorous testing and careful deployment, we ensure a smooth, reliable launch that meets the highest standards of quality.",
+    },
+    {
+      title: "4. Support",
+      description:
+        "Enjoy ongoing optimization and 24/7 support, keeping your business running smoothly while continuously improving your digital presence.",
     },
   ];
-  
+
   return (
-    <div className="mt-40 max-w-7xl mx-auto text-center px-4">
-      <div className="title text-4xl font-bold mb-4">Our proven 3-step process</div>
-      <div className="paragraph text-xl text-gray-600 mb-12">
-        All of our services are designed to help your business to get noticed.
-      </div>
-      <div className="flex flex-col md:flex-row mt-10 gap-8">
+    <div className="mt-40 container px-4">
+      <div className="title ">Our process</div>
+      <div className="flex flex-col md:flex-row mt-20 gap-4">
         {services.map((service, index) => (
-          <Squircle
+          <div
             key={index}
-            className="bg-[#2C3E50] aspect-square w-full p-8 shadow-lg font-normal text-white overflow-hidden 
+            className="bg-[#8675F2]  w-full z-10 p-8 shadow-lg font-normal text-white overflow-hidden 
                        transition-all duration-300 flex flex-col "
-            radius={80} // Controls the overall corner radius
-            // roundness={1} // Controls the squircle effect (0 = square, 1 = circle)
+            // roundness={1} // Controls the div effect (0 = square, 1 = circle)
           >
             <div className="p-2 flex-1 flex flex-col">
               <h3 className="text-3xl font-bold mb-6">{service.title}</h3>
               <div className="flex-1 flex flex-col">
                 <div className="mt-6">
-                  <p className="mb-4 text-2xl text-start">{service.description}</p>
-                  <ul className="space-y-3 list-disc text-start pl-5">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="text-xl font-normal">
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="mb-4 text-2xl text-start">
+                    {service.description}
+                  </p>
                 </div>
               </div>
             </div>
-          </Squircle>
+          </div>
         ))}
       </div>
     </div>

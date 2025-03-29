@@ -3,15 +3,18 @@ import ConnectUs from "../components/ConnectUs";
 import Contact from "../components/Contact";
 import Gurantee from "../components/Gurantee";
 import Home from "../components/Home";
+import InfiniteScrollingText from "../components/InfinitiveText";
 
 const Main = () => {
   return (
-    <div className="min-h-screen ">
+    <div className="z-0 ">
+      {/* <Navbar//> */}
       <Home />
       <Cards />
+      <InfiniteScrollingText />
       <ConnectUs />
-      <Gurantee/>
-      <Contact/>
+      <Gurantee />
+      <Contact />
     </div>
   );
 };

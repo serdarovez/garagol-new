@@ -5,8 +5,53 @@ body {
   background-color: #f9f7f5;
 }
 .title {
-  @apply text-4xl md:text-5xl lg:text-6xl font-[600] text-[#2C3E50] mb-8;
+  @apply text-4xl md:text-5xl lg:text-6xl font-[700] text-[#242424] mb-5;
 }
 .paragraph {
-  @apply text-xl md:text-2xl lg:text-2xl font-[600] text-[#090825] mb-12;
+  @apply text-xl md:text-2xl lg:text-2xl font-[400] text-[#242424] mb-12;
+}
+.container {
+  @apply w-[90vw] mx-auto;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatTopLeft {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-100px, -100px);
+  }
+}
+
+@keyframes floatBottomRight {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(100px, 100px);
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .animate-floatTopLeft {
+    animation: floatTopLeft 8s ease-in-out infinite;
+  }
+
+  .animate-floatBottomRight {
+    animation: floatBottomRight 8s ease-in-out infinite;
+  }
 }
