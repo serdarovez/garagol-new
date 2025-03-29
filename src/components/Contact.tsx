@@ -1,5 +1,4 @@
 import { Squircle } from "react-ios-corners";
-import Button from "./Button";
 
 const Contact = () => {
   return (

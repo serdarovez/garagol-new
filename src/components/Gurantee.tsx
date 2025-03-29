@@ -1,29 +1,42 @@
+import fast from "../assets/delivery.svg";
+import team from "../assets/team.svg";
+import support from "../assets/support.svg";
+import scalable from "../assets/scalable.svg";
+import safe from "../assets/safe.svg";
+import money from "../assets/money.svg";
+
 const Gurantee = () => {
   const services = [
     {
       title: "Fast delivery",
       description:
         "Most projects completed within a month, or your next invoice is discounted.",
+      icon: fast,
     },
     {
       title: "24/7 support",
       description: "Priority responses for urgent issues within two hours.",
+      icon: support,
     },
     {
       title: "Secure development",
       description: "Every line of code undergoes rigorous security checks.",
+      icon: safe,
     },
     {
       title: "Scalability assurance",
       description: "Free scaling consultations for the life of your project.",
+      icon: scalable,
     },
     {
       title: "Transparent pricing",
       description: "Competitive global rates with no hidden fees.",
+      icon: money,
     },
     {
       title: "Expert team",
       description: "Certified professionals delivering tailored solutions.",
+      icon: team,
     },
   ];
   return (

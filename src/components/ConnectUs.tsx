@@ -1,5 +1,3 @@
-import { Squircle } from "react-ios-corners";
-
 const ConnectUs = () => {
   const services = [
     {
