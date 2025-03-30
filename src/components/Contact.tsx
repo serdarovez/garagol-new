@@ -1,5 +1,11 @@
 import { useState } from "react";
 import Button from "./Button";
+import random1 from "../assets/1.svg";
+import random2 from "../assets/2.svg";
+import random3 from "../assets/3.svg";
+import random4 from "../assets/4.svg";
+import random5 from "../assets/5.svg";
+import random6 from "../assets/6.svg";
 
 const Contact = () => {
   const buttons = [
@@ -10,56 +16,103 @@ const Contact = () => {
     "Something else",
   ];
 
-  const [selected, setSelected] = useState("");
+  const svgImages = [random1, random2, random3, random4, random5, random6];
+  const [selectedButtons, setSelectedButtons] = useState<
+    { button: string; svg: any }[]
+  >([]);
+
+  const getRandomSvg = () => {
+    const randomIndex = Math.floor(Math.random() * svgImages.length);
+    return svgImages[randomIndex];
+  };
+
+  const toggleButton = (button: any) => {
+    const existingIndex = selectedButtons.findIndex(
+      (item) => item.button === button
+    );
+
+    if (existingIndex >= 0) {
+      // Button is already selected, so deselect it
+      setSelectedButtons(
+        selectedButtons.filter((item) => item.button !== button)
+      );
+    } else {
+      // Button is not selected, so select it with a random SVG
+      const randomSvg = getRandomSvg();
+      setSelectedButtons([...selectedButtons, { button, svg: randomSvg }]);
+    }
+  };
+
+  const isButtonSelected = (button: any) => {
+    return selectedButtons.some((item) => item.button === button);
+  };
+
+  const getButtonSvg = (button: any) => {
+    const selected = selectedButtons.find((item) => item.button === button);
+    return selected ? selected.svg : null;
+  };
+
   return (
     <div>
-      <div className=" min-h-screen  bg-[#8675F2] p-10 text-white  flex flex-col">
-        <div className="p-10  ">
-          <h3 className=" text-4xl md:text-5xl lg:text-6xl font-[700] mb-5">
+      <div className="min-h-screen bg-[#8675F2] p-10 text-white flex flex-col">
+        <div className="p-10">
+          <h3 className="text-4xl md:text-5xl lg:text-6xl font-[700] mb-5">
             How can we help you?
           </h3>
-          <p className=" mb-4 font-[400] text-xl">
-            Tell us what you need, and we’ll go the extra mile to help you
+          <p className="mb-4 font-[400] text-xl">
+            Tell us what you need, and we'll go the extra mile to help you
             succeed.
           </p>
           <div className="grid mt-20 grid-cols-2 gap-5">
             <div className="">
-              <div className="relative mb-10 p-3 ">
-                <span className="absolute text-[#EDD750] font-[AtkinsonItalic] z-1 text-8xl  left-0 -top-5 ">
+              <div className="relative mb-10 p-3">
+                <span className="absolute text-[#EDD750] font-[AtkinsonItalic]  text-8xl left-0 -top-5">
                   1
                 </span>
-                <div className="text-3xl z-2 font-[700]">
-                  I’m interested in...
+                <div className="text-3xl z-2 relative  font-[700]">
+                  I'm interested in...
                 </div>
               </div>
-              <div className="flex flex-col gap-5 ">
-                {buttons.map((button) => (
+              <div className="flex flex-col gap-5">
+                {buttons.map((button: any) => (
                   <div
-                    className={` w-full p-3 text-black cursor-pointer border ${
-                      selected === button ? "bg-[#EDD750]" : "bg-white"
-                    } `}
-                    onClick={() => setSelected(button)}
+                    key={button}
+                    className={`w-full p-3 h-12 border-box hover:bg-black hover:text-white hover:border-black text-black cursor-pointer border flex justify-between items-center ${
+                      isButtonSelected(button) ? "bg-[#EDD750]" : "bg-white"
+                    }`}
+                    onClick={() => toggleButton(button)}
                   >
                     {button}
+                    {isButtonSelected(button) && (
+                      <div className="bg-white p-1 border">
+                        <img
+                          src={getButtonSvg(button)}
+                          alt="Selected"
+                          className="w-5 h-5"
+                        />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <div className="relative mb-10 p-3 ">
-                <span className="absolute text-[#EDD750] text-8xl  left-0 -top-5 ">
+              <div className="relative mb-10 p-3">
+                <span className="absolute text-[#EDD750] text-8xl left-0 -top-5">
                   2
                 </span>
-                <div className="text-3xl  font-[700]">Add more details</div>
+                <div className="text-3xl relative font-[700]">
+                  Add more details
+                </div>
               </div>
               <div className="flex w-full flex-col gap-5">
                 <input
-                  className="bg-white  text-black p-3 border"
+                  className="bg-white text-black p-3 border"
                   type="text"
                   placeholder="Your name"
                 />
                 <input
-                  className="bg-white  text-black p-3 border"
+                  className="bg-white text-black p-3 border"
                   type="text"
                   placeholder="Email"
                 />
@@ -70,12 +123,11 @@ const Contact = () => {
                 <Button
                   variant="primary"
                   title="Send message"
-                  class=" text-center w-full"
+                  class="text-center w-full"
                 />
               </div>
             </div>
           </div>
-          {/* <Button title="Send us a message" class=" mt-10" /> */}
         </div>
       </div>
     </div>

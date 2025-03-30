@@ -53,7 +53,7 @@ const Gurantee = () => {
               <div className="">
                 <img src={service.icon} alt="" />
               </div>
-              <div className="p-2 flex-1 text-start ">
+              <div className="p-2 pt-0 flex-1 text-start ">
                 <h3 className="text-3xl font-bold ">{service.title}</h3>
                 <div className="  lg:flex-row items-start justify-items-start xl:flex-row md:flex gap-5 flex-col ">
                   <div className="mt-5">

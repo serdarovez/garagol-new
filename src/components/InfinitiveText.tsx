@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const InfiniteScrollingText = () => {
@@ -12,6 +12,10 @@ const InfiniteScrollingText = () => {
   // State to track which word is highlighted for each line
   const [highlightedWord1, setHighlightedWord1] = useState(null);
   const [highlightedWord2, setHighlightedWord2] = useState(null);
+
+  // Animation controls for each line
+  const controls1 = useAnimation();
+  const controls2 = useAnimation();
 
   useEffect(() => {
     // Split the original text into words (without the repetitions)
@@ -31,11 +35,41 @@ const InfiniteScrollingText = () => {
       setHighlightedWord2(randomIndex);
     }, 3000);
 
+    // Animation sequences
+    const animateLine1 = async () => {
+      while (true) {
+        await controls1.start({
+          x: [0, -textLine1.length * 30], // Right to left
+          transition: { duration: 15, ease: "linear" },
+        });
+        await controls1.start({
+          x: [-textLine1.length * 30, 0], // Left to right
+          transition: { duration: 15, ease: "linear" },
+        });
+      }
+    };
+
+    const animateLine2 = async () => {
+      while (true) {
+        await controls2.start({
+          x: [-textLine2.length * 30, 0], // Left to right
+          transition: { duration: 15, ease: "linear" },
+        });
+        await controls2.start({
+          x: [0, -textLine2.length * 30], // Right to left
+          transition: { duration: 15, ease: "linear" },
+        });
+      }
+    };
+
+    animateLine1();
+    animateLine2();
+
     return () => {
       clearInterval(interval1);
       clearInterval(interval2);
     };
-  }, []);
+  }, [controls1, controls2]);
 
   // Function to render text with highlighted words
   //@ts-ignore
@@ -67,32 +101,18 @@ const InfiniteScrollingText = () => {
       style={{ overflow: "hidden", width: "100%" }}
       className="text-white font-[700] mt-30 bg-black"
     >
-      {/* First line - moves to the right */}
+      {/* First line - alternates between right-to-left and left-to-right */}
       <motion.div
-        style={{ whiteSpace: "nowrap", fontSize: "64px", marginBottom: "10px" }}
-        animate={{
-          x: [0, -textLine1.length * 30],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+        style={{ whiteSpace: "nowrap", fontSize: "48px", marginBottom: "10px" }}
+        animate={controls1}
       >
         {renderText(repeatedText1, textLine1, highlightedWord1)}
       </motion.div>
 
-      {/* Second line - moves to the left */}
+      {/* Second line - alternates between left-to-right and right-to-left */}
       <motion.div
-        style={{ whiteSpace: "nowrap", fontSize: "64px" }}
-        animate={{
-          x: [-textLine2.length * 30, 0],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+        style={{ whiteSpace: "nowrap", fontSize: "48px" }}
+        animate={controls2}
       >
         {renderText(repeatedText2, textLine2, highlightedWord2)}
       </motion.div>
