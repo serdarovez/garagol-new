@@ -74,9 +74,9 @@ const Contact = () => {
   };
 
   return (
-    <div>
-      <div className="min-h-screen bg-[#8675F2] p-10 text-white flex flex-col">
-        <div className="p-10">
+    <div className="bg-[#8675F2]">
+      <div className="min-h-screen  px-0 container p-10 text-white flex flex-col">
+        <div className="p-10 px-0">
           <h3 className="text-4xl md:text-5xl lg:text-6xl font-[700] mb-5">
             How can we help you?
           </h3>

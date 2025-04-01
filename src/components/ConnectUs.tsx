@@ -49,7 +49,7 @@ const ConnectUs = () => {
   };
 
   return (
-    <div className="mt-40 container px-4 overflow-hidden">
+    <div className="mt-40 container  overflow-hidden">
       <div className="title">Our process</div>
       
       <motion.div
