@@ -54,7 +54,7 @@ function FAQ() {
 
   return (
     <div className="flex min-h-screen text-white bg-[#242424] flex-col">
-      <div className="grow container mt-30">
+      <div className="grow container mb-20 mt-40">
         <div className="flex items-center justify-between">
           <div>
             <div className="text-4xl md:text-5xl lg:text-6xl font-[700]  mb-5 font-[AtkinsonBold] text-[#EDD750]">
