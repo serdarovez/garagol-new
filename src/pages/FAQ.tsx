@@ -82,12 +82,12 @@ function FAQ() {
               class="w-max my-20 text-xl font-[700]  cursor-pointer"
             />
           </div>
-          <div className="hidden md:block">
+          <div className="hidden md:flex  p-1  items-center justify-center  bg-[#EDD750] ">
             {/* place gif here  */}
             <img
               src={randomGif}
               alt="Animation showing calculator process"
-              className="w-full max-w-[400px] h-auto "
+              className="w-full -translate-4  max-w-[400px] h-auto "
             />
           </div>
         </div>

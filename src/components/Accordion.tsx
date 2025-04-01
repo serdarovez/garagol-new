@@ -50,7 +50,7 @@ export const Accordion: React.FC<AccordionProps> = ({
       >
         <svg
           className={`transform transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
+            isOpen ? "" : "-rotate-90"
           }`}
           xmlns="http://www.w3.org/2000/svg"
           width="32"
