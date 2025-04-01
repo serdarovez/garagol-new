@@ -1,6 +1,7 @@
 import Cards from "../components/Cards";
 import ConnectUs from "../components/ConnectUs";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 import Gurantee from "../components/Gurantee";
 import Home from "../components/Home";
 import InfiniteScrollingText from "../components/InfinitiveText";
@@ -15,6 +16,7 @@ const Main = () => {
       <ConnectUs />
       <Gurantee />
       <Contact />
+      <Footer type='black'/>
     </div>
   );
 };

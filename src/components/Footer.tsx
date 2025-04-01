@@ -1,6 +1,19 @@
-const Footer = () => {
+import instagram from "../assets/instagram.svg";
+import facebook from "../assets/facebook.svg";
+import upwork from "../assets/upwork.svg";
+import linkedin from "../assets/linkedin.svg";
+
+interface FooterProps {
+  type: string;
+}
+
+const Footer = ({ type }: FooterProps) => {
   return (
-    <div className="w-full h-100 relative p-15 overflow-hidden bg-[#242424] text-white   ">
+    <div
+      className={`w-full h-100 relative p-15 overflow-hidden  ${
+        type === "black" ? "bg-[#242424]" : "bg-[#8675F2]"
+      } text-white `}
+    >
       <div className="container flex h-full items-center ">
         <div className="w-1/2 flex flex-col h-full justify-end ">
           <div className="flex items-center gap-3">
@@ -28,17 +41,57 @@ const Footer = () => {
               </defs>
             </svg>
             <div>
-              <h1 className="font-[700] text-2xl" >Garagol</h1>
-              <span className="font-[400]" >Consulting and Solutions Company.</span>
+              <h1 className="font-[700] text-2xl">Garagol</h1>
+              <span className="font-[400]">
+                Consulting and Solutions Company.
+              </span>
             </div>
           </div>
           <div className="mt-8">© 2025 Garagol. All rights reserved.</div>
         </div>
-        <div>
-          <div className=" flex-col flex gap-5 items-start  text-[#EDD750] justify-center font-medium text-lg ">
+        <div className="relative z-10">
+          <div className=" flex-col  flex gap-5 items-start  text-[#EDD750] justify-center font-medium text-lg ">
             <div className="hover:text-blue-500">Services</div>
             <div className="hover:text-blue-500">Process</div>
             <div className="hover:text-blue-500">Guarentees</div>
+          </div>
+          <div className=" flex mt-5 items-center gap-3">
+            <a
+              href="https://www.facebook.com/profile.php?id=61574918726921"
+              className="cursor-pointer"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit our Facebook page"
+            >
+              <img src={facebook} alt="" />
+            </a>
+            <a
+              href="https://www.instagram.com/garagol_css/"
+              className="cursor-pointer"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit our Instagram page"
+            >
+              <img src={instagram} alt="" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/garagol/about/"
+              className="cursor-pointer"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit our Linkedin page"
+            >
+              <img src={linkedin} alt="" />
+            </a>
+            <a
+              href="https://www.upwork.com/agencies/1791289820464082944/"
+              className="cursor-pointer"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit our Upwork page"
+            >
+              <img src={upwork} alt="" />
+            </a>
           </div>
         </div>
       </div>

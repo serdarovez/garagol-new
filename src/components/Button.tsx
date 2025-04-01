@@ -8,9 +8,9 @@ const Button = ({
   variant: string;
 }) => {
   const variantStyles: any = {
-    primary: "bg-[#EDD750] text-black cursor-pointer border border-black ",
-    outline: "border border-[#EDD750] cursor-pointer  text-white",
-    secondary: "bg-[#8675F2] text-black cursor-pointer border border-black",
+    primary: "bg-[#EDD750] text-black   border border-black ",
+    outline: "border border-[#EDD750]    text-white",
+    secondary: "bg-[#8675F2] text-black   border border-black",
   };
   return (
     <div
