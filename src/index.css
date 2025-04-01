@@ -18,6 +18,7 @@ body {
   font-family: "AtkinsonRegular";
   position: relative;
   background-color: #f9f7f5;
+  /* overflow-x: hidden; */
 }
 .title {
   @apply text-4xl md:text-5xl lg:text-6xl font-[700] text-[#242424] mb-5 font-[AtkinsonBold] ;

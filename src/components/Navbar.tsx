@@ -1,8 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
 
 const Navbar = () => {
   const [isHovering, setIsHovering] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="w-full bg-white fixed p-3 z-50 top-0 flex justify-between items-center">
@@ -19,7 +33,7 @@ const Navbar = () => {
             height="63"
             viewBox="0 0 63 63"
             fill="none"
-            className="transition-transform duration-300 hover:scale-105"
+            className="transition-transform duration-300"
           >
             <g clipPath="url(#clip0_139_139)">
               <path
@@ -39,10 +53,12 @@ const Navbar = () => {
           </svg>
 
           {/* Animated Text */}
-          <div className="overflow-hidden relative h-12 w-64">
+          <div className="overflow-hidden relative h-14 w-64">
             <div
               className={`absolute flex flex-col transition-all duration-500 ease-in-out ${
-                isHovering ? "left-0" : "-left-full"
+                isHovering || !isScrolled
+                  ? "translate-x-0"
+                  : "-translate-x-full"
               }`}
             >
               <h1 className="font-[700] text-2xl whitespace-nowrap">Garagol</h1>

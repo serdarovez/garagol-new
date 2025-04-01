@@ -16,38 +16,59 @@ const Contact = () => {
     "Something else",
   ];
 
-  const svgImages = [random1, random2, random3, random4, random5, random6];
+  const [svgImages, setSvgImages] = useState([
+    random1,
+    random2,
+    random3,
+    random4,
+    random5,
+    random6,
+  ]);
   const [selectedButtons, setSelectedButtons] = useState<
     { button: string; svg: any }[]
   >([]);
+  const [usedSvgs, setUsedSvgs] = useState<any[]>([]);
 
   const getRandomSvg = () => {
-    const randomIndex = Math.floor(Math.random() * svgImages.length);
-    return svgImages[randomIndex];
+    const availableSvgs = svgImages.filter((svg) => !usedSvgs.includes(svg));
+    if (availableSvgs.length === 0) return null; // No more SVGs available
+
+    const randomIndex = Math.floor(Math.random() * availableSvgs.length);
+    const selectedSvg = availableSvgs[randomIndex];
+    setUsedSvgs([...usedSvgs, selectedSvg]);
+    return selectedSvg;
   };
 
-  const toggleButton = (button: any) => {
+  const returnSvgToPool = (svg: any) => {
+    setUsedSvgs(usedSvgs.filter((s) => s !== svg));
+  };
+
+  const toggleButton = (button: string) => {
     const existingIndex = selectedButtons.findIndex(
       (item) => item.button === button
     );
 
     if (existingIndex >= 0) {
       // Button is already selected, so deselect it
+      const removedItem = selectedButtons[existingIndex];
+      returnSvgToPool(removedItem.svg);
       setSelectedButtons(
         selectedButtons.filter((item) => item.button !== button)
       );
     } else {
       // Button is not selected, so select it with a random SVG
       const randomSvg = getRandomSvg();
-      setSelectedButtons([...selectedButtons, { button, svg: randomSvg }]);
+      if (randomSvg) {
+        setSelectedButtons([...selectedButtons, { button, svg: randomSvg }]);
+      }
     }
   };
 
-  const isButtonSelected = (button: any) => {
+  const isButtonSelected = (button: string) => {
     return selectedButtons.some((item) => item.button === button);
   };
 
-  const getButtonSvg = (button: any) => {
+  const getButtonSvg = (button: string) => {
     const selected = selectedButtons.find((item) => item.button === button);
     return selected ? selected.svg : null;
   };
@@ -66,18 +87,18 @@ const Contact = () => {
           <div className="grid mt-20 grid-cols-2 gap-5">
             <div className="">
               <div className="relative mb-10 p-3">
-                <span className="absolute text-[#EDD750] font-[AtkinsonItalic]  text-8xl left-0 -top-5">
+                <span className="absolute text-[#EDD750] font-[AtkinsonItalic] text-8xl left-0 -top-5">
                   1
                 </span>
-                <div className="text-3xl z-2 relative  font-[700]">
+                <div className="text-3xl z-2 relative font-[700]">
                   I'm interested in...
                 </div>
               </div>
               <div className="flex flex-col gap-5">
-                {buttons.map((button: any) => (
+                {buttons.map((button) => (
                   <div
                     key={button}
-                    className={`w-full p-3 h-12 border-box hover:bg-black hover:text-white hover:border-black text-black cursor-pointer border flex justify-between items-center ${
+                    className={`w-full p-3 h-12 border-box hover:bg-[#242424] hover:text-white hover:border-black text-black cursor-pointer border flex justify-between items-center ${
                       isButtonSelected(button) ? "bg-[#EDD750]" : "bg-white"
                     }`}
                     onClick={() => toggleButton(button)}
