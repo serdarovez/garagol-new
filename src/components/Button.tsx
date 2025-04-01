@@ -14,9 +14,7 @@ const Button = ({
   };
   return (
     <div
-      className={`   py-2 px-5  ${className || ""} ${
-        variantStyles[variant]
-      } `}
+      className={`   py-2 px-5  ${className || ""} ${variantStyles[variant]} `}
     >
       {title}
     </div>
