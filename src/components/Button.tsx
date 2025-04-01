@@ -10,7 +10,7 @@ const Button = ({
   const variantStyles: any = {
     primary: "bg-[#EDD750] text-black   border border-black ",
     outline: "border border-[#EDD750]    text-white",
-    secondary: "bg-[#8675F2] text-black   border border-black",
+    secondary: "bg-[#8675F2] text-white   border border-black",
   };
   return (
     <div

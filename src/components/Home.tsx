@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <div className="h-screen bg-[#242424] text-white flex items-end justify-items-end ">
-      <div className="container h-[70vh]">
+      <div className="container h-[60vh]">
         <div className="text-7xl font-[700] leading-[1.1]">
           <span className="">
             {text}

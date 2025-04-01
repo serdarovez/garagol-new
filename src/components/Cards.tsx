@@ -105,8 +105,8 @@ const Cards = () => {
             >
               <div className="p-6 flex justify-between items-end ">
                 <div className=" w-3/5">
-                  <h3 className="title  mb-8">{service.title}</h3>
-                  <p className=" mb-4 paragraph ">
+                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-[700]  mb-8 font-[AtkinsonBold]">{service.title}</h3>
+                  <p className=" text-xl md:text-2xl lg:text-2xl font-[400]  mb-4 ">
                     {service.description}
                   </p>
                 </div>
