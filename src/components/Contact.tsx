@@ -16,7 +16,7 @@ const Contact = () => {
     "Something else",
   ];
 
-  const [svgImages, setSvgImages] = useState([
+  const [svgImages] = useState([
     random1,
     random2,
     random3,
