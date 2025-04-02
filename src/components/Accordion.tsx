@@ -1,21 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 type AccordionProps = {
   question: string;
   answer: string | React.ReactNode;
-  defaultOpen?: boolean;
+  isOpen: boolean;
+  onToggle: () => void;
 };
 
 export const Accordion: React.FC<AccordionProps> = ({
   question,
   answer,
-  defaultOpen = false,
+  isOpen,
+  onToggle,
 }) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
   const [height, setHeight] = useState<number | string>(isOpen ? "auto" : 0);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
     if (contentRef.current) {
@@ -39,13 +38,13 @@ export const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div
-      className={`group hover:bg-[#EDD750] hover:text-[#242424] mb-4 transition-colors duration-200 ${
+      className={`group hover:bg-[#EDD750] hover:text-[#242424] transition-colors duration-200 ${
         isOpen ? "bg-[#EDD750]" : "bg-transparent"
       }`}
     >
       <button
         className="w-full p-4 text-left flex gap-5 items-center focus:outline-none"
-        onClick={toggle}
+        onClick={onToggle}
         aria-expanded={isOpen}
       >
         <svg
@@ -68,7 +67,7 @@ export const Accordion: React.FC<AccordionProps> = ({
           />
         </svg>
         <span
-          className={`text-xl md:text-2xl lg:text-2xl font-[700] transition-colors duration-200 ${
+          className={`text-xl md:text-2xl lg:text-2xl font-bold transition-colors duration-200 ${
             isOpen ? "text-[#242424]" : "text-white group-hover:text-[#242424]"
           }`}
         >

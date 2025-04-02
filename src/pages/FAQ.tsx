@@ -7,10 +7,9 @@ function FAQ() {
   const [randomGif, setRandomGif] = useState("");
 
   const gifs = [
-    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMm93dnpicTcwbGNwZDIwMHk3dmc4MWFpMTdjamNnODFqZ201bGNiciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IokAQCByJS254Dmw6f/giphy.gif",
     "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDE3azA0cHozM3Q2bmMyaGI3dmswMnp2aDdwM2g4MmNleGszeDFoMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tWhSt6azAiDYhW9VhG/giphy.gif",
     "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZm54aHJ6ZnN2czZyc3N4OTZ3MGxyMDZhZjN5MGdpc2tpZ3YxMWFjMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lHfxDepSGlzom6f65K/giphy.gif",
-    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXpxZjB5M2h3azc0aW82ZzgyeHl0a3loZTIwdXd3bTU0ZW0zazY3eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26u4lmReBFtv3KPU4/giphy.gif"
+    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXpxZjB5M2h3azc0aW82ZzgyeHl0a3loZTIwdXd3bTU0ZW0zazY3eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26u4lmReBFtv3KPU4/giphy.gif",
   ];
 
   useEffect(() => {
@@ -52,6 +51,12 @@ function FAQ() {
     },
   ];
 
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const handleToggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <div className="flex min-h-screen text-white bg-[#242424] flex-col">
       <div className="grow container mb-20 mt-40">
@@ -91,8 +96,14 @@ function FAQ() {
             />
           </div>
         </div>
-        {questions.map((question) => (
-          <Accordion question={question.question} answer={question.answer} />
+        {questions.map((question, index) => (
+          <Accordion
+            key={index}
+            question={question.question}
+            answer={question.answer}
+            isOpen={openIndex === index}
+            onToggle={() => handleToggle(index)}
+          />
         ))}
       </div>
       <Footer type="purple" />
