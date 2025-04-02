@@ -6,6 +6,7 @@ import Main from "./pages/Main";
 import CustomCursor from "./components/CustomCursor";
 import SplashScreen from "./components/SplashScreen";
 import FAQ from "./pages/FAQ";
+import Calculator from "./pages/Calculator";
 
 const App = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -36,6 +37,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/estimate" element={<FAQ />} />
+              <Route path="/calculator" element={<Calculator />} />
             </Routes>
           </motion.div>
         )}

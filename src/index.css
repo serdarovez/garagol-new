@@ -20,7 +20,11 @@
 }
 
 /* Optional: Ensure pointer state is visible */
-a, button, [role="button"], [onclick], [href] {
+a,
+button,
+[role="button"],
+[onclick],
+[href] {
   cursor: none !important;
 }
 body {
@@ -30,7 +34,7 @@ body {
   /* overflow-x: hidden; */
 }
 .title {
-  @apply text-4xl md:text-5xl lg:text-6xl font-[700] text-[#242424] mb-5 font-[AtkinsonBold] ;
+  @apply text-4xl md:text-5xl lg:text-6xl font-[700] text-[#242424] mb-5 font-[AtkinsonBold];
 }
 .paragraph {
   @apply text-xl md:text-2xl lg:text-2xl font-[400] text-[#242424] mb-12;
@@ -79,4 +83,15 @@ body {
   .animate-floatBottomRight {
     animation: floatBottomRight 8s ease-in-out infinite;
   }
+}
+
+.send {
+  background: linear-gradient(
+      rgba(134, 117, 242, 0.8),
+      rgba(134, 117, 242, 0.8)
+    ),
+    url("./assets/background.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

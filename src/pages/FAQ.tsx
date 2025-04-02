@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Accordion from "../components/Accordion";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 function FAQ() {
   const [randomGif, setRandomGif] = useState("");
@@ -81,11 +82,13 @@ function FAQ() {
                 launch
               </li>
             </ul>
-            <Button
-              title="Let’s start!"
-              variant="primary"
-              class="w-max my-20 text-xl font-[700]  cursor-pointer"
-            />
+            <Link to={`/calculator`}>
+              <Button
+                title="Let’s start!"
+                variant="primary"
+                class="w-max my-20 text-xl font-[700]  cursor-pointer"
+              />
+            </Link>
           </div>
           <div className="hidden md:flex  p-1  items-center justify-center  bg-[#EDD750] ">
             {/* place gif here  */}
