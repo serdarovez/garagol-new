@@ -255,21 +255,21 @@ const Calculator = () => {
               <motion.div className="flex flex-col gap-5">
                 <motion.div variants={formItemVariants} custom={2}>
                   <input
-                    className="w-full p-3 h-12 bg-white text-black border-box border"
+                    className="w-full p-3 h-12 bg-white text-[#242424] border-box border"
                     type="text"
                     placeholder="Your name"
                   />
                 </motion.div>
                 <motion.div variants={formItemVariants} custom={3}>
                   <input
-                    className="w-full p-3 h-12 bg-white text-black border-box border"
+                    className="w-full p-3 h-12 bg-white text-[#242424] border-box border"
                     type="text"
                     placeholder="Email"
                   />
                 </motion.div>
                 <motion.div variants={formItemVariants} custom={4}>
                   <input
-                    className="w-full p-3 h-12 bg-white text-black border-box border"
+                    className="w-full p-3 h-12 bg-white text-[#242424] border-box border"
                     type="text"
                     placeholder="Company name"
                   />

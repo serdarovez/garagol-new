@@ -8,33 +8,33 @@ import money from "../assets/money.svg";
 const Gurantee = () => {
   const services = [
     {
-      title: "Fast delivery",
+      title: "Fast Delivery",
       description:
-        "Most projects completed within a month, or your next invoice is discounted.",
+        "We aim to deliver first draft within a week of kick-off call so you can start seeing results sooner.",
       icon: fast,
     },
     {
-      title: "24/7 support",
-      description: "Priority responses for urgent issues within two hours.",
+      title: "Ongoing Support",
+      description: "For urgent issues, we do our best to respond within two hours, keeping your operations running smoothly.",
       icon: support,
     },
     {
-      title: "Secure development",
-      description: "Every line of code undergoes rigorous security checks.",
+      title: "Compliant Development",
+      description: "Every line of code is carefully reviewed to reduce vulnerabilities and safeguard your data.",
       icon: safe,
     },
     {
-      title: "Scalability assurance",
-      description: "Free scaling consultations for the life of your project.",
+      title: "Scalability Assurance",
+      description: "We guide you in scaling your solutions over time, ensuring they grow along with your business.",
       icon: scalable,
     },
     {
-      title: "Transparent pricing",
-      description: "Competitive global rates with no hidden fees.",
+      title: "Transparent Pricing",
+      description: "Competitive global rates with no hidden fees or unexpected charges.",
       icon: money,
     },
     {
-      title: "Expert team",
+      title: "Expert Team",
       description: "Certified professionals delivering tailored solutions.",
       icon: team,
     },

@@ -67,19 +67,18 @@ function FAQ() {
               Project Cost Calculator
             </div>
             <div className="text-xl md:text-2xl lg:text-2xl font-[400]  mb-3">
-              Get a free estimate in minutes by answering five quick questions:
+              Answer five quick questions about your business, vision, and
+              service needs to get a tailored estimate that highlights:
             </div>
             <ul className="text-xl md:text-2xl lg:text-2xl font-[400]">
               <li>
-                <span className="text-[#EDD750]">•</span> Approximate cost of
-                your project development
+                <span className="text-[#EDD750]">•</span> Business & Goals
               </li>
               <li>
-                <span className="text-[#EDD750]">•</span> Team size required for
+                <span className="text-[#EDD750]">•</span> Service Mix
               </li>
               <li>
-                <span className="text-[#EDD750]">•</span> Estimated time to
-                launch
+                <span className="text-[#EDD750]">•</span> Timeline & Resources
               </li>
             </ul>
             <Link to={`/calculator`}>

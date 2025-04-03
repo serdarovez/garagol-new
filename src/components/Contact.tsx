@@ -13,6 +13,7 @@ const Contact = () => {
     "Design & Branding",
     "Data & Cloud Solutions",
     "Security & IT Consulting",
+    "Discovery Call",
     "Something else",
   ];
 
@@ -98,7 +99,7 @@ const Contact = () => {
                 {buttons.map((button) => (
                   <div
                     key={button}
-                    className={`w-full p-3 h-12 border-box hover:bg-[#242424] cursor-pointer hover:text-white hover:border-black text-black   border flex justify-between items-center ${
+                    className={`w-full p-3 h-12 border-box hover:bg-[#242424] cursor-pointer hover:text-white hover:border-[#242424] text-[#242424]   border flex justify-between items-center ${
                       isButtonSelected(button) ? "bg-[#EDD750]" : "bg-white"
                     }`}
                     onClick={() => toggleButton(button)}
@@ -128,17 +129,22 @@ const Contact = () => {
               </div>
               <div className="flex w-full flex-col gap-5">
                 <input
-                  className="bg-white text-black p-3 h-12 border-box border"
+                  className="bg-white text-[#242424] p-3 h-12 border-box border"
                   type="text"
                   placeholder="Your name"
                 />
                 <input
-                  className="bg-white text-black p-3  h-12 border-box border"
+                  className="bg-white text-[#242424] p-3  h-12 border-box border"
                   type="text"
                   placeholder="Email"
                 />
+                <input
+                  className="bg-white text-[#242424] p-3  h-12 border-box border"
+                  type="text"
+                  placeholder="Company name"
+                />
                 <textarea
-                  className="bg-white border text-black h-46 p-3"
+                  className="bg-white border text-[#242424] h-46 p-3"
                   placeholder="Is there anything else we should know or get ready?"
                 />
                 <Button

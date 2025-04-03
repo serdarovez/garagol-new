@@ -5,22 +5,22 @@ const ConnectUs = () => {
     {
       title: "Connect",
       description:
-        "Start with a discovery call where we dive deep into your vision, challenges, and business goals to lay a strong foundation for success.",
+        "Define your vision, challenges, and goals.",
     },
     {
       title: "Collaborate",
       description:
-        "We work closely with you through design and development, delivering custom solutions that align perfectly with your business needs.",
+        "Design and develop custom solutions.",
     },
     {
       title: "Create",
       description:
-        "Through rigorous testing and careful deployment, we ensure a smooth, reliable launch that meets the highest standards of quality.",
+        "Test, refine, and launch seamlessly.",
     },
     {
       title: "Support",
       description:
-        "Enjoy ongoing optimization and 24/7 support, keeping your business running smoothly while continuously improving your digital presence.",
+        "Receive ongoing optimization and 24/7 support.",
     },
   ];
 
@@ -78,7 +78,7 @@ const ConnectUs = () => {
                 <h3 className="text-4xl z-2 font-[700] mb-6">{service.title}</h3>
               </div>
               <div className="flex-1 flex flex-col">
-                <div className="mt-6">
+                <div className="">
                   <p className="mb-4 text-2xl text-start">
                     {service.description}
                   </p>

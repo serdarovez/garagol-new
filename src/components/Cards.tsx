@@ -6,7 +6,7 @@ const Cards = () => {
     {
       title: "Full-Service Digital Solutions",
       description:
-        "From custom web and mobile development to data science and cloud optimization, we deliver secure, user-centered solutions tailored to your business needs.",
+        "From custom web and mobile development to data analytics and cloud solutions, we deliver secure, user-centered experiences tailored to your business needs.",
       features: [
         "Web & Mobile Development",
         "Data Science",
@@ -19,28 +19,29 @@ const Cards = () => {
     {
       title: "Design, Build, Secure, and Optimize",
       description:
-        "We craft intuitive digital experiences, develop scalable solutions, ensure cybersecurity compliance, and provide expert IT consulting to keep your business ahead.",
+        "We craft intuitive interfaces, develop scalable systems, ensure cybersecurity compliance, and optimize performance—so your digital products stay one step ahead.",
       features: [
         "UI/UX Design",
         "Cybersecurity",
-        // "Usability optimization",
+        "Performance",
+        "QA & Testing",
       ],
       background: "#EDD750",
       type: "secondary",
     },
     {
-      title: "Innovative Technology & Design Services",
+      title: "Innovative Technology & Data Services",
       description:
-        "Empowering your business with cutting-edge web and mobile development, user-focused design, advanced data analytics, and secure, scalable cloud infrastructure.",
-      features: ["Analytics", "Data Science", "DevOps"],
+        "Leverage cutting-edge technology—from machine learning and predictive analytics to DevOps best practices—to unlock new insights and streamline your operations.",
+      features: ["Advanced Analytics", "Data Science", "DevOps", "Automation"],
       background: "#8675F2",
       type: "primary",
     },
     {
       title: "End-to-End Digital Transformation",
       description:
-        "We guide your business through digital evolution—offering bespoke development, brand-focused design, data insights, cybersecurity, and strategic consulting.",
-      features: ["Strategy", "Branding", "IT Consulting"],
+        "Whether you’re modernizing legacy systems or launching a new venture, our strategic consulting, branding expertise, and integrated digital solutions help your business thrive.",
+      features: ["IT Consulting", "Branding", "Strategy", "Remote Work Solutions"],
       background: "#EDD750",
       type: "secondary",
     },
@@ -100,12 +101,14 @@ const Cards = () => {
             <div
               style={{ backgroundColor: service.background }}
               className={`p-14 ${
-                service.type !== "primary" ? "text-black" : "text-white"
+                service.type !== "primary" ? "text-[#242424]" : "text-white"
               } `}
             >
               <div className="p-6 flex justify-between items-end ">
                 <div className=" w-3/5">
-                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-[700]  mb-8 font-[AtkinsonBold]">{service.title}</h3>
+                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-[700]  mb-8 font-[AtkinsonBold]">
+                    {service.title}
+                  </h3>
                   <p className=" text-xl md:text-2xl lg:text-2xl font-[400]  mb-4 ">
                     {service.description}
                   </p>
