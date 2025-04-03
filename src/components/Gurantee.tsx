@@ -40,7 +40,7 @@ const Gurantee = () => {
     },
   ];
   return (
-    <div className="bg-white mt-30">
+    <div className=" bg-[#f9f9f9]">
       <div className="py-30 container ">
         <div className="title">Our commitment to your success</div>
         <div className="paragraph">

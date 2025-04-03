@@ -77,12 +77,21 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div>
           <div className="hidden md:flex gap-x-10 2xl:gap-x-10 items-center text-gray-700 font-medium text-lg">
-            <div className="hover:text-blue-500 transition-colors">
-              Services
+            <div className="relative group  transition-colors">
+              <span className="mx-2">Services</span>
+              <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
             </div>
-            <div className="hover:text-blue-500 transition-colors">Process</div>
-            <div className="hover:text-blue-500 transition-colors">
-              Guarantees
+            <div className="relative group  transition-colors">
+              <span className="mx-2">Process</span>
+              <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
+            </div>
+            <div className="relative group  transition-colors">
+              <span className="mx-2">Commitment</span>
+              <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
+            </div>
+            <div className="relative group  transition-colors">
+              <span className="mx-2">Inquiry</span>
+              <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
             </div>
             <Link to={`/estimate`}>
               <Button

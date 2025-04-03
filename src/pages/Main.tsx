@@ -12,8 +12,8 @@ const Main = () => {
       {/* <Navbar//> */}
       <Home />
       <Cards />
-      <InfiniteScrollingText />
       <ConnectUs />
+      <InfiniteScrollingText />
       <Gurantee />
       <Contact />
       <Footer type='black'/>

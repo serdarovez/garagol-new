@@ -49,7 +49,8 @@ const ConnectUs = () => {
   };
 
   return (
-    <div className="mt-40 container  overflow-hidden">
+    <div className="bg-white" > 
+    <div className="pt-20 pb-30 container   overflow-hidden">
       <div className="title">Our process</div>
       
       <motion.div
@@ -87,6 +88,7 @@ const ConnectUs = () => {
           </motion.div>
         ))}
       </motion.div>
+    </div>
     </div>
   );
 };

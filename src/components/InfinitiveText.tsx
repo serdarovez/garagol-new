@@ -99,7 +99,7 @@ const InfiniteScrollingText = () => {
   return (
     <div
       style={{ overflow: "hidden", width: "100%" }}
-      className="text-white font-[700] mt-30 bg-[#242424]"
+      className="text-white font-[700]  bg-[#242424]"
     >
       {/* First line - alternates between right-to-left and left-to-right */}
       <motion.div

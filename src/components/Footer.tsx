@@ -1,8 +1,3 @@
-import instagram from "../assets/instagram.svg";
-import facebook from "../assets/facebook.svg";
-import upwork from "../assets/upwork.svg";
-import linkedin from "../assets/linkedin.svg";
-
 interface FooterProps {
   type: string;
 }
@@ -51,46 +46,161 @@ const Footer = ({ type }: FooterProps) => {
         </div>
         <div className="relative z-10">
           <div className=" flex-col  flex gap-5 items-start  text-[#EDD750] justify-center font-medium text-lg ">
-            <div className="hover:text-blue-500">Services</div>
-            <div className="hover:text-blue-500">Process</div>
-            <div className="hover:text-blue-500">Guarentees</div>
+            <div className="relative group  transition-colors">
+              <span className="mx-2">Services</span>
+              <div
+                className={`absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1  bg-opavity-25  ${
+                  type === "black" ? "bg-[#8675F2]" : "bg-[#242424]"
+                }`}
+              ></div>
+            </div>
+            <div className="relative group  transition-colors">
+              <span className="mx-2">Process</span>
+              <div
+                className={`absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1  bg-opavity-25  ${
+                  type === "black" ? "bg-[#8675F2]" : "bg-[#242424]"
+                }`}
+              ></div>
+            </div>
+            <div className="relative group  transition-colors">
+              <span className="mx-2">Commitment</span>
+              <div
+                className={`absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1  bg-opavity-25  ${
+                  type === "black" ? "bg-[#8675F2]" : "bg-[#242424]"
+                }`}
+              ></div>
+            </div>
+            <div className="relative group  transition-colors">
+              <span className="mx-2">Inquiry</span>
+              <div
+                className={`absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1  bg-opavity-25  ${
+                  type === "black" ? "bg-[#8675F2]" : "bg-[#242424]"
+                }`}
+              ></div>
+            </div>
           </div>
           <div className=" flex mt-5 items-center gap-3">
             <a
               href="https://www.facebook.com/profile.php?id=61574918726921"
-              className="cursor-pointer"
+              className="cursor-pointer group"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit our Facebook page"
             >
-              <img src={facebook} alt="" />
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 47V1H47V47H1Z"
+                  className="group-hover:fill-[#8675F2] "
+                  fill="white"
+                  stroke="#242424"
+                  stroke-width="2"
+                />
+                <path
+                  d="M36 24C36 17.4 30.6 12 24 12C17.4 12 12 17.4 12 24C12 30 16.35 34.95 22.05 35.85V27.45H19.05V24H22.05V21.3C22.05 18.3 23.85 16.65 26.55 16.65C27.9 16.65 29.25 16.95 29.25 16.95V19.95H27.75C26.25 19.95 25.8 20.85 25.8 21.75V24H29.1L28.5 27.45H25.65V36C31.65 35.1 36 30 36 24Z"
+                  fill="#242424"
+                  className="group-hover:fill-white"
+                />
+              </svg>
             </a>
             <a
               href="https://www.instagram.com/garagol_css/"
-              className="cursor-pointer"
+              className=" group cursor-pointer"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit our Instagram page"
             >
-              <img src={instagram} alt="" />
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 47V1H47V47H1Z"
+                  fill="white"
+                  className="group-hover:fill-[#8675F2]"
+                  stroke="#242424"
+                  stroke-width="2"
+                />
+                <path
+                  d="M24.45 14.25C27.75 14.25 28.2 14.25 29.55 14.25C30.75 14.25 31.35 14.55 31.8 14.7C32.4 15 32.85 15.15 33.3 15.6C33.75 16.05 34.05 16.5 34.2 17.1C34.35 17.55 34.5 18.15 34.65 19.35C34.65 20.7 34.65 21 34.65 24.45C34.65 27.9 34.65 28.2 34.65 29.55C34.65 30.75 34.35 31.35 34.2 31.8C33.9 32.4 33.75 32.85 33.3 33.3C32.85 33.75 32.4 34.05 31.8 34.2C31.35 34.35 30.75 34.5 29.55 34.65C28.2 34.65 27.9 34.65 24.45 34.65C21 34.65 20.7 34.65 19.35 34.65C18.15 34.65 17.55 34.35 17.1 34.2C16.5 33.9 16.05 33.75 15.6 33.3C15.15 32.85 14.85 32.4 14.7 31.8C14.55 31.35 14.4 30.75 14.25 29.55C14.25 28.2 14.25 27.9 14.25 24.45C14.25 21 14.25 20.7 14.25 19.35C14.25 18.15 14.55 17.55 14.7 17.1C15 16.5 15.15 16.05 15.6 15.6C16.05 15.15 16.5 14.85 17.1 14.7C17.55 14.55 18.15 14.4 19.35 14.25C20.7 14.25 21.15 14.25 24.45 14.25ZM24.45 12C21 12 20.7 12 19.35 12C18 12 17.1 12.3 16.35 12.6C15.6 12.9 14.85 13.35 14.1 14.1C13.35 14.85 13.05 15.45 12.6 16.35C12.3 17.1 12.15 18 12 19.35C12 20.7 12 21.15 12 24.45C12 27.9 12 28.2 12 29.55C12 30.9 12.3 31.8 12.6 32.55C12.9 33.3 13.35 34.05 14.1 34.8C14.85 35.55 15.45 35.85 16.35 36.3C17.1 36.6 18 36.75 19.35 36.9C20.7 36.9 21.15 36.9 24.45 36.9C27.75 36.9 28.2 36.9 29.55 36.9C30.9 36.9 31.8 36.6 32.55 36.3C33.3 36 34.05 35.55 34.8 34.8C35.55 34.05 35.85 33.45 36.3 32.55C36.6 31.8 36.75 30.9 36.9 29.55C36.9 28.2 36.9 27.75 36.9 24.45C36.9 21.15 36.9 20.7 36.9 19.35C36.9 18 36.6 17.1 36.3 16.35C36 15.6 35.55 14.85 34.8 14.1C34.05 13.35 33.45 13.05 32.55 12.6C31.8 12.3 30.9 12.15 29.55 12C28.2 12 27.9 12 24.45 12Z"
+                  fill="#242424"
+                  className="group-hover:fill-white"
+                />
+                <path
+                  d="M24.45 18C20.85 18 18 20.85 18 24.45C18 28.05 20.85 30.9 24.45 30.9C28.05 30.9 30.9 28.05 30.9 24.45C30.9 20.85 28.05 18 24.45 18ZM24.45 28.65C22.2 28.65 20.25 26.85 20.25 24.45C20.25 22.2 22.05 20.25 24.45 20.25C26.7 20.25 28.65 22.05 28.65 24.45C28.65 26.7 26.7 28.65 24.45 28.65Z"
+                  fill="#242424"
+                  className="group-hover:fill-white"
+                />
+                <path
+                  d="M31.05 19.35C31.8784 19.35 32.55 18.6784 32.55 17.85C32.55 17.0216 31.8784 16.35 31.05 16.35C30.2216 16.35 29.55 17.0216 29.55 17.85C29.55 18.6784 30.2216 19.35 31.05 19.35Z"
+                  fill="#242424"
+                  className="group-hover:fill-white"
+                />
+              </svg>
             </a>
             <a
               href="https://www.linkedin.com/company/garagol/about/"
-              className="cursor-pointer"
+              className=" group cursor-pointer"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit our Linkedin page"
             >
-              <img src={linkedin} alt="" />
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 47V1H47V47H1Z"
+                  fill="white"
+                  className="group-hover:fill-[#8675F2] "
+                  stroke="#242424"
+                  stroke-width="2"
+                />
+                <path
+                  d="M17.4 36H12.3V19.95H17.4V36ZM14.85 17.7C13.2 17.7 12 16.5 12 14.85C12 13.2 13.35 12 14.85 12C16.5 12 17.7 13.2 17.7 14.85C17.7 16.5 16.5 17.7 14.85 17.7ZM36 36H30.9V27.3C30.9 24.75 29.85 24 28.35 24C26.85 24 25.35 25.2 25.35 27.45V36H20.25V19.95H25.05V22.2C25.5 21.15 27.3 19.5 29.85 19.5C32.7 19.5 35.7 21.15 35.7 26.1V36H36Z"
+                  fill="#242424"
+                  className="group-hover:fill-white"
+                />
+              </svg>
             </a>
             <a
               href="https://www.upwork.com/agencies/1791289820464082944/"
-              className="cursor-pointer"
+              className=" group cursor-pointer"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit our Upwork page"
             >
-              <img src={upwork} alt="" />
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 47V1H47V47H1Z"
+                  fill="white"
+                  stroke="#242424"
+                  className="group-hover:fill-[#8675F2] "
+                  stroke-width="2"
+                />
+                <path
+                  d="M33.2961 29.6307C31.7353 29.6307 30.2691 28.9748 28.941 27.9011L29.2619 26.3862L29.2725 26.3259C29.5657 24.7169 30.4731 22.0119 33.295 22.0119C35.4093 22.0119 37.1241 23.7204 37.1241 25.8245C37.1241 27.9233 35.4082 29.6318 33.295 29.6318L33.2961 29.6307ZM33.2961 18.1538C29.6996 18.1538 26.9043 20.479 25.7706 24.3085C24.0441 21.7242 22.7266 18.6172 21.9638 16H18.09V26.0329C18.0847 28.0164 16.474 29.6201 14.4819 29.6254C12.4898 29.6201 10.8791 28.0111 10.8738 26.0329V16H7V26.0329C7 30.1427 10.3585 33.5099 14.4819 33.5099C18.6096 33.5099 21.9638 30.1438 21.9638 26.0329V24.3519C22.716 25.9112 23.6404 27.498 24.7634 28.8976L22.3898 40H26.3518L28.073 31.9443C29.5785 32.9027 31.3103 33.5089 33.2971 33.5089C37.547 33.5089 41 30.0486 41 25.8224C41 21.5909 37.547 18.1528 33.2971 18.1528L33.2961 18.1538Z"
+                  fill="#242424"
+                  className="group-hover:fill-white"
+                />
+              </svg>
             </a>
           </div>
         </div>
