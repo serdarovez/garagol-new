@@ -122,7 +122,7 @@ const CustomCursor = () => {
         // Default cursor SVG (arrow cursor)
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="25"
+          width="32"
           height="23"
           viewBox="0 0 65 63"
           fill="none"
