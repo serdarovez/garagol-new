@@ -77,21 +77,21 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div>
           <div className="hidden md:flex gap-x-10 2xl:gap-x-10 items-center text-gray-700 font-medium text-lg">
-            <div className="relative group  transition-colors">
-              <span className="mx-2">Services</span>
-              <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
+            <div className="relative group cursor-pointer  transition-colors">
+              <span className="mx-2 cursor-pointer">Services</span>
+              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
             </div>
-            <div className="relative group  transition-colors">
-              <span className="mx-2">Process</span>
-              <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
+            <div className="relative group cursor-pointer  transition-colors">
+              <span className="mx-2 cursor-pointer">Process</span>
+              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
             </div>
-            <div className="relative group  transition-colors">
-              <span className="mx-2">Commitment</span>
-              <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
+            <div className="relative group cursor-pointer   transition-colors">
+              <span className="mx-2 cursor-pointer">Commitment</span>
+              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
             </div>
-            <div className="relative group  transition-colors">
-              <span className="mx-2">Inquiry</span>
-              <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
+            <div className="relative group cursor-pointer  transition-colors">
+              <span className="mx-2 cursor-pointer">Inquiry</span>
+              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
             </div>
             <Link to={`/estimate`}>
               <Button

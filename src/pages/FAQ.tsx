@@ -66,7 +66,7 @@ function FAQ() {
             <div className="text-4xl md:text-5xl lg:text-6xl font-[700]  mb-5 font-[AtkinsonBold] text-[#EDD750]">
               Project Cost Calculator
             </div>
-            <div className="text-xl md:text-2xl lg:text-2xl font-[400]  mb-3">
+            <div className="text-xl md:text-2xl w-4/5 lg:text-2xl font-[400]  mb-3">
               Answer five quick questions about your business, vision, and
               service needs to get a tailored estimate that highlights:
             </div>
