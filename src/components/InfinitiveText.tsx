@@ -7,46 +7,52 @@ const InfiniteScrollingText = () => {
   const textLine2 =
     "Rapid Prototyping. Future-Proof Tech. End-to-End Service. Optimized Workflows. Performance Guaranteed. Cutting-Edge Tech. Reliable Results. Streamlined Operations. Business-First Focus. Strategic Innovation. Empower Your Business. Garagol Is Built for Business.";
 
-  // Repeat the text multiple times to create a seamless loop
-  const repeatedText1 = Array(3).fill(textLine1).join(" ");
-  const repeatedText2 = Array(3).fill(textLine2).join(" ");
+  // Split text into sentences
+  const sentences1 = textLine1
+    .split(". ")
+    .map((s) => (s.endsWith(".") ? s : s + "."));
+  const sentences2 = textLine2
+    .split(". ")
+    .map((s) => (s.endsWith(".") ? s : s + "."));
 
-  // State to track which word is highlighted for each line
-  const [highlightedWord1, setHighlightedWord1] = useState(null);
-  const [highlightedWord2, setHighlightedWord2] = useState(null);
+  // Repeat the text multiple times to create a seamless loop
+  const repeatedText1 = Array(3).fill(sentences1).flat();
+  const repeatedText2 = Array(3).fill(sentences2).flat();
+
+  // State to track which sentence is highlighted for each line
+  const [highlightedSentence1, setHighlightedSentence1] = useState<
+    number | null
+  >(null);
+  const [highlightedSentence2, setHighlightedSentence2] = useState<
+    number | null
+  >(null);
 
   // Animation controls for each line
   const controls1 = useAnimation();
   const controls2 = useAnimation();
 
   useEffect(() => {
-    // Split the original text into words (without the repetitions)
-    const words1 = textLine1.split(" ");
-    const words2 = textLine2.split(" ");
-
-    // Set up intervals to change the highlighted word every 3 seconds
+    // Set up intervals to change the highlighted sentence every 3 seconds
     const interval1 = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * words1.length);
-      //@ts-ignore
-      setHighlightedWord1(randomIndex);
+      const randomIndex = Math.floor(Math.random() * sentences1.length);
+      setHighlightedSentence1(randomIndex);
     }, 3000);
 
     const interval2 = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * words2.length);
-      //@ts-ignore
-      setHighlightedWord2(randomIndex);
+      const randomIndex = Math.floor(Math.random() * sentences2.length);
+      setHighlightedSentence2(randomIndex);
     }, 3000);
 
     // Animation sequences
     const animateLine1 = async () => {
       while (true) {
         await controls1.start({
-          x: [0, -textLine1.length * 20], // Right to left
-          transition: { duration: 20, ease: "linear" },
+          x: [0, -textLine1.length * 30], // Right to left
+          transition: { duration: 50, ease: "linear" },
         });
         await controls1.start({
-          x: [-textLine1.length * 20, 0], // Left to right
-          transition: { duration: 20, ease: "linear" },
+          x: [-textLine1.length * 30, 0], // Left to right
+          transition: { duration: 50, ease: "linear" },
         });
       }
     };
@@ -55,11 +61,11 @@ const InfiniteScrollingText = () => {
       while (true) {
         await controls2.start({
           x: [-textLine2.length * 30, 0], // Left to right
-          transition: { duration: 30, ease: "linear" },
+          transition: { duration: 50, ease: "linear" },
         });
         await controls2.start({
           x: [0, -textLine2.length * 30], // Right to left
-          transition: { duration: 30, ease: "linear" },
+          transition: { duration: 50, ease: "linear" },
         });
       }
     };
@@ -71,52 +77,48 @@ const InfiniteScrollingText = () => {
       clearInterval(interval1);
       clearInterval(interval2);
     };
-  }, [controls1, controls2]);
+  }, [controls1, controls2, sentences1.length, sentences2.length]);
 
-  // Function to render text with highlighted words
-  //@ts-ignore
-  const renderText = (text, originalText, highlightedIndex) => {
-    const words = originalText.split(" ");
-
-    //@ts-ignore
-    return text.split(" ").map((word, i) => {
-      // Find which original word this corresponds to (modulo operation)
-      const originalWordIndex = i % words.length;
-      const shouldHighlight = originalWordIndex === highlightedIndex;
+  // Function to render text with highlighted sentences
+  const renderText = (
+    sentences: string[],
+    originalSentences: string[],
+    highlightedIndex: number | null
+  ) => {
+    return sentences.map((sentence, i) => {
+      // Find which original sentence this corresponds to
+      const originalSentenceIndex = i % originalSentences.length;
+      const shouldHighlight = originalSentenceIndex === highlightedIndex;
 
       return (
         <span
-          key={`${word}-${i}`}
-          style={{
-            color: shouldHighlight ? "#FFD700" : "white",
-            transition: "color 0.3s ease",
-          }}
+          key={`${sentence}-${i}`}
+          className={`transition-colors duration-300 ${
+            shouldHighlight ? "text-yellow-400" : "text-white"
+          }`}
         >
-          {word}{" "}
+          {sentence}{" "}
         </span>
       );
     });
   };
 
   return (
-    <div
-      style={{ overflow: "hidden", width: "100%" }}
-      className="text-white font-[700]  bg-[#242424]"
-    >
+    <div className="overflow-hidden w-full py-5 bg-[#242424]">
       {/* First line - alternates between right-to-left and left-to-right */}
       <motion.div
-        style={{ whiteSpace: "nowrap", fontSize: "48px", marginBottom: "10px" }}
+        className="whitespace-nowrap text-5xl font-bold mb-3"
         animate={controls1}
       >
-        {renderText(repeatedText1, textLine1, highlightedWord1)}
+        {renderText(repeatedText1, sentences1, highlightedSentence1)}
       </motion.div>
 
       {/* Second line - alternates between left-to-right and right-to-left */}
       <motion.div
-        style={{ whiteSpace: "nowrap", fontSize: "48px" }}
+        className="whitespace-nowrap text-5xl font-bold"
         animate={controls2}
       >
-        {renderText(repeatedText2, textLine2, highlightedWord2)}
+        {renderText(repeatedText2, sentences2, highlightedSentence2)}
       </motion.div>
     </div>
   );
