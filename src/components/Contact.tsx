@@ -292,7 +292,7 @@ const Contact = () => {
                   />
                   {isLoading && (
                     <div className="absolute inset-0 flex items-center pointer-events-none">
-                      <div className="absolute left-3 top-3 w-6 h-6">
+                      <div className="absolute left-3 top-3 w-10 h-10">
                         <Lottie animationData={loadingAnimation} loop={true} />
                       </div>
                     </div>

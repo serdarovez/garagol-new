@@ -1,8 +1,26 @@
+import { useNavigate } from "react-router-dom";
+
 interface FooterProps {
   type: string;
 }
 
 const Footer = ({ type }: FooterProps) => {
+  const navigate = useNavigate();
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname === "/") {
+      // If already on homepage, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 80,
+          behavior: "smooth",
+        });
+      }
+    } else {
+      // If not on homepage, navigate with state to indicate where to scroll
+      navigate("/", { state: { scrollTo: sectionId } });
+    }
+  };
   return (
     <div
       className={`w-full h-100 relative p-15 overflow-hidden  ${
@@ -46,7 +64,10 @@ const Footer = ({ type }: FooterProps) => {
         </div>
         <div className="relative z-10">
           <div className=" flex-col  flex gap-5 items-start  text-[#EDD750] justify-center font-medium text-lg ">
-            <div className="relative group  transition-colors">
+            <div
+              onClick={() => scrollToSection("services")}
+              className="relative group  transition-colors"
+            >
               <span className="mx-2 cursor-pointer">Services</span>
               <div
                 className={`absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1  bg-opavity-25  ${
@@ -54,7 +75,7 @@ const Footer = ({ type }: FooterProps) => {
                 }`}
               ></div>
             </div>
-            <div className="relative group  transition-colors">
+            <div onClick={() => scrollToSection('process')} className="relative group  transition-colors">
               <span className="mx-2 cursor-pointer">Process</span>
               <div
                 className={`absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1  bg-opavity-25  ${
@@ -62,7 +83,7 @@ const Footer = ({ type }: FooterProps) => {
                 }`}
               ></div>
             </div>
-            <div className="relative group  transition-colors">
+            <div onClick={() => scrollToSection('commitment')} className="relative group  transition-colors">
               <span className="mx-2 cursor-pointer">Commitment</span>
               <div
                 className={`absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1  bg-opavity-25  ${
@@ -70,7 +91,7 @@ const Footer = ({ type }: FooterProps) => {
                 }`}
               ></div>
             </div>
-            <div className="relative group  transition-colors">
+            <div onClick={() => scrollToSection('inquiry')} className="relative group  transition-colors">
               <span className="mx-2 cursor-pointer">Inquiry</span>
               <div
                 className={`absolute bottom-0 left-0 w-0 group-hover:w-full h-1/2 -z-1  bg-opavity-25  ${
@@ -191,9 +212,7 @@ const Footer = ({ type }: FooterProps) => {
                   d="M17.4 36H12.3V19.95H17.4V36ZM14.85 17.7C13.2 17.7 12 16.5 12 14.85C12 13.2 13.35 12 14.85 12C16.5 12 17.7 13.2 17.7 14.85C17.7 16.5 16.5 17.7 14.85 17.7ZM36 36H30.9V27.3C30.9 24.75 29.85 24 28.35 24C26.85 24 25.35 25.2 25.35 27.45V36H20.25V19.95H25.05V22.2C25.5 21.15 27.3 19.5 29.85 19.5C32.7 19.5 35.7 21.15 35.7 26.1V36H36Z"
                   fill="#242424"
                   className={`  ${
-                    type === "black"
-                      ? "group-hover:fill-white"
-                      : ""
+                    type === "black" ? "group-hover:fill-white" : ""
                   } `}
                 />
               </svg>
@@ -227,9 +246,7 @@ const Footer = ({ type }: FooterProps) => {
                   d="M33.2961 29.6307C31.7353 29.6307 30.2691 28.9748 28.941 27.9011L29.2619 26.3862L29.2725 26.3259C29.5657 24.7169 30.4731 22.0119 33.295 22.0119C35.4093 22.0119 37.1241 23.7204 37.1241 25.8245C37.1241 27.9233 35.4082 29.6318 33.295 29.6318L33.2961 29.6307ZM33.2961 18.1538C29.6996 18.1538 26.9043 20.479 25.7706 24.3085C24.0441 21.7242 22.7266 18.6172 21.9638 16H18.09V26.0329C18.0847 28.0164 16.474 29.6201 14.4819 29.6254C12.4898 29.6201 10.8791 28.0111 10.8738 26.0329V16H7V26.0329C7 30.1427 10.3585 33.5099 14.4819 33.5099C18.6096 33.5099 21.9638 30.1438 21.9638 26.0329V24.3519C22.716 25.9112 23.6404 27.498 24.7634 28.8976L22.3898 40H26.3518L28.073 31.9443C29.5785 32.9027 31.3103 33.5089 33.2971 33.5089C37.547 33.5089 41 30.0486 41 25.8224C41 21.5909 37.547 18.1528 33.2971 18.1528L33.2961 18.1538Z"
                   fill="#242424"
                   className={`  ${
-                    type === "black"
-                      ? "group-hover:fill-white"
-                      : ""
+                    type === "black" ? "group-hover:fill-white" : ""
                   } `}
                 />
               </svg>
