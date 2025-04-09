@@ -8,6 +8,7 @@ import random5 from "../assets/5.svg";
 import random6 from "../assets/6.svg";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/typing.json";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const buttons = [
@@ -92,13 +93,13 @@ const Contact = () => {
     if (typingTimerRef.current) {
       clearInterval(typingTimerRef.current);
     }
-    
+
     setDisplayPlaceholder(""); // Clear current text
     setTypingIndex(0); // Reset typing index
-    
+
     // Start new typing animation
     typingTimerRef.current = setInterval(() => {
-      setTypingIndex(prevIndex => {
+      setTypingIndex((prevIndex) => {
         const nextIndex = prevIndex + 1;
         if (nextIndex > text.length) {
           // Stop the animation when done
@@ -144,7 +145,7 @@ const Contact = () => {
       }
       setCurrentPlaceholder(newPlaceholder);
       setIsLoading(false);
-      
+
       // Start typing animation after loading
       startTypingAnimation(newPlaceholder);
     }, 1500); // 1.5 seconds loading time
@@ -197,6 +198,20 @@ const Contact = () => {
   // Check if we're currently typing
   const isTyping = typingIndex > 0 && typingIndex <= currentPlaceholder.length;
 
+  const questionVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
+  };
+
+  const answerItemVariants = {
+    tap: { scale: 0.98 },
+  };
+
+  const checkmarkVariants = {
+    hidden: { scale: 0 },
+    visible: { scale: 1 },
+  };
   return (
     <div className="bg-[#8675F2]">
       <div className="min-h-screen px-0 container p-10 text-white flex flex-col">
@@ -220,8 +235,10 @@ const Contact = () => {
               </div>
               <div className="flex flex-col gap-5">
                 {buttons.map((button) => (
-                  <div
+                  <motion.div
                     key={button}
+                    variants={answerItemVariants}
+                     whileTap="tap"
                     className={`w-full p-3 h-12 border-box hover:bg-[#242424] cursor-pointer hover:text-white hover:border-[#242424] text-[#242424] border flex justify-between items-center ${
                       isButtonSelected(button) ? "bg-[#EDD750]" : "bg-white"
                     }`}
@@ -229,15 +246,20 @@ const Contact = () => {
                   >
                     {button}
                     {isButtonSelected(button) && (
-                      <div className="bg-white p-1 border">
+                      <motion.div
+                        variants={checkmarkVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="bg-white p-1 border"
+                      >
                         <img
                           src={getButtonSvg(button)}
                           alt="Selected"
                           className="w-5 h-5"
                         />
-                      </div>
+                      </motion.div>
                     )}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
