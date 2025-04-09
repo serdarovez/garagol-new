@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import Button from "./Button";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +21,21 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname === "/") {
+      // If already on homepage, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 80,
+          behavior: "smooth",
+        });
+      }
+    } else {
+      // If not on homepage, navigate with state to indicate where to scroll
+      navigate("/", { state: { scrollTo: sectionId } });
+    }
+  };
   return (
     <div className="w-full bg-white fixed p-3 z-50 top-0 flex justify-between items-center">
       <div className="container flex items-center justify-between">
@@ -78,19 +95,39 @@ const Navbar = () => {
         <div>
           <div className="hidden md:flex gap-x-10 2xl:gap-x-10 items-center text-gray-700 font-medium text-lg">
             <div className="relative group cursor-pointer  transition-colors">
-              <span className="mx-2 cursor-pointer">Services</span>
+              <span
+                className="mx-2 cursor-pointer"
+                onClick={() => scrollToSection("services")}
+              >
+                Services
+              </span>
               <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
             </div>
             <div className="relative group cursor-pointer  transition-colors">
-              <span className="mx-2 cursor-pointer">Process</span>
+              <span
+                className="mx-2 cursor-pointer"
+                onClick={() => scrollToSection("process")}
+              >
+                Process
+              </span>
               <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
             </div>
             <div className="relative group cursor-pointer   transition-colors">
-              <span className="mx-2 cursor-pointer">Commitment</span>
+              <span
+                className="mx-2 cursor-pointer"
+                onClick={() => scrollToSection("commitment")}
+              >
+                Commitment
+              </span>
               <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
             </div>
             <div className="relative group cursor-pointer  transition-colors">
-              <span className="mx-2 cursor-pointer">Inquiry</span>
+              <span
+                className="mx-2 cursor-pointer"
+                onClick={() => scrollToSection("inquiry")}
+              >
+                Inquiry
+              </span>
               <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
             </div>
             <Link to={`/estimate`}>

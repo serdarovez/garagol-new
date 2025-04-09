@@ -84,7 +84,7 @@ const Cards = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <div className="container pb-20">
+    <div id="services" className="container pb-20">
       <div ref={titleRef} className="sticky  w-3/5 mt-20 top-30">
         <div className="title">Our services</div>
         <div className="paragraph">

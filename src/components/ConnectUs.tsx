@@ -49,7 +49,7 @@ const ConnectUs = () => {
   };
 
   return (
-    <div className="bg-white" > 
+    <div id="process" className="bg-white" > 
     <div className="pt-20 pb-30 container   overflow-hidden">
       <div className="title">Our process</div>
       
