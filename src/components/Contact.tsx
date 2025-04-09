@@ -198,11 +198,6 @@ const Contact = () => {
   // Check if we're currently typing
   const isTyping = typingIndex > 0 && typingIndex <= currentPlaceholder.length;
 
-  const questionVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
-  };
 
   const answerItemVariants = {
     tap: { scale: 0.98 },
@@ -265,7 +260,7 @@ const Contact = () => {
             </div>
             <div>
               <div className="relative mb-10 p-3">
-                <span className="absolute text-[#EDD750] text-8xl left-0 -top-5">
+                <span className="absolute text-[#EDD750] font-[AtkinsonItalic] text-8xl left-0 -top-5">
                   2
                 </span>
                 <div className="text-3xl relative font-[700]">
