@@ -19,6 +19,7 @@ const AppContent = () => {
       top: 0,
     });
   }, [location]);
+  
 
   return (
     <div className="relative cursor-none">

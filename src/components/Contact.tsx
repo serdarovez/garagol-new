@@ -291,8 +291,8 @@ const Contact = () => {
                     onChange={(e) => setTextareaValue(e.target.value)}
                   />
                   {isLoading && (
-                    <div className="absolute inset-0 flex items-center pointer-events-none">
-                      <div className="absolute left-3 top-3 w-10 h-10">
+                    <div className="absolute inset-0  flex items-center pointer-events-none">
+                      <div className="absolute left-1 border-box  top-2 w-10 h-10">
                         <Lottie animationData={loadingAnimation} loop={true} />
                       </div>
                     </div>

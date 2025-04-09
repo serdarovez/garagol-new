@@ -91,6 +91,9 @@ const Calculator = () => {
   };
 
   const handleNext = () => {
+    window.scrollTo({
+      top: 0,
+    });
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
