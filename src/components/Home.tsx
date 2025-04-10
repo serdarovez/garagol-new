@@ -43,10 +43,10 @@ const Home = () => {
             {text}
           </span>
           <span className="animate-pulse text-[#EDD750] ">|</span> {/* Cursor */}
-          <br /> Built for Your Business.
+          <br />  IT Consulting Reinvented.
         </div>
         <div className="font-[400] text-3xl my-10 ">
-          Custom technology solutions that protect your data and drive growth.
+        You dream it. We build it—securely, beautifully, and ready for scale.
         </div>
         <div className="flex justify-start items-center gap-5">
           <Button

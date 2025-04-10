@@ -9,6 +9,7 @@ import random6 from "../assets/6.svg";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/typing.json";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const buttons = [
@@ -198,7 +199,6 @@ const Contact = () => {
   // Check if we're currently typing
   const isTyping = typingIndex > 0 && typingIndex <= currentPlaceholder.length;
 
-
   const answerItemVariants = {
     tap: { scale: 0.98 },
   };
@@ -207,6 +207,70 @@ const Contact = () => {
     hidden: { scale: 0 },
     visible: { scale: 1 },
   };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Get form values
+    const name = (
+      document.querySelector(
+        'input[placeholder="Your name"]'
+      ) as HTMLInputElement
+    )?.value;
+    const email = (
+      document.querySelector('input[placeholder="Email"]') as HTMLInputElement
+    )?.value;
+    const company = (
+      document.querySelector(
+        'input[placeholder="Company name"]'
+      ) as HTMLInputElement
+    )?.value;
+
+    // Prepare the email data
+    const templateParams = {
+      services: selectedButtons.map((btn) => btn.button).join(", "),
+      name: name,
+      email: email,
+      company: company,
+      message: textareaValue,
+    };
+
+    try {
+      setIsLoading(true); // Show loading state
+
+      await emailjs.send(
+        "service_hssl9mg",
+        "template_zljnr4n",
+        templateParams,
+        "V08MdMTqLq65ILtaE"
+      );
+
+      // Reset form on success
+      setSelectedButtons([]);
+      setTextareaValue("");
+      (
+        document.querySelector(
+          'input[placeholder="Your name"]'
+        ) as HTMLInputElement
+      ).value = "";
+      (
+        document.querySelector('input[placeholder="Email"]') as HTMLInputElement
+      ).value = "";
+      (
+        document.querySelector(
+          'input[placeholder="Company name"]'
+        ) as HTMLInputElement
+      ).value = "";
+
+      alert("Message sent successfully!");
+    } catch (error) {
+      console.error("Failed to send:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div id="inquiry" className="bg-[#8675F2]">
       <div className="min-h-screen px-0 container p-10 text-white flex flex-col">
@@ -233,7 +297,7 @@ const Contact = () => {
                   <motion.div
                     key={button}
                     variants={answerItemVariants}
-                     whileTap="tap"
+                    whileTap="tap"
                     className={`w-full p-3 h-12 border-box hover:bg-[#242424] cursor-pointer hover:text-white hover:border-[#242424] text-[#242424] border flex justify-between items-center ${
                       isButtonSelected(button) ? "bg-[#EDD750]" : "bg-white"
                     }`}
@@ -301,11 +365,13 @@ const Contact = () => {
                     <div className="absolute right-3 bottom-3 w-2 h-5 bg-[#242424] animate-pulse"></div>
                   )}
                 </div>
-                <Button
-                  variant="primary"
-                  title="Send message"
-                  class="text-center w-full cursor-pointer"
-                />
+                <div onClick={handleSubmit} >
+                  <Button
+                    variant="primary"
+                    title={isLoading ? "Sending..." : "Send message"}
+                    class="text-center w-full cursor-pointer"
+                  />
+                </div>
               </div>
             </div>
           </div>

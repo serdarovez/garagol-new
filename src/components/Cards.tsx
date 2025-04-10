@@ -4,44 +4,40 @@ import Button from "./Button";
 const Cards = () => {
   const services = [
     {
-      title: "Full-Service Digital Solutions",
-      description:
-        "From custom web and mobile development to data analytics and cloud solutions, we deliver secure, user-centered experiences tailored to your business needs.",
+      title: "Build & Launch",
+      description: "Design and develop web, mobile, and cloud-based products.",
       features: [
         "Web & Mobile Development",
-        "Data Science",
-        "Analytics",
-        "Cloud  Solutions",
+        "UI/UX Design",
+        "QA & Testing",
+        "Cloud Solutions",
       ],
       background: "#8675F2",
       type: "primary",
     },
     {
-      title: "Design, Build, Secure, and Optimize",
-      description:
-        "We craft intuitive interfaces, develop scalable systems, ensure cybersecurity compliance, and optimize performance—so your digital products stay one step ahead.",
-      features: [
-        "UI/UX Design",
-        "Cybersecurity",
-        "Performance",
-        "QA & Testing",
-      ],
+      title: "Optimize & Secure",
+      description: "Improve speed, performance, and security.",
+      features: ["DevOps", "Performance Tuning", "Cybersecurity", "Automation"],
       background: "#EDD750",
       type: "secondary",
     },
     {
-      title: "Innovative Technology & Data Services",
-      description:
-        "Leverage cutting-edge technology—from machine learning and predictive analytics to DevOps best practices—to unlock new insights and streamline your operations.",
-      features: ["Advanced Analytics", "Data Science", "DevOps", "Automation"],
+      title: "Data & Insights",
+      description: "Make data work for you.",
+      features: ["Data Science", "Analytics", "Machine Learning"],
       background: "#8675F2",
       type: "primary",
     },
     {
-      title: "End-to-End Digital Transformation",
-      description:
-        "Whether you’re modernizing legacy systems or launching a new venture, our strategic consulting, branding expertise, and integrated digital solutions help your business thrive.",
-      features: ["IT Consulting", "Branding", "Strategy", "Remote Work Solutions"],
+      title: "Strategy & Support",
+      description: "Plan for growth and scale confidently.",
+      features: [
+        "IT Consulting",
+        "Branding",
+        "Remote Work",
+        "Digital Strategy",
+      ],
       background: "#EDD750",
       type: "secondary",
     },
