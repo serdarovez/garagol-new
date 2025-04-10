@@ -9,7 +9,7 @@ const Button = ({
 }) => {
   const variantStyles: any = {
     primary:
-      "bg-[#EDD750] text-[#242424] hover:bg-[#8675F2] text-white  border cursor-pointer border-[#242424] ",
+      "bg-[#EDD750] text-[#242424] hover:bg-[#8675F2] hover:text-white  border cursor-pointer border-[#242424] ",
     outline:
       "border border-[#EDD750]  hover:bg-[#8675F2] z-1  bg-transparent  cursor-pointer text-white",
     secondary:
