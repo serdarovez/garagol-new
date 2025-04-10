@@ -73,6 +73,7 @@ const Contact = () => {
   const [usedSvgs, setUsedSvgs] = useState<any[]>([]);
   const [textareaValue, setTextareaValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [Loading, setLoading] = useState(false);
   const [currentPlaceholder, setCurrentPlaceholder] = useState(
     "Is there anything else we should know or get ready?"
   );
@@ -228,15 +229,15 @@ const Contact = () => {
 
     // Prepare the email data
     const templateParams = {
-      services: selectedButtons.map((btn) => btn.button).join(", "),
       name: name,
       email: email,
       company: company,
+      services: selectedButtons.map((btn) => btn.button).join(", "),
       message: textareaValue,
     };
 
     try {
-      setIsLoading(true); // Show loading state
+      setLoading(true); // Show loading state
 
       await emailjs.send(
         "service_hssl9mg",
@@ -267,7 +268,7 @@ const Contact = () => {
       console.error("Failed to send:", error);
       alert("Failed to send message. Please try again.");
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
@@ -368,7 +369,7 @@ const Contact = () => {
                 <div onClick={handleSubmit} >
                   <Button
                     variant="primary"
-                    title={isLoading ? "Sending..." : "Send message"}
+                    title={Loading ? "Sending..." : "Send message"}
                     class="text-center w-full cursor-pointer"
                   />
                 </div>
