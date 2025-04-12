@@ -148,147 +148,148 @@ const Calculator = () => {
   };
 
   return (
-    <div className="flex min-h-screen text-white bg-[#8675F2] flex-col">
-      <AnimatePresence mode="wait">
-        {showQuestions ? (
-          <motion.div
-            key="questions"
-            className="grow mt-40 container"
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={questionVariants}
-          >
-            {/* Question */}
-            <div className="relative mb-10 p-3">
-              <span className="absolute text-[#EDD750] font-[AtkinsonItalic] text-8xl left-0 -top-5">
-                {currentQuestionIndex + 1}
-              </span>
-              <div className="text-3xl z-2 relative font-[700]">
-                {questions[currentQuestionIndex]?.question}
+    <div className="flex min-h-screen  text-white bg-[#8675F2] flex-col">
+      <div className="min-h-screen send" >
+        <AnimatePresence mode="wait">
+          {showQuestions ? (
+            <motion.div
+              key="questions"
+              className="grow mt-40 w-3/4 md:w-3/7 mx-auto"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={questionVariants}
+            >
+              {/* Question */}
+              <div className="relative mb-10 p-3">
+                <span className="absolute text-[#EDD750] font-[AtkinsonItalic] text-8xl left-0 -top-5">
+                  {currentQuestionIndex + 1}
+                </span>
+                <div className="text-3xl z-2 relative font-[700]">
+                  {questions[currentQuestionIndex]?.question}
+                </div>
               </div>
-            </div>
 
-            {/* Answers */}
-            <div className="flex flex-col mt-10 gap-3">
-              {questions[currentQuestionIndex].answers.map((answer) => (
-                <motion.div
-                  key={answer}
-                  variants={answerItemVariants}
-                  whileTap="tap"
-                  className={`w-full p-3 h-12 border-box hover:bg-[#242424] hover:border-0 cursor-pointer hover:text-white text-[#242424] border flex justify-between items-center ${
-                    isAnswerSelected(answer) ? "bg-[#EDD750]" : "bg-white"
-                  }`}
-                  onClick={() => handleAnswerSelect(answer)}
-                >
-                  {answer}
-                  {isAnswerSelected(answer) && (
-                    <motion.div
-                      variants={checkmarkVariants}
-                      initial="hidden"
-                      animate="visible"
-                      className="bg-white p-1 border"
-                    >
-                      <img
-                        src={selectedSvgs[currentQuestionIndex]}
-                        alt="Selected"
-                        className="w-5 h-5"
-                      />
-                    </motion.div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
+              {/* Answers */}
+              <div className="flex flex-col  mt-10 gap-3">
+                {questions[currentQuestionIndex].answers.map((answer) => (
+                  <motion.div
+                    key={answer}
+                    variants={answerItemVariants}
+                    whileTap="tap"
+                    className={`w-full p-3 h-12 border-box hover:bg-[#242424] hover:border-0 cursor-pointer hover:text-white text-[#242424] border flex justify-between items-center ${
+                      isAnswerSelected(answer) ? "bg-[#EDD750]" : "bg-white"
+                    }`}
+                    onClick={() => handleAnswerSelect(answer)}
+                  >
+                    {answer}
+                    {isAnswerSelected(answer) && (
+                      <motion.div
+                        variants={checkmarkVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="bg-white p-1 border"
+                      >
+                        <img
+                          src={selectedSvgs[currentQuestionIndex]}
+                          alt="Selected"
+                          className="w-5 h-5"
+                        />
+                      </motion.div>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
 
-            {/* Navigation Buttons */}
-            <div className="flex my-10 items-center gap-5">
-              {currentQuestionIndex > 0 && (
+              {/* Navigation Buttons */}
+              <div className="flex my-10 items-center gap-5">
+                {currentQuestionIndex > 0 && (
+                  <motion.div
+                    whileTap={{ scale: 0.95 }}
+                    onClick={handlePrevious}
+                  >
+                    <Button
+                      title="Previous question"
+                      variant="primary"
+                      class="w-max text-xl font-[400] cursor-pointer"
+                    />
+                  </motion.div>
+                )}
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
+ 
                   whileTap={{ scale: 0.95 }}
-                  onClick={handlePrevious}
+                  onClick={handleNext}
                 >
                   <Button
-                    title="Previous question"
+                    title={
+                      currentQuestionIndex < questions.length - 1
+                        ? "Next question"
+                        : "Get results"
+                    }
                     variant="primary"
                     class="w-max text-xl font-[400] cursor-pointer"
                   />
                 </motion.div>
-              )}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleNext}
-              >
-                <Button
-                  title={
-                    currentQuestionIndex < questions.length - 1
-                      ? "Next question"
-                      : "Get results"
-                  }
-                  variant="primary"
-                  class="w-max text-xl font-[400] cursor-pointer"
-                />
-              </motion.div>
-            </div>
-          </motion.div>
-        ) : (
-          <motion.div
-            key="send-container"
-            initial="hidden"
-            animate="visible"
-            variants={sendContainerVariants}
-            className="grow pt-40 relative h-screen send"
-          >
-            <div className="w-3/4 md:w-3/7 text-center mx-auto">
-              <motion.h1
-                variants={formItemVariants}
-                custom={0}
-                className="text-5xl font-bold mb-5"
-              >
-                You're just one step away!
-              </motion.h1>
-              <motion.p
-                variants={formItemVariants}
-                custom={1}
-                className="text-2xl mb-12"
-              >
-                Fill out the form to get complete details and pricing.
-              </motion.p>
-              <motion.div className="flex flex-col gap-5">
-                <motion.div variants={formItemVariants} custom={2}>
-                  <input
-                    className="w-full p-3 h-12 bg-white text-[#242424] border-box border"
-                    type="text"
-                    placeholder="Your name"
-                  />
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="send-container"
+              initial="hidden"
+              animate="visible"
+              variants={sendContainerVariants}
+              className="grow pt-40 relative h-screen "
+            >
+              <div className="w-3/4 md:w-3/7 text-center mx-auto">
+                <motion.h1
+                  variants={formItemVariants}
+                  custom={0}
+                  className="text-5xl font-bold mb-5"
+                >
+                  You're just one step away!
+                </motion.h1>
+                <motion.p
+                  variants={formItemVariants}
+                  custom={1}
+                  className="text-2xl mb-12"
+                >
+                  Fill out the form to get complete details and pricing.
+                </motion.p>
+                <motion.div className="flex flex-col gap-5">
+                  <motion.div variants={formItemVariants} custom={2}>
+                    <input
+                      className="w-full p-3 h-12 bg-white text-[#242424] border-box border"
+                      type="text"
+                      placeholder="Your name"
+                    />
+                  </motion.div>
+                  <motion.div variants={formItemVariants} custom={3}>
+                    <input
+                      className="w-full p-3 h-12 bg-white text-[#242424] border-box border"
+                      type="text"
+                      placeholder="Email"
+                    />
+                  </motion.div>
+                  <motion.div variants={formItemVariants} custom={4}>
+                    <input
+                      className="w-full p-3 h-12 bg-white text-[#242424] border-box border"
+                      type="text"
+                      placeholder="Company name"
+                    />
+                  </motion.div>
+                  <motion.div variants={formItemVariants} custom={5}>
+                    <Button
+                      variant="primary"
+                      title="Submit"
+                      class="w-full cursor-pointer"
+                    />
+                  </motion.div>
                 </motion.div>
-                <motion.div variants={formItemVariants} custom={3}>
-                  <input
-                    className="w-full p-3 h-12 bg-white text-[#242424] border-box border"
-                    type="text"
-                    placeholder="Email"
-                  />
-                </motion.div>
-                <motion.div variants={formItemVariants} custom={4}>
-                  <input
-                    className="w-full p-3 h-12 bg-white text-[#242424] border-box border"
-                    type="text"
-                    placeholder="Company name"
-                  />
-                </motion.div>
-                <motion.div variants={formItemVariants} custom={5}>
-                  <Button
-                    variant="primary"
-                    title="Submit"
-                    class="w-full cursor-pointer"
-                  />
-                </motion.div>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
       <Footer type="black" />
     </div>
   );
