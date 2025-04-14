@@ -81,6 +81,13 @@ const Contact = () => {
     "Is there anything else we should know or get ready?"
   );
   const [typingIndex, setTypingIndex] = useState(0);
+  const [errors, setErrors] = useState({
+    services: false,
+    name: false,
+    email: false,
+    company: false,
+  });
+  const [shake, setShake] = useState(false);
   //@ts-ignore
   const typingTimerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -186,6 +193,11 @@ const Contact = () => {
         setSelectedButtons([...selectedButtons, { button, svg: randomSvg }]);
       }
     }
+    
+    // Clear service error when a button is selected
+    if (errors.services) {
+      setErrors({...errors, services: false});
+    }
   };
 
   const isButtonSelected = (button: string) => {
@@ -209,8 +221,58 @@ const Contact = () => {
     visible: { scale: 1 },
   };
 
+  const shakeVariants = {
+    shake: {
+      x: [0, -10, 10, -10, 10, 0],
+      transition: {
+        duration: 0.5
+      }
+    },
+    static: {
+      x: 0
+    }
+  };
+
+  const validateForm = () => {
+    const name = (
+      document.querySelector(
+        'input[placeholder="Your name"]'
+      ) as HTMLInputElement
+    )?.value;
+    const email = (
+      document.querySelector('input[placeholder="Email"]') as HTMLInputElement
+    )?.value;
+    const company = (
+      document.querySelector(
+        'input[placeholder="Company name"]'
+      ) as HTMLInputElement
+    )?.value;
+
+    const newErrors = {
+      services: selectedButtons.length === 0,
+      name: !name,
+      email: !email,
+      company: !company,
+    };
+
+    setErrors(newErrors);
+    
+    // If there are errors, trigger shake animation
+    if (Object.values(newErrors).some(error => error)) {
+      setShake(true);
+      setTimeout(() => setShake(false), 500);
+      return false;
+    }
+    
+    return true;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
 
     // Get form values
     const name = (
@@ -293,7 +355,11 @@ const Contact = () => {
                   I'm interested in...
                 </div>
               </div>
-              <div className="flex flex-col gap-5">
+              <motion.div 
+                className="flex flex-col gap-5"
+                animate={errors.services && shake ? "shake" : "static"}
+                variants={shakeVariants}
+              >
                 {buttons.map((button) => (
                   <motion.div
                     key={button}
@@ -301,7 +367,7 @@ const Contact = () => {
                     whileTap="tap"
                     className={`w-full p-3 h-12 border-box hover:bg-[#242424] cursor-pointer hover:text-white hover:border-[#242424] text-[#242424] border flex justify-between items-center ${
                       isButtonSelected(button) ? "bg-[#EDD750]" : "bg-white"
-                    }`}
+                    } ${errors.services ? "border-[#FF704D] text-[#FF704D]" : ""}`}
                     onClick={() => toggleButton(button)}
                   >
                     {button}
@@ -321,7 +387,10 @@ const Contact = () => {
                     )}
                   </motion.div>
                 ))}
-              </div>
+                {errors.services && (
+                  <p className="text-[#FF704D] text-sm">Please select at least one service</p>
+                )}
+              </motion.div>
             </div>
             <div>
               <div className="relative mb-10 p-3">
@@ -333,21 +402,57 @@ const Contact = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-5">
-                <input
-                  className="bg-white text-[#242424] p-3 h-12 border-box border"
-                  type="text"
-                  placeholder="Your name"
-                />
-                <input
-                  className="bg-white text-[#242424] p-3 h-12 border-box border"
-                  type="text"
-                  placeholder="Email"
-                />
-                <input
-                  className="bg-white text-[#242424] p-3 h-12 border-box border"
-                  type="text"
-                  placeholder="Company name"
-                />
+                <motion.div
+                  animate={errors.name && shake ? "shake" : "static"}
+                  variants={shakeVariants}
+                >
+                  <input
+                    className={`bg-white text-[#242424] w-full p-3 h-12 border-box border ${
+                      errors.name ? "border-[#FF704D] placeholder-[#FF704D]" : ""
+                    }`}
+                    type="text"
+                    placeholder={errors.name ? "Name is required" : "Your name"}
+                    onChange={() => {
+                      if (errors.name) {
+                        setErrors({...errors, name: false});
+                      }
+                    }}
+                  />
+                </motion.div>
+                <motion.div
+                  animate={errors.email && shake ? "shake" : "static"}
+                  variants={shakeVariants}
+                >
+                  <input
+                    className={`bg-white text-[#242424] p-3 w-full h-12 border-box border ${
+                      errors.email ? "border-[#FF704D] placeholder-[#FF704D]" : ""
+                    }`}
+                    type="text"
+                    placeholder={errors.email ? "Email is required" : "Email"}
+                    onChange={() => {
+                      if (errors.email) {
+                        setErrors({...errors, email: false});
+                      }
+                    }}
+                  />
+                </motion.div>
+                <motion.div
+                  animate={errors.company && shake ? "shake" : "static"}
+                  variants={shakeVariants}
+                >
+                  <input
+                    className={`bg-white text-[#242424] p-3 w-full h-12 border-box border ${
+                      errors.company ? "border-[#FF704D] placeholder-[#FF704D]" : ""
+                    }`}
+                    type="text"
+                    placeholder={errors.company ? "Company is required" : "Company name"}
+                    onChange={() => {
+                      if (errors.company) {
+                        setErrors({...errors, company: false});
+                      }
+                    }}
+                  />
+                </motion.div>
                 <div className="relative">
                   <textarea
                     className="bg-white border text-[#242424] h-46 p-3 w-full"
@@ -366,7 +471,7 @@ const Contact = () => {
                     <div className="absolute right-3 bottom-3 w-2 h-5 bg-[#242424] animate-pulse"></div>
                   )}
                 </div>
-                <div onClick={handleSubmit} >
+                <div onClick={handleSubmit}>
                   <Button
                     variant="primary"
                     title={Loading ? "Sending..." : "Send message"}

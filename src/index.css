@@ -40,7 +40,7 @@ body {
   @apply text-xl md:text-2xl lg:text-2xl font-[400] text-[#242424] mb-12;
 }
 .container {
-  @apply w-[84vw] mx-auto;
+  @apply lg:w-[84vw] xl:w-[84vw] w-[90vw]  mx-auto;
 }
 @keyframes fadeIn {
   from {
