@@ -51,11 +51,11 @@ const ConnectUs = () => {
 
   return (
     <div id="process" className="bg-white">
-      <div className="pt-20 pb-30 container overflow-hidden">
+      <div className="lg:pt-20 xl:pt-20 lg:pb-30 xl:pb-30 pb-20 container overflow-hidden">
         <div className="title">Our process</div>
 
         <motion.div
-          className="flex flex-col md:flex-row mt-20 gap-4"
+          className="flex flex-col md:flex-row xl:mt-20 mt-10 lg:mt-20 gap-4"
           initial="hidden"
           whileInView="visible"
           viewport={{

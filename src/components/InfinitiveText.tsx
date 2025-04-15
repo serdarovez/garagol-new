@@ -94,7 +94,7 @@ const InfiniteScrollingText = () => {
         <span
           key={`${sentence}-${i}`}
           className={`transition-colors duration-300 ${
-            shouldHighlight ? "text-yellow-400" : "text-white"
+            shouldHighlight ? "text-[#EDD750]" : "text-white"
           }`}
         >
           {sentence}{" "}

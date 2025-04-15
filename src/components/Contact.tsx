@@ -367,7 +367,7 @@ const Contact = () => {
                     whileTap="tap"
                     className={`w-full p-3 h-12 border-box hover:bg-[#242424] cursor-pointer hover:text-white hover:border-[#242424] text-[#242424] border flex justify-between items-center ${
                       isButtonSelected(button) ? "bg-[#EDD750]" : "bg-white"
-                    } ${errors.services ? "border-[#FF704D] text-[#FF704D]" : ""}`}
+                    } ${errors.services ? "border-[#F85B4C] text-[#F85B4C]" : ""}`}
                     onClick={() => toggleButton(button)}
                   >
                     {button}
@@ -388,7 +388,7 @@ const Contact = () => {
                   </motion.div>
                 ))}
                 {errors.services && (
-                  <p className="text-[#FF704D] text-sm">Please select at least one service</p>
+                  <p className="text-[#F85B4C] text-sm">Please select at least one service</p>
                 )}
               </motion.div>
             </div>
@@ -408,7 +408,7 @@ const Contact = () => {
                 >
                   <input
                     className={`bg-white text-[#242424] w-full p-3 h-12 border-box border ${
-                      errors.name ? "border-[#FF704D] placeholder-[#FF704D]" : ""
+                      errors.name ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
                     }`}
                     type="text"
                     placeholder={errors.name ? "Name is required" : "Your name"}
@@ -425,7 +425,7 @@ const Contact = () => {
                 >
                   <input
                     className={`bg-white text-[#242424] p-3 w-full h-12 border-box border ${
-                      errors.email ? "border-[#FF704D] placeholder-[#FF704D]" : ""
+                      errors.email ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
                     }`}
                     type="text"
                     placeholder={errors.email ? "Email is required" : "Email"}
@@ -442,7 +442,7 @@ const Contact = () => {
                 >
                   <input
                     className={`bg-white text-[#242424] p-3 w-full h-12 border-box border ${
-                      errors.company ? "border-[#FF704D] placeholder-[#FF704D]" : ""
+                      errors.company ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
                     }`}
                     type="text"
                     placeholder={errors.company ? "Company is required" : "Company name"}

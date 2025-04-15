@@ -9,7 +9,7 @@ const Cards = () => {
       features: [
         "Web & Mobile Development",
         "UI/UX Design",
-        "QA & Testing",
+        // "QA & Testing",
         "Cloud Solutions",
       ],
       background: "#8675F2",
@@ -81,7 +81,7 @@ const Cards = () => {
   }, []);
   return (
     <div id="services" className="container pb-20">
-      <div ref={titleRef} className="sticky  w-3/5 mt-20 top-30">
+      <div ref={titleRef} className="sticky  lg:w-3/5 xl:w-3/5 w-full lg:mt-20 xl:mt-30 mt-10 lg:top-30 xl:top-30 top-20">
         <div className="title">Our services</div>
         <div className="paragraph">
           We design, develop, and deliver secure, high-performance solutions
@@ -96,12 +96,12 @@ const Cards = () => {
           >
             <div
               style={{ backgroundColor: service.background }}
-              className={`p-14 ${
+              className={`lg:p-14  xl:p-14 p-0 ${
                 service.type !== "primary" ? "text-[#242424]" : "text-white"
               } `}
             >
-              <div className="p-6 flex justify-between items-end ">
-                <div className=" w-3/5">
+              <div className="p-6 flex justify-between lg:flex-row xl:flex-row flex-col lg:items-end xl:items-end items-center">
+                <div className="  xl:w-3/5 w-full lg:w-3/5">
                   <h3 className="text-4xl md:text-5xl lg:text-6xl font-[700]  mb-8 font-[AtkinsonBold]">
                     {service.title}
                   </h3>
@@ -109,8 +109,8 @@ const Cards = () => {
                     {service.description}
                   </p>
                 </div>
-                <div className="2/5">
-                  <div className="flex w-2/3 mx-auto justify-end flex-wrap gap-3 ">
+                <div className="xl:w-2/5 mt-10 lg:mt-0 xl:mt-0 w-full lg:w-2/5">
+                  <div className="flex lg:w-2/3 xl:w-2/3  lg:mx-auto xl:mx-auto lg:justify-end xl:justify-end flex-wrap gap-3 ">
                     {service.features.map((feature: string, index: number) => (
                       <Button
                         variant={service.type}

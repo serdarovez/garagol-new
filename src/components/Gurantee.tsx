@@ -41,13 +41,13 @@ const Gurantee = () => {
   ];
   return (
     <div id="commitment" className=" bg-[#f9f9f9]">
-      <div className="py-30 container ">
+      <div className="lg:py-30 xl:py-30 py-20 container ">
         <div className="title">Our commitment to your success</div>
         <div className="paragraph">
           We ensure the highest quality of work, with the fastest delivery
           times.
         </div>
-        <div className="grid grid-cols-2   mt-10  gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2   mt-10  gap-5">
           {services.map((service) => (
             <div className="  w-full  p-5 px-0 font-[400] items-start gap-5  flex ">
               <div className="">

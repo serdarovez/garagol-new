@@ -11,11 +11,10 @@ import random6 from "../assets/6.svg";
 
 const Calculator = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<
-    Record<number, string>
-  >({});
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string | string[]>>({});
   const [selectedSvgs, setSelectedSvgs] = useState<Record<number, string>>({});
   const [showQuestions, setShowQuestions] = useState(true);
+  const [validationError, setValidationError] = useState(false);
 
   const questions = [
     {
@@ -27,6 +26,7 @@ const Calculator = () => {
         "Enterprise",
         "Not sure / Other",
       ],
+      multiSelect: false,
     },
     {
       id: 2,
@@ -38,6 +38,7 @@ const Calculator = () => {
         "Improve data analytics and insights",
         "Other / Not sure",
       ],
+      multiSelect: false,
     },
     {
       id: 3,
@@ -52,6 +53,7 @@ const Calculator = () => {
         "IT Consulting & Strategy",
         "Not sure yet",
       ],
+      multiSelect: true,
     },
     {
       id: 4,
@@ -62,6 +64,7 @@ const Calculator = () => {
         "3-6 months",
         "Flexible / Not sure",
       ],
+      multiSelect: false,
     },
     {
       id: 5,
@@ -71,6 +74,7 @@ const Calculator = () => {
         "Maybe—let's discuss",
         "No, just a one-time project",
       ],
+      multiSelect: false,
     },
   ];
 
@@ -78,24 +82,60 @@ const Calculator = () => {
 
   const handleAnswerSelect = (answer: string) => {
     const randomSvg = svgImages[Math.floor(Math.random() * svgImages.length)];
+    const currentQuestion = questions[currentQuestionIndex];
 
-    setSelectedAnswers((prev) => ({
-      ...prev,
-      [currentQuestionIndex]: answer,
-    }));
+    if (currentQuestion.multiSelect) {
+      const currentSelection = (selectedAnswers[currentQuestionIndex] as string[]) || [];
+      const newSelection = currentSelection.includes(answer)
+        ? currentSelection.filter(item => item !== answer)
+        : [...currentSelection, answer];
 
-    setSelectedSvgs((prev) => ({
-      ...prev,
-      [currentQuestionIndex]: randomSvg,
-    }));
+      setSelectedAnswers(prev => ({
+        ...prev,
+        [currentQuestionIndex]: newSelection,
+      }));
+
+      if (newSelection.length > 0) {
+        setSelectedSvgs(prev => ({
+          ...prev,
+          [currentQuestionIndex]: randomSvg,
+        }));
+      }
+    } else {
+      setSelectedAnswers(prev => ({
+        ...prev,
+        [currentQuestionIndex]: answer,
+      }));
+
+      setSelectedSvgs(prev => ({
+        ...prev,
+        [currentQuestionIndex]: randomSvg,
+      }));
+    }
+
+    if (validationError) {
+      setValidationError(false);
+    }
   };
 
   const handleNext = () => {
+    const currentQuestion = questions[currentQuestionIndex];
+    const currentAnswer = selectedAnswers[currentQuestionIndex];
+
+    if (
+      (!currentQuestion.multiSelect && !currentAnswer) ||
+      (currentQuestion.multiSelect && (!currentAnswer || (currentAnswer as string[]).length === 0))
+    ) {
+      setValidationError(true);
+      return;
+    }
+
     window.scrollTo({
       top: 0,
     });
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setValidationError(false);
     } else {
       setShowQuestions(false);
     }
@@ -104,11 +144,16 @@ const Calculator = () => {
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
+      setValidationError(false);
     }
   };
 
   const isAnswerSelected = (answer: string) => {
-    return selectedAnswers[currentQuestionIndex] === answer;
+    const currentAnswer = selectedAnswers[currentQuestionIndex];
+    if (questions[currentQuestionIndex].multiSelect) {
+      return (currentAnswer as string[])?.includes(answer);
+    }
+    return currentAnswer === answer;
   };
 
   // Animation variants
@@ -120,6 +165,10 @@ const Calculator = () => {
 
   const answerItemVariants = {
     tap: { scale: 0.98 },
+    shake: {
+      x: [0, -5, 5, -5, 5, 0],
+      transition: { duration: 0.5 },
+    },
   };
 
   const checkmarkVariants = {
@@ -148,8 +197,8 @@ const Calculator = () => {
   };
 
   return (
-    <div className="flex min-h-screen  text-white bg-[#8675F2] flex-col">
-      <div className="min-h-screen send" >
+    <div className="flex min-h-screen text-white bg-[#8675F2] flex-col">
+      <div className="min-h-screen send">
         <AnimatePresence mode="wait">
           {showQuestions ? (
             <motion.div
@@ -171,17 +220,22 @@ const Calculator = () => {
               </div>
 
               {/* Answers */}
-              <div className="flex flex-col  mt-10 gap-3">
+              <div className="flex flex-col mt-10 gap-3">
                 {questions[currentQuestionIndex].answers.map((answer) => (
-                  <motion.div
-                    key={answer}
-                    variants={answerItemVariants}
-                    whileTap="tap"
-                    className={`w-full p-3 h-12 border-box hover:bg-[#242424] hover:border-0 cursor-pointer hover:text-white text-[#242424] border flex justify-between items-center ${
-                      isAnswerSelected(answer) ? "bg-[#EDD750]" : "bg-white"
-                    }`}
-                    onClick={() => handleAnswerSelect(answer)}
-                  >
+                 <motion.div
+                 key={answer}
+                 variants={answerItemVariants}
+                 animate={validationError ? "shake" : "visible"}
+                 whileTap="tap"
+                 className={`w-full p-3 h-12 border-box hover:bg-[#242424] hover:border-0 cursor-pointer hover:text-white text-[#242424] border flex justify-between items-center ${
+                   isAnswerSelected(answer) 
+                     ? "bg-[#EDD750]"  // Added !important flag to override other background classes
+                     : validationError 
+                       ? "border-[#F85B4C] text-[#F85B4C] bg-white" 
+                       : "bg-white"
+                 }`}
+                 onClick={() => handleAnswerSelect(answer)}
+               >
                     {answer}
                     {isAnswerSelected(answer) && (
                       <motion.div
@@ -216,7 +270,6 @@ const Calculator = () => {
                   </motion.div>
                 )}
                 <motion.div
- 
                   whileTap={{ scale: 0.95 }}
                   onClick={handleNext}
                 >
@@ -238,7 +291,7 @@ const Calculator = () => {
               initial="hidden"
               animate="visible"
               variants={sendContainerVariants}
-              className="grow pt-40 relative h-screen "
+              className="grow pt-40 relative h-screen"
             >
               <div className="w-3/4 md:w-3/7 text-center mx-auto">
                 <motion.h1
