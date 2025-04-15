@@ -63,7 +63,7 @@ const Footer = ({ type }: FooterProps) => {
           <div className="mt-8">© 2025 Garagol. All rights reserved.</div>
         </div>
         <div className="relative mt-20 lg:mt-0 xl:mt-0 z-10">
-          <div className=" flex-col  flex gap-5  lg:items-start xl:items-center items-start justify-items-start  text-[#EDD750] xl:justify-center lg:justify-center font-medium text-lg ">
+          <div className=" flex-col  flex gap-5  lg:items-start xl:items-start  text-[#EDD750] xl:justify-center lg:justify-center font-medium text-lg ">
             <div
               onClick={() => scrollToSection("services")}
               className="relative group  transition-colors"

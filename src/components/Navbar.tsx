@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,8 +23,8 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    setIsMobileMenuOpen(false);
     if (location.pathname === "/") {
-      // If already on homepage, just scroll
       const element = document.getElementById(sectionId);
       if (element) {
         window.scrollTo({
@@ -32,24 +33,24 @@ const Navbar = () => {
         });
       }
     } else {
-      // If not on homepage, navigate with state to indicate where to scroll
       navigate("/", { state: { scrollTo: sectionId } });
     }
   };
+
   return (
-    <div className="w-full bg-white fixed p-3 z-50 top-0 flex justify-between items-center">
-      <div className="container flex items-center justify-between">
+    <div className={`w-full bg-white fixed p-3 z-50 top-0 flex justify-between items-center ${isScrolled ? "shadow-md" : ""}`}>
+      <div className="container flex items-center w-full justify-between">
         <Link to={`/`}>
           <div
-            className="flex items-center gap-3  "
+            className="flex items-center gap-3"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
             {/* Logo SVG */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="63"
-              height="63"
+              width="40"
+              height="40"
               viewBox="0 0 63 63"
               fill="none"
               className="transition-transform duration-300"
@@ -71,8 +72,8 @@ const Navbar = () => {
               </defs>
             </svg>
 
-            {/* Animated Text */}
-            <div className="overflow-hidden relative h-14 w-64">
+            {/* Animated Text - Only shows "Garagol" on mobile when not scrolled */}
+            <div className="overflow-hidden relative h-10 md:h-14 w-auto md:w-64">
               <div
                 className={`absolute flex flex-col transition-all duration-500 ease-in-out ${
                   isHovering || !isScrolled
@@ -80,10 +81,10 @@ const Navbar = () => {
                     : "-translate-x-full"
                 }`}
               >
-                <h1 className="font-[700] text-2xl whitespace-nowrap">
+                <h1 className="font-[700] text-xl md:text-2xl whitespace-nowrap">
                   Garagol
                 </h1>
-                <span className="font-[400] whitespace-nowrap">
+                <span className="hidden md:block font-[400] whitespace-nowrap">
                   Consulting and Solutions Company.
                 </span>
               </div>
@@ -91,55 +92,134 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* Navigation Links */}
-        <div>
-          <div className="hidden md:flex gap-x-10 2xl:gap-x-10 items-center text-gray-700 font-medium text-lg">
-            <div className="relative group cursor-pointer  transition-colors">
-              <span
-                className="mx-2 cursor-pointer"
-                onClick={() => scrollToSection("services")}
-              >
-                Services
-              </span>
-              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex gap-x-10 2xl:gap-x-10 items-center text-gray-700 font-medium text-lg">
+          <div className="relative group cursor-pointer transition-colors">
+            <span
+              className="mx-2 cursor-pointer"
+              onClick={() => scrollToSection("services")}
+            >
+              Services
+            </span>
+            <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opacity-25"></div>
+          </div>
+          <div className="relative group cursor-pointer transition-colors">
+            <span
+              className="mx-2 cursor-pointer"
+              onClick={() => scrollToSection("process")}
+            >
+              Process
+            </span>
+            <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opacity-25"></div>
+          </div>
+          <div className="relative group cursor-pointer transition-colors">
+            <span
+              className="mx-2 cursor-pointer"
+              onClick={() => scrollToSection("commitment")}
+            >
+              Commitment
+            </span>
+            <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opacity-25"></div>
+          </div>
+          <div className="relative group cursor-pointer transition-colors">
+            <span
+              className="mx-2 cursor-pointer"
+              onClick={() => scrollToSection("inquiry")}
+            >
+              Inquiry
+            </span>
+            <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opacity-25"></div>
+          </div>
+          <Link to={`/estimate`}>
+            <Button
+              variant="primary"
+              title="Get estimate"
+              class="cursor-pointer"
+            />
+          </Link>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden flex items-center gap-4">
+          {isScrolled ? (
+            <Link to={`/estimate`} className="text-sm bg-[#8675F2] text-white px-4 py-2 rounded-md">
+              Get estimate
+            </Link>
+          ) : (
+            <div className="text-sm bg-[#8675F2] text-white px-4 py-2 rounded-md">
+              Consulting and Solutions Company
             </div>
-            <div className="relative group cursor-pointer  transition-colors">
-              <span
-                className="mx-2 cursor-pointer"
-                onClick={() => scrollToSection("process")}
-              >
-                Process
-              </span>
-              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
-            </div>
-            <div className="relative group cursor-pointer   transition-colors">
-              <span
-                className="mx-2 cursor-pointer"
-                onClick={() => scrollToSection("commitment")}
-              >
-                Commitment
-              </span>
-              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
-            </div>
-            <div className="relative group cursor-pointer  transition-colors">
-              <span
-                className="mx-2 cursor-pointer"
-                onClick={() => scrollToSection("inquiry")}
-              >
-                Inquiry
-              </span>
-              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
-            </div>
-            <Link to={`/estimate`}>
-              <Button
-                variant="primary"
-                title="Get estimate"
-                class="cursor-pointer"
-              />
+          )}
+          
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="text-gray-700 focus:outline-none"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {isMobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-4 px-6">
+          <div className="flex flex-col space-y-4">
+            <button
+              onClick={() => scrollToSection("services")}
+              className="text-gray-700 text-left py-2"
+            >
+              Services
+            </button>
+            <button
+              onClick={() => scrollToSection("process")}
+              className="text-gray-700 text-left py-2"
+            >
+              Process
+            </button>
+            <button
+              onClick={() => scrollToSection("commitment")}
+              className="text-gray-700 text-left py-2"
+            >
+              Commitment
+            </button>
+            <button
+              onClick={() => scrollToSection("inquiry")}
+              className="text-gray-700 text-left py-2"
+            >
+              Inquiry
+            </button>
+            <Link
+              to={`/estimate`}
+              className="bg-[#8675F2] text-white text-center py-2 rounded-md"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Get Estimate
             </Link>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
