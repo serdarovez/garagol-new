@@ -23,12 +23,12 @@ const Footer = ({ type }: FooterProps) => {
   };
   return (
     <div
-      className={`w-full h-100 relative p-15 overflow-hidden  ${
+      className={`w-full lg:h-100 xl:h-100 h-max relative lg:p-15 xl:p-15 py-5 overflow-hidden  ${
         type === "black" ? "bg-[#242424]" : "bg-[#8675F2]"
       } text-white `}
     >
-      <div className="container flex h-full items-center ">
-        <div className="w-1/2 flex flex-col h-full justify-end ">
+      <div className="container flex lg:flex-row xl:flex-row flex-col-reverse h-full lg:items-center xl:items-center  ">
+        <div className="lg:w-1/2 mt-20 lg:mt-0 xl:mt-0 xl:w-1/2 flex flex-col h-full xl:justify-end lg:justify-end ">
           <div className="flex items-center gap-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,8 +62,8 @@ const Footer = ({ type }: FooterProps) => {
           </div>
           <div className="mt-8">© 2025 Garagol. All rights reserved.</div>
         </div>
-        <div className="relative z-10">
-          <div className=" flex-col  flex gap-5 items-start  text-[#EDD750] justify-center font-medium text-lg ">
+        <div className="relative mt-20 lg:mt-0 xl:mt-0 z-10">
+          <div className=" flex-col  flex gap-5  lg:items-start xl:items-center items-start justify-items-start  text-[#EDD750] xl:justify-center lg:justify-center font-medium text-lg ">
             <div
               onClick={() => scrollToSection("services")}
               className="relative group  transition-colors"
@@ -258,7 +258,7 @@ const Footer = ({ type }: FooterProps) => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1384 1007"
         fill="none"
-        className="w-[50vw] top-0 absolute right-0 "
+        className="lg:w-[50vw] xl:w-[50vw] w-full top-0 absolute right-0 "
       >
         <path
           d="M1112.98 1006.15C1081.83 1006.15 1050.31 1001.98 1018.4 993.62C986.499 986.023 956.872 972.35 929.525 952.599C902.178 932.848 879.768 905.881 862.296 871.696L1003.59 820.42C1014.23 840.931 1029.42 854.984 1049.17 862.581C1068.92 870.177 1088.67 873.975 1108.42 873.975C1144.89 873.975 1174.13 865.239 1196.16 847.767C1218.19 831.055 1229.21 804.088 1229.21 766.865V665.452C1204.9 695.838 1176.79 718.247 1144.89 732.681C1113.74 747.114 1082.21 754.331 1050.31 754.331C1009.29 754.331 970.166 743.316 932.943 721.286C895.721 699.256 865.335 667.731 841.786 626.71C818.236 585.689 806.462 536.691 806.462 479.718C806.462 413.628 818.236 359.693 841.786 317.913C865.335 275.372 895.341 243.847 931.804 223.337C968.267 202.826 1005.87 192.571 1044.61 192.571C1080.32 192.571 1114.5 200.547 1147.16 216.5C1180.59 232.452 1207.94 256.001 1229.21 287.147L1252 209.663H1401.27V732.681C1401.27 826.877 1375.82 896.005 1324.92 940.065C1274.03 984.124 1203.38 1006.15 1112.98 1006.15ZM1111.84 619.873C1134.63 619.873 1155.14 615.695 1173.37 607.339C1192.36 598.223 1207.56 583.03 1218.95 561.76C1230.35 540.49 1236.04 511.623 1236.04 475.16C1236.04 419.706 1223.51 381.343 1198.44 360.073C1174.13 338.803 1145.27 328.168 1111.84 328.168C1077.66 328.168 1048.03 339.563 1022.96 362.352C998.653 385.142 986.499 421.225 986.499 470.602C986.499 520.739 998.653 558.341 1022.96 583.41C1048.03 607.719 1077.66 619.873 1111.84 619.873Z"

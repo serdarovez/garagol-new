@@ -338,14 +338,14 @@ const Contact = () => {
     <div id="inquiry" className="bg-[#8675F2]">
       <div className="min-h-screen px-0 container p-10 text-white flex flex-col">
         <div className="p-10 px-0">
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-[700] mb-5">
+          <h3 className="text-5xl md:text-5xl lg:text-6xl font-[700] mb-5">
             How can we help you?
           </h3>
-          <p className="mb-4 font-[400] text-xl">
+          <p className="mb-4 font-[400] text-2xl lg:text-3xl xl:text-3xl">
             Tell us what you need, and we'll go the extra mile to help you
             succeed.
           </p>
-          <div className="grid mt-20 grid-cols-2 gap-5">
+          <div className="grid mt-20 grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 lg:gap-5 xl:gap-5 gap-10">
             <div className="">
               <div className="relative mb-10 p-3">
                 <span className="absolute text-[#EDD750] font-[AtkinsonItalic] text-8xl left-0 -top-5">
