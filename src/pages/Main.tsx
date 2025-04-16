@@ -7,6 +7,7 @@ import Gurantee from "../components/Gurantee";
 import Home from "../components/Home";
 import InfiniteScrollingText from "../components/InfinitiveText";
 import { useEffect } from "react";
+import Pricing from "../components/Pricing";
 
 const Main = () => {
   const location = useLocation();
@@ -49,6 +50,7 @@ const Main = () => {
       {/* <Navbar//> */}
       <Home />
       <Cards />
+      <Pricing/>
       <ConnectUs />
       <InfiniteScrollingText />
       <Gurantee />

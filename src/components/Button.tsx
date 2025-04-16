@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const Button = ({
   title,
   class: className,
@@ -16,11 +18,12 @@ const Button = ({
       "bg-[#8675F2] text-white  hover:bg-[#EDD750] hover:text-[#242424] cursor-pointer border border-[#242424]",
   };
   return (
-    <div
+    <motion.div
+      whileTap={{ scale: 0.95 }}
       className={`   py-2 px-5  ${className || ""} ${variantStyles[variant]} `}
     >
       {title}
-    </div>
+    </motion.div>
   );
 };
 
