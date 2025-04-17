@@ -5,6 +5,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [menuHeight, setMenuHeight] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -21,9 +24,25 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const toggleMobileMenu = () => {
+    if (isMobileMenuOpen) {
+      // Closing animation
+      setIsAnimating(true);
+      setTimeout(() => {
+        setIsMobileMenuOpen(false);
+        setIsAnimating(false);
+      }, 300);
+    } else {
+      // Opening
+      setIsMobileMenuOpen(true);
+      setIsAnimating(true);
+      setTimeout(() => setIsAnimating(false), 10);
+    }
+  };
+
   const scrollToSection = (sectionId: string) => {
+    toggleMobileMenu(); // Close mobile menu when a section is clicked
     if (location.pathname === "/") {
-      // If already on homepage, just scroll
       const element = document.getElementById(sectionId);
       if (element) {
         window.scrollTo({
@@ -32,16 +51,29 @@ const Navbar = () => {
         });
       }
     } else {
-      // If not on homepage, navigate with state to indicate where to scroll
       navigate("/", { state: { scrollTo: sectionId } });
     }
   };
+
+  // Calculate menu height when it opens
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const menu = document.getElementById("mobile-menu");
+      if (menu) {
+        setMenuHeight(menu.scrollHeight);
+      }
+    } else {
+      setMenuHeight(0);
+    }
+  }, [isMobileMenuOpen]);
+
   return (
-    <div className="w-full bg-white fixed lg:p-3 xl:p-3 p-1 z-50 top-0 flex justify-between items-center">
+    <div className="w-full bg-white fixed  lg:p-3 xl:p-3 p-1 z-50 top-0">
+      {/* First Line - Logo and Hamburger */}
       <div className="container flex items-center w-full justify-between">
         <Link to={`/`}>
           <div
-            className="flex items-center lg:w-full xl:w-full w-1/2 gap-3  "
+            className="flex items-center gap-3 w-full"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
@@ -52,7 +84,7 @@ const Navbar = () => {
               height="63"
               viewBox="0 0 63 63"
               fill="none"
-              className="transition-transform lg:w-auto xl:w-auto w-25   duration-300"
+              className="transition-transform lg:w-auto xl:w-auto duration-300"
             >
               <g clipPath="url(#clip0_139_139)">
                 <path
@@ -83,60 +115,168 @@ const Navbar = () => {
                 <h1 className="font-[700] lg:text-2xl xl:text-2xl text-lg whitespace-nowrap">
                   Garagol
                 </h1>
-                <span className="font-[400]  lg:whitespace-nowrap">
+                <span className="font-[400] whitespace-nowrap">
                   Consulting and Solutions Company.
                 </span>
               </div>
             </div>
           </div>
         </Link>
-
-        {/* Navigation Links */}
-        <div>
-          <div className="hidden md:flex gap-x-10 2xl:gap-x-10 items-center text-gray-700 font-medium text-lg">
-            <div className="relative group cursor-pointer  transition-colors">
-              <span
-                className="mx-2 cursor-pointer"
-                onClick={() => scrollToSection("services")}
-              >
-                Services
-              </span>
-              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
-            </div>
-            <div className="relative group cursor-pointer  transition-colors">
-              <span
-                className="mx-2 cursor-pointer"
-                onClick={() => scrollToSection("process")}
-              >
-                Process
-              </span>
-              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
-            </div>
-            <div className="relative group cursor-pointer   transition-colors">
-              <span
-                className="mx-2 cursor-pointer"
-                onClick={() => scrollToSection("commitment")}
-              >
-                Commitment
-              </span>
-              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
-            </div>
-            <div className="relative group cursor-pointer  transition-colors">
-              <span
-                className="mx-2 cursor-pointer"
-                onClick={() => scrollToSection("inquiry")}
-              >
-                Inquiry
-              </span>
-              <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25 "></div>
-            </div>
-            <Link to={`/estimate`}>
-              <Button
-                variant="primary"
-                title="Get estimate"
-                class="cursor-pointer"
+        <div className="hidden md:flex gap-x-10 2xl:gap-x-10 items-center text-gray-700 font-medium text-lg justify-center mt-4">
+          <div className="relative group cursor-pointer transition-colors">
+            <span
+              className="mx-2 cursor-pointer"
+              onClick={() => scrollToSection("services")}
+            >
+              Services
+            </span>
+            <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25"></div>
+          </div>
+          <div className="relative group cursor-pointer transition-colors">
+            <span
+              className="mx-2 cursor-pointer"
+              onClick={() => scrollToSection("process")}
+            >
+              Process
+            </span>
+            <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25"></div>
+          </div>
+          <div className="relative group cursor-pointer transition-colors">
+            <span
+              className="mx-2 cursor-pointer"
+              onClick={() => scrollToSection("commitment")}
+            >
+              Commitment
+            </span>
+            <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25"></div>
+          </div>
+          <div className="relative group cursor-pointer transition-colors">
+            <span
+              className="mx-2 cursor-pointer"
+              onClick={() => scrollToSection("inquiry")}
+            >
+              Inquiry
+            </span>
+            <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25"></div>
+          </div>
+          <Link to={`/estimate`}>
+            <Button
+              variant="primary"
+              title="Get estimate"
+              class="cursor-pointer"
+            />
+          </Link>
+        </div>
+        {/* Mobile Hamburger Menu Button */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={toggleMobileMenu}
+            className="text-gray-700 focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              viewBox="0 0 48 48"
+              fill="none"
+              className="transition-all duration-300"
+            >
+              <rect x="1" y="1" width="46" height="46" fill="white" />
+              <rect
+                x="1"
+                y="1"
+                width="46"
+                height="46"
+                stroke="#242424"
+                strokeWidth="2"
               />
-            </Link>
+              {/* Animated Hamburger/Close Icon */}
+              <g className="transform origin-center transition-all duration-300">
+                <path
+                  d="M13 17.5H35"
+                  stroke="#242424"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  className={`transition-all duration-300 ${
+                    isMobileMenuOpen
+                      ? "translate-y-6 rotate-45 opacity-100"
+                      : "opacity-100"
+                  }`}
+                />
+                <path
+                  d="M13 24H35"
+                  stroke="#242424"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  className={`transition-all duration-300 ${
+                    isMobileMenuOpen ? "opacity-0" : "opacity-100"
+                  }`}
+                />
+                <path
+                  d="M13 30.5H35"
+                  stroke="#242424"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  className={`transition-all duration-300 ${
+                    isMobileMenuOpen
+                      ? "translate-y-[-24px] -rotate-45 opacity-100"
+                      : "opacity-100"
+                  }`}
+                />
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Second Line - Get Estimate Button (Mobile Only) */}
+      <div className="md:hidden container mt-2">
+        <Link to={`/estimate`} className="w-full block">
+          <Button
+            variant="primary"
+            title="Get estimate"
+            class="w-full text-center cursor-pointer"
+          />
+        </Link>
+      </div>
+
+      {/* Desktop Navigation Links */}
+
+      {/* Mobile Menu Dropdown */}
+      <div
+        id="mobile-menu"
+        className={`md:hidden bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? "max-h-screen" : "max-h-0"
+        }`}
+        style={{
+          maxHeight: isMobileMenuOpen ? `${menuHeight}px` : "0px",
+        }}
+      >
+        <div className="flex flex-col space-y-4 text-gray-700 font-medium py-4 px-6">
+          <div
+            className="cursor-pointer py-2 transition-colors duration-200 hover:text-[#8675F2]"
+            onClick={() => scrollToSection("services")}
+          >
+            Services
+          </div>
+          <div
+            className="cursor-pointer py-2 transition-colors duration-200 hover:text-[#8675F2]"
+            onClick={() => scrollToSection("process")}
+          >
+            Process
+          </div>
+          <div
+            className="cursor-pointer py-2 transition-colors duration-200 hover:text-[#8675F2]"
+            onClick={() => scrollToSection("commitment")}
+          >
+            Commitment
+          </div>
+          <div
+            className="cursor-pointer py-2 transition-colors duration-200 hover:text-[#8675F2]"
+            onClick={() => scrollToSection("inquiry")}
+          >
+            Inquiry
           </div>
         </div>
       </div>
