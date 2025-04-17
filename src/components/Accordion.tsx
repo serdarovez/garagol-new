@@ -43,7 +43,7 @@ export const Accordion: React.FC<AccordionProps> = ({
       }`}
     >
       <button
-        className="w-full p-4 text-left flex gap-5 items-center focus:outline-none"
+        className="w-full lg:p-4 xl:p-4 p-2 ps-0 text-left flex gap-5 items-center focus:outline-none"
         onClick={onToggle}
         aria-expanded={isOpen}
       >

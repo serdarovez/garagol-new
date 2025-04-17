@@ -61,7 +61,7 @@ function FAQ() {
   return (
     <div className="flex min-h-screen text-white bg-[#242424] flex-col">
       <div className="grow container mb-20 mt-40">
-        <div className="flex items-center justify-between">
+        <div className="flex lg:flex-row xl:flex-row flex-col items-center justify-between">
           <div>
             <div className="text-4xl md:text-5xl lg:text-6xl font-[700]  mb-5 font-[AtkinsonBold] text-[#EDD750]">
               Project Cost Calculator
@@ -89,7 +89,7 @@ function FAQ() {
               />
             </Link>
           </div>
-          <div className="hidden md:flex  p-1  items-center justify-center  bg-[#EDD750] ">
+          <div className=" md:flex  p-1  items-center mb-20 lg:mb-0 xl:mb-0 justify-center  bg-[#EDD750] ">
             {/* place gif here  */}
             <img
               src={randomGif}
