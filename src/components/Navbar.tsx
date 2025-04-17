@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
+  // const [ setIsAnimating] = useState(false);
   const [menuHeight, setMenuHeight] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,16 +27,16 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     if (isMobileMenuOpen) {
       // Closing animation
-      setIsAnimating(true);
+      // setIsAnimating(true);
       setTimeout(() => {
         setIsMobileMenuOpen(false);
-        setIsAnimating(false);
+        // setIsAnimating(false);
       }, 300);
     } else {
       // Opening
       setIsMobileMenuOpen(true);
-      setIsAnimating(true);
-      setTimeout(() => setIsAnimating(false), 10);
+      // setIsAnimating(true);
+      // setTimeout(() => setIsAnimating(false), 10);
     }
   };
 
@@ -180,7 +180,7 @@ const Navbar = () => {
               height="40"
               viewBox="0 0 48 48"
               fill="none"
-              className="transition-all duration-300"
+              className="relative"
             >
               <rect x="1" y="1" width="46" height="46" fill="white" />
               <rect
@@ -191,40 +191,32 @@ const Navbar = () => {
                 stroke="#242424"
                 strokeWidth="2"
               />
-              {/* Animated Hamburger/Close Icon */}
-              <g className="transform origin-center transition-all duration-300">
-                <path
-                  d="M13 17.5H35"
-                  stroke="#242424"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  className={`transition-all duration-300 ${
-                    isMobileMenuOpen
-                      ? "translate-y-6 rotate-45 opacity-100"
-                      : "opacity-100"
-                  }`}
-                />
-                <path
-                  d="M13 24H35"
-                  stroke="#242424"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  className={`transition-all duration-300 ${
-                    isMobileMenuOpen ? "opacity-0" : "opacity-100"
-                  }`}
-                />
-                <path
-                  d="M13 30.5H35"
-                  stroke="#242424"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  className={`transition-all duration-300 ${
-                    isMobileMenuOpen
-                      ? "translate-y-[-24px] -rotate-45 opacity-100"
-                      : "opacity-100"
-                  }`}
-                />
-              </g>
+
+              {/* Top line - transforms to top-right diagonal of X */}
+              <path
+                d="M14 17H34"
+                stroke="#242424"
+                strokeWidth="2"
+                strokeLinecap="round"
+
+              />
+
+              {/* Middle line - fades out */}
+              <path
+                d="M14 24H34"
+                stroke="#242424"
+                strokeWidth="2"
+                strokeLinecap="round"
+
+              />
+
+              {/* Bottom line - transforms to top-left diagonal of X */}
+              <path
+                d="M14 31H34"
+                stroke="#242424"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
             </svg>
           </button>
         </div>
