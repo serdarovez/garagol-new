@@ -11,11 +11,11 @@ const Button = ({
 }) => {
   const variantStyles: any = {
     primary:
-      "bg-[#EDD750] text-[#242424] hover:bg-[#8675F2] hover:text-white  border cursor-pointer border-[#242424] ",
+      "bg-[#EDD750] text-[#242424] hover:bg-[#8675F2] hover:text-white  border border-2 cursor-pointer border-[#242424] ",
     outline:
-      "border border-[#EDD750]  hover:bg-[#8675F2] z-1  bg-transparent  cursor-pointer text-white",
+      "border border-[#EDD750]  hover:bg-[#8675F2] z-1  bg-transparent border-2  cursor-pointer text-white",
     secondary:
-      "bg-[#8675F2] text-white  hover:bg-[#EDD750] hover:text-[#242424] cursor-pointer border border-[#242424]",
+      "bg-[#8675F2] text-white  hover:bg-[#EDD750] hover:text-[#242424] border-2 cursor-pointer border border-[#242424]",
   };
   return (
     <motion.div
