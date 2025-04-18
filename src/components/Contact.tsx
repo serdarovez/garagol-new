@@ -417,7 +417,7 @@ const Contact = () => {
                         : ""
                     }`}
                     type="text"
-                    placeholder={errors.name ? "Name is required" : "Your name"}
+                    placeholder={"Your name"}
                     onChange={() => {
                       if (errors.name) {
                         setErrors({ ...errors, name: false });
@@ -469,7 +469,11 @@ const Contact = () => {
                   className="relative"
                 >
                   <textarea
-                    className="bg-white border text-[#242424] h-46 p-3 w-full"
+                    className={`bg-white border text-[#242424] h-46 p-3 w-full ${
+                      errors.company
+                        ? "border-[#F85B4C] placeholder-[#F85B4C]"
+                        : ""
+                    }`}
                     placeholder={displayPlaceholder}
                     value={textareaValue}
                     onChange={(e) => setTextareaValue(e.target.value)}

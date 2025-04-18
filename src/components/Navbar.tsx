@@ -250,11 +250,11 @@ const Navbar = () => {
       {/* Second Line - Get Estimate Button (Mobile Only) */}
       {isHomePage && (
         <div 
-          className={`md:hidden container my-[4vw] transition-all duration-300 ease-in-out ${
+          className={`md:hidden container  transition-all duration-300 ease-in-out ${
             showMobileButton ? "opacity-100 max-h-20" : "opacity-0 max-h-0 overflow-hidden"
           }`}
         >
-          <Link to={`/estimate`} className="w-full block">
+          <Link to={`/estimate`} className="w-full my-[4vw] block">
             <Button
               variant="primary"
               title="Get Estimate"
