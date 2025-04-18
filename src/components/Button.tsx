@@ -16,6 +16,8 @@ const Button = ({
       "border border-[#EDD750]  hover:bg-[#8675F2] z-1  bg-transparent border-2  cursor-pointer text-white",
     secondary:
       "bg-[#8675F2] text-white  hover:bg-[#EDD750] hover:text-[#242424] border-2 cursor-pointer border border-[#242424]",
+    dark:
+      "bg-[#242424] text-white  hover:bg-[#8675F2] hover:text-white border-2 cursor-pointer border border-[#242424]",
   };
   return (
     <motion.div

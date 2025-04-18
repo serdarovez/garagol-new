@@ -11,7 +11,9 @@ import random6 from "../assets/6.svg";
 
 const Calculator = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string | string[]>>({});
+  const [selectedAnswers, setSelectedAnswers] = useState<
+    Record<number, string | string[]>
+  >({});
   const [selectedSvgs, setSelectedSvgs] = useState<Record<number, string>>({});
   const [showQuestions, setShowQuestions] = useState(true);
   const [validationError, setValidationError] = useState(false);
@@ -85,29 +87,30 @@ const Calculator = () => {
     const currentQuestion = questions[currentQuestionIndex];
 
     if (currentQuestion.multiSelect) {
-      const currentSelection = (selectedAnswers[currentQuestionIndex] as string[]) || [];
+      const currentSelection =
+        (selectedAnswers[currentQuestionIndex] as string[]) || [];
       const newSelection = currentSelection.includes(answer)
-        ? currentSelection.filter(item => item !== answer)
+        ? currentSelection.filter((item) => item !== answer)
         : [...currentSelection, answer];
 
-      setSelectedAnswers(prev => ({
+      setSelectedAnswers((prev) => ({
         ...prev,
         [currentQuestionIndex]: newSelection,
       }));
 
       if (newSelection.length > 0) {
-        setSelectedSvgs(prev => ({
+        setSelectedSvgs((prev) => ({
           ...prev,
           [currentQuestionIndex]: randomSvg,
         }));
       }
     } else {
-      setSelectedAnswers(prev => ({
+      setSelectedAnswers((prev) => ({
         ...prev,
         [currentQuestionIndex]: answer,
       }));
 
-      setSelectedSvgs(prev => ({
+      setSelectedSvgs((prev) => ({
         ...prev,
         [currentQuestionIndex]: randomSvg,
       }));
@@ -124,7 +127,8 @@ const Calculator = () => {
 
     if (
       (!currentQuestion.multiSelect && !currentAnswer) ||
-      (currentQuestion.multiSelect && (!currentAnswer || (currentAnswer as string[]).length === 0))
+      (currentQuestion.multiSelect &&
+        (!currentAnswer || (currentAnswer as string[]).length === 0))
     ) {
       setValidationError(true);
       return;
@@ -198,91 +202,101 @@ const Calculator = () => {
 
   return (
     <div className="flex min-h-screen text-white bg-[#8675F2] flex-col">
-      <div className="min-h-screen send">
+      <div className="min-h-screen  send">
         <AnimatePresence mode="wait">
           {showQuestions ? (
             <motion.div
               key="questions"
-              className="grow mt-40 w-3/4 md:w-3/7 mx-auto"
+              className="grow  flex container justify-center items-center h-screen mt-10 mx-auto"
               initial="hidden"
               animate="visible"
               exit="exit"
               variants={questionVariants}
             >
-              {/* Question */}
-              <div className="relative mb-10 p-3">
-                <span className="absolute text-[#EDD750] font-[AtkinsonItalic] text-8xl left-0 -top-5">
-                  {currentQuestionIndex + 1}
-                </span>
-                <div className="text-3xl z-2 relative font-[700]">
-                  {questions[currentQuestionIndex]?.question}
+              <div>
+                {/* Q
+              uestion */}
+                <div className="relative mb-10 p-3">
+                  <span className="absolute text-[#EDD750] font-[AtkinsonItalic] text-8xl left-0 -top-5">
+                    {currentQuestionIndex + 1}
+                  </span>
+                  <div className="text-3xl z-2 relative font-[700]">
+                    {questions[currentQuestionIndex]?.question}
+                  </div>
                 </div>
-              </div>
 
-              {/* Answers */}
-              <div className="flex flex-col mt-10 gap-3">
-                {questions[currentQuestionIndex].answers.map((answer) => (
-                 <motion.div
-                 key={answer}
-                 variants={answerItemVariants}
-                 animate={validationError ? "shake" : "visible"}
-                 whileTap="tap"
-                 className={`w-full p-3 h-12 border-box hover:bg-[#242424] hover:border-0 cursor-pointer hover:text-white text-[#242424] border flex justify-between items-center ${
-                   isAnswerSelected(answer) 
-                     ? "bg-[#EDD750]"  // Added !important flag to override other background classes
-                     : validationError 
-                       ? "border-[#F85B4C] text-[#F85B4C] bg-white" 
-                       : "bg-white"
-                 }`}
-                 onClick={() => handleAnswerSelect(answer)}
-               >
-                    {answer}
-                    {isAnswerSelected(answer) && (
-                      <motion.div
-                        variants={checkmarkVariants}
-                        initial="hidden"
-                        animate="visible"
-                        className="bg-white p-1 border"
-                      >
-                        <img
-                          src={selectedSvgs[currentQuestionIndex]}
-                          alt="Selected"
-                          className="w-5 h-5"
-                        />
-                      </motion.div>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
+                {/* Answers */}
+                <div className="flex flex-col mt-10 gap-3">
+                  {questions[currentQuestionIndex].answers.map((answer) => (
+                    <motion.div
+                      key={answer}
+                      variants={answerItemVariants}
+                      animate={validationError ? "shake" : "visible"}
+                      whileTap="tap"
+                      className={`w-full p-3 h-12 border-box hover:bg-[#242424] hover:border-0 cursor-pointer hover:text-white text-[#242424] border flex justify-between items-center ${
+                        isAnswerSelected(answer)
+                          ? "bg-[#EDD750]" // Added !important flag to override other background classes
+                          : validationError
+                          ? "border-[#F85B4C] text-[#F85B4C] bg-white"
+                          : "bg-white"
+                      }`}
+                      onClick={() => handleAnswerSelect(answer)}
+                    >
+                      {answer}
+                      {isAnswerSelected(answer) && (
+                        <motion.div
+                          variants={checkmarkVariants}
+                          initial="hidden"
+                          animate="visible"
+                          className="bg-white p-1 border"
+                        >
+                          <img
+                            src={selectedSvgs[currentQuestionIndex]}
+                            alt="Selected"
+                            className="w-5 h-5"
+                          />
+                        </motion.div>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
 
-              {/* Navigation Buttons */}
-              <div className="flex my-10 items-center gap-5">
-                {currentQuestionIndex > 0 && (
+                {/* Navigation Buttons */}
+                <div className="flex lg:flex-row xl:flex-row md:flex-row flex-col my-10 items-center gap-5">
                   <motion.div
                     whileTap={{ scale: 0.95 }}
-                    onClick={handlePrevious}
+                    onClick={handleNext}
+                    className="w-full lg:w-max xl:w-max"
                   >
                     <Button
-                      title="Previous question"
+                      title={
+                        currentQuestionIndex < questions.length - 1
+                          ? "Next question"
+                          : "Get results"
+                      }
                       variant="primary"
-                      class="w-max text-xl font-[400] cursor-pointer"
+                      class="lg:w-max xl:w-max text-center w-full text-xl font-[400] cursor-pointer"
                     />
                   </motion.div>
-                )}
-                <motion.div
-                  whileTap={{ scale: 0.95 }}
-                  onClick={handleNext}
-                >
-                  <Button
-                    title={
-                      currentQuestionIndex < questions.length - 1
-                        ? "Next question"
-                        : "Get results"
-                    }
-                    variant="primary"
-                    class="w-max text-xl font-[400] cursor-pointer"
-                  />
-                </motion.div>
+                  {currentQuestionIndex > 0 && (
+                    <motion.div
+                      whileTap={{ scale: 0.95 }}
+                      onClick={handlePrevious}
+                      className="w-full lg:w-max xl:w-max "
+                    >
+                      <Button
+                        title="Previous question"
+                        variant="primary"
+                        class="lg:w-max xl:w-max text-center hidden lg:block xl:block md:block  w-full text-xl font-[400] cursor-pointer"
+                      />
+                      <Button
+                        title="Previous question"
+                        variant="dark"
+                        class="lg:w-max xl:w-max text-center block lg:hidden xl:hidden md:hidden  w-full text-xl font-[400] cursor-pointer"
+                      />
+                    </motion.div>
+                  )}
+                </div>
               </div>
             </motion.div>
           ) : (
@@ -291,9 +305,9 @@ const Calculator = () => {
               initial="hidden"
               animate="visible"
               variants={sendContainerVariants}
-              className="grow pt-40 relative h-screen"
+              className="grow  flex items-center  h-screen relative "
             >
-              <div className="w-3/4 md:w-3/7 text-center mx-auto">
+              <div className="w-[95vw] md:w-3/7 text-center mx-auto">
                 <motion.h1
                   variants={formItemVariants}
                   custom={0}
