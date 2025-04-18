@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <div className=" xl:h-screen h-auto lg:h-screen lg:py-0 xl:py-0 py-10 bg-[#242424] text-white flex items-end justify-items-end ">
-      <div className="container lg:pt-0 xl:pt-0 pt-40 xl:h-[60vh] h-full lg:h-[60vh]">
+      <div className="container lg:pt-0 xl:pt-0 pt-50 xl:h-[60vh] h-full lg:h-[60vh]">
         <div className="text-3xl lg:text-7xl xl:text-7xl font-[700] leading-[1.1]">
           <span className="">{text}</span>
           <span className="animate-pulse text-[#EDD750] ">|</span>{" "}
