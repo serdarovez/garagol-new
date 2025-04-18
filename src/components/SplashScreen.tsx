@@ -8,8 +8,8 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const animationDuration = 1;
 
   return (
-    <div className="fixed inset-0 bg-[#242424] z-50 flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center w-full h-full gap-5">
+    <div className="fixed inset-0 bg-[#242424] z-50 flex items-center justify-center flex-col  ">
+      <div className="flex flex-col items-center justify-center w-full mt-auto gap-5">
         <motion.div
           className="flex items-center  justify-center"
           initial={{ scale: 1 }}
@@ -54,11 +54,13 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           </svg>
         </motion.div>
 
-        <motion.div
+        
+      </div>
+      <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: animationDuration }}
-          className="flex items-center justify-center"
+          className="flex items-center mt-auto justify-center"
         >
           <div className="w-64 h-auto">
             <Lottie
@@ -68,7 +70,6 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
             />
           </div>
         </motion.div>
-      </div>
     </div>
   );
 };
