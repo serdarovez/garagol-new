@@ -112,7 +112,7 @@ const Cards = () => {
                     {service.description}
                   </p>
                 </div>
-                <div className="xl:w-2/5 mt-10 lg:mt-0 xl:mt-0 w-full lg:w-2/5">
+                <div className="xl:w-2/5 mt-5 lg:mt-0 xl:mt-0 w-full lg:w-2/5">
                   <div className="flex lg:w-2/3 xl:w-2/3  lg:mx-auto xl:mx-auto lg:justify-end xl:justify-end flex-wrap gap-3 ">
                     {service.features.map((feature: string, index: number) => (
                       <Button
