@@ -36,32 +36,31 @@ const Home = () => {
   }, [text, isDeleting, loopNum]);
 
   return (
-    <div className=" xl:h-screen h-[100dvh]  lg:h-screen lg:py-0 xl:py-0 py-10 bg-[#242424] text-white flex items-end justify-items-end ">
+    <div className=" xl:h-screen h-screen  lg:h-screen lg:py-0 xl:py-0 py-10 bg-[#242424] text-white flex items-end justify-items-end ">
       <div className="container flex flex-col items-center justify-center lg:justify-items-start xl:items-start xl:justify-items-start lg:items-start lg:pt-0 xl:pt-0  xl:h-[60vh] h-full lg:h-[60vh]">
-        <div className="mt-auto" >
-          <div className="text-3xl lg:text-7xl xl:text-7xl font-[700] leading-[1.1]">
+        <div>
+          <div className="text-5xl lg:text-7xl xl:text-7xl font-[700] leading-[1.1]">
             <span className="">{text}</span>
             <span className="animate-pulse text-[#EDD750] ">|</span>{" "}
             {/* Cursor */}
             <br /> IT Consulting Reinvented.
           </div>
-          <div className="font-[400] text-xl lg:text-3xl xl:text-3xl  my-5 ">
+          <div className="font-[400] text-2xl lg:text-3xl xl:text-3xl  my-5 ">
             You dream it. We build it—securely, beautifully, and ready for
             scale.
           </div>
-        </div>
-
-        <div className="flex flex-col w-full  mt-auto lg:mt-0 xl:mt-0  lg:flex-row xl:flex-row justify-start items-center gap-5">
-          <Button
-            variant="primary"
-            title="Get in touch"
-            class="font-[700] lg:w-max  xl:w-max lg:text-start xl:text-start text-center w-full"
-          />
-          <Button
-            variant="outline"
-            title="Explore Our Services"
-            class="font-[700] lg:w-max xl:w-max lg:text-start xl:text-start text-center w-full "
-          />
+          <div className="flex flex-col mt-20 lg:flex-row xl:flex-row justify-start items-center gap-5">
+            <Button
+              variant="primary"
+              title="Get in touch"
+              class="font-[700] lg:w-max xl:w-max lg:text-start xl:text-start text-center w-full"
+            />
+            <Button
+              variant="outline"
+              title="Explore Our Services"
+              class="font-[700] lg:w-max xl:w-max lg:text-start xl:text-start text-center w-full "
+            />
+          </div>
         </div>
       </div>
       <svg
