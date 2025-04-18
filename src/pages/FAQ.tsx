@@ -60,7 +60,7 @@ function FAQ() {
 
   return (
     <div className="flex min-h-screen text-white bg-[#242424] flex-col">
-      <div className="grow container mb-20 mt-40">
+      <div className="grow container mb-20 xl:mt-40 mt-20 lg:mt-40">
         <div className="flex lg:flex-row xl:flex-row flex-col items-center justify-between">
           <div>
             <div className="text-3xl md:text-3xl lg:text-6xl font-[700]  mb-5 font-[AtkinsonBold] text-[#EDD750]">
@@ -85,7 +85,7 @@ function FAQ() {
               <Button
                 title="Let’s start!"
                 variant="primary"
-                class="w-max my-20 text-xl font-[700]  cursor-pointer"
+                class="lg:w-max xl:w-max w-full text-center my-20 text-xl font-[700]  cursor-pointer"
               />
             </Link>
           </div>

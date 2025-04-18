@@ -205,42 +205,21 @@ const Navbar = () => {
               xmlns="http://www.w3.org/2000/svg"
               width="40"
               height="40"
-              viewBox="0 0 48 48"
+              viewBox="0 0 40 40"
               fill="none"
-              className="relative"
             >
-              <rect x="1" y="1" width="46" height="46" fill="white" />
+              <rect x="1" y="1" width="38" height="38" fill="white" />
               <rect
                 x="1"
                 y="1"
-                width="46"
-                height="46"
+                width="38"
+                height="38"
                 stroke="#242424"
-                strokeWidth="2"
+                stroke-width="2"
               />
-
-              {/* Top line - transforms to top-right diagonal of X */}
               <path
-                d="M14 17H34"
-                stroke="#242424"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-
-              {/* Middle line - fades out */}
-              <path
-                d="M14 24H34"
-                stroke="#242424"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-
-              {/* Bottom line - transforms to top-left diagonal of X */}
-              <path
-                d="M14 31H34"
-                stroke="#242424"
-                strokeWidth="2"
-                strokeLinecap="round"
+                d="M30.4168 20.0002C30.4168 20.3317 30.2851 20.6496 30.0507 20.884C29.8163 21.1185 29.4984 21.2502 29.1668 21.2502H10.8335C10.502 21.2502 10.184 21.1185 9.94961 20.884C9.71519 20.6496 9.5835 20.3317 9.5835 20.0002C9.5835 19.6686 9.71519 19.3507 9.94961 19.1163C10.184 18.8819 10.502 18.7502 10.8335 18.7502H29.1668C29.4984 18.7502 29.8163 18.8819 30.0507 19.1163C30.2851 19.3507 30.4168 19.6686 30.4168 20.0002ZM10.8335 14.5835H29.1668C29.4984 14.5835 29.8163 14.4518 30.0507 14.2174C30.2851 13.983 30.4168 13.665 30.4168 13.3335C30.4168 13.002 30.2851 12.684 30.0507 12.4496C29.8163 12.2152 29.4984 12.0835 29.1668 12.0835H10.8335C10.502 12.0835 10.184 12.2152 9.94961 12.4496C9.71519 12.684 9.5835 13.002 9.5835 13.3335C9.5835 13.665 9.71519 13.983 9.94961 14.2174C10.184 14.4518 10.502 14.5835 10.8335 14.5835ZM29.1668 25.4168H10.8335C10.502 25.4168 10.184 25.5485 9.94961 25.7829C9.71519 26.0174 9.5835 26.3353 9.5835 26.6668C9.5835 26.9983 9.71519 27.3163 9.94961 27.5507C10.184 27.7851 10.502 27.9168 10.8335 27.9168H29.1668C29.4984 27.9168 29.8163 27.7851 30.0507 27.5507C30.2851 27.3163 30.4168 26.9983 30.4168 26.6668C30.4168 26.3353 30.2851 26.0174 30.0507 25.7829C29.8163 25.5485 29.4984 25.4168 29.1668 25.4168Z"
+                fill="#242424"
               />
             </svg>
           </button>
@@ -249,9 +228,11 @@ const Navbar = () => {
 
       {/* Second Line - Get Estimate Button (Mobile Only) */}
       {isHomePage && (
-        <div 
+        <div
           className={`md:hidden container  transition-all duration-300 ease-in-out ${
-            showMobileButton ? "opacity-100 max-h-20" : "opacity-0 max-h-0 overflow-hidden"
+            showMobileButton
+              ? "opacity-100 max-h-20"
+              : "opacity-0 max-h-0 overflow-hidden"
           }`}
         >
           <Link to={`/estimate`} className="w-full my-[4vw] block">
