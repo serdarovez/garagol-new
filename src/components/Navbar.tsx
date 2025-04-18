@@ -12,6 +12,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Check if current route is home page
+  const isHomePage = location.pathname === "/";
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -20,8 +23,8 @@ const Navbar = () => {
         setIsScrolled(false);
       }
 
-      // Mobile button hide/show logic
-      if (window.innerWidth < 768) { // Only for mobile
+      // Mobile button hide/show logic - only on home page
+      if (window.innerWidth < 768 && isHomePage) {
         if (window.scrollY > lastScrollY && window.scrollY > 100) {
           // Scrolling down
           setShowMobileButton(false);
@@ -35,7 +38,7 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, isHomePage]);
 
   const toggleMobileMenu = () => {
     if (isMobileMenuOpen) {
@@ -44,15 +47,17 @@ const Navbar = () => {
         setIsMobileMenuOpen(false);
       }, 300);
     } else {
-      // Opening - show the button when menu is opened
-      setShowMobileButton(true);
+      // Opening - show the button when menu is opened (only on home page)
+      if (isHomePage) {
+        setShowMobileButton(true);
+      }
       setIsMobileMenuOpen(true);
     }
   };
 
   const scrollToSection = (sectionId: string) => {
     toggleMobileMenu(); // Close mobile menu when a section is clicked
-    if (location.pathname === "/") {
+    if (isHomePage) {
       const element = document.getElementById(sectionId);
       if (element) {
         window.scrollTo({
@@ -179,13 +184,15 @@ const Navbar = () => {
             </span>
             <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25"></div>
           </div>
-          <Link to={`/estimate`}>
-            <Button
-              variant="primary"
-              title="Get Estimate"
-              class="cursor-pointer"
-            />
-          </Link>
+          {isHomePage && (
+            <Link to={`/estimate`}>
+              <Button
+                variant="primary"
+                title="Get Estimate"
+                class="cursor-pointer"
+              />
+            </Link>
+          )}
         </div>
         {/* Mobile Hamburger Menu Button */}
         <div className="md:hidden flex items-center">
@@ -241,21 +248,21 @@ const Navbar = () => {
       </div>
 
       {/* Second Line - Get Estimate Button (Mobile Only) */}
-      <div 
-        className={`md:hidden container  transition-all duration-300 ease-in-out ${
-          showMobileButton ? "opacity-100 max-h-20" : "opacity-0 max-h-0 overflow-hidden"
-        }`}
-      >
-        <Link to={`/estimate`} className="w-full my-[4vw] block">
-          <Button
-            variant="primary"
-            title="Get Estimate"
-            class="w-full text-center cursor-pointer"
-          />
-        </Link>
-      </div>
-
-      {/* Desktop Navigation Links */}
+      {isHomePage && (
+        <div 
+          className={`md:hidden container my-[4vw] transition-all duration-300 ease-in-out ${
+            showMobileButton ? "opacity-100 max-h-20" : "opacity-0 max-h-0 overflow-hidden"
+          }`}
+        >
+          <Link to={`/estimate`} className="w-full block">
+            <Button
+              variant="primary"
+              title="Get Estimate"
+              class="w-full text-center cursor-pointer"
+            />
+          </Link>
+        </div>
+      )}
 
       {/* Mobile Menu Dropdown */}
       <div

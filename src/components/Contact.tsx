@@ -193,10 +193,10 @@ const Contact = () => {
         setSelectedButtons([...selectedButtons, { button, svg: randomSvg }]);
       }
     }
-    
+
     // Clear service error when a button is selected
     if (errors.services) {
-      setErrors({...errors, services: false});
+      setErrors({ ...errors, services: false });
     }
   };
 
@@ -225,12 +225,12 @@ const Contact = () => {
     shake: {
       x: [0, -10, 10, -10, 10, 0],
       transition: {
-        duration: 0.5
-      }
+        duration: 0.5,
+      },
     },
     static: {
-      x: 0
-    }
+      x: 0,
+    },
   };
 
   const validateForm = () => {
@@ -256,14 +256,14 @@ const Contact = () => {
     };
 
     setErrors(newErrors);
-    
+
     // If there are errors, trigger shake animation
-    if (Object.values(newErrors).some(error => error)) {
+    if (Object.values(newErrors).some((error) => error)) {
       setShake(true);
       setTimeout(() => setShake(false), 500);
       return false;
     }
-    
+
     return true;
   };
 
@@ -355,7 +355,7 @@ const Contact = () => {
                   I'm interested in...
                 </div>
               </div>
-              <motion.div 
+              <motion.div
                 className="flex flex-col gap-5"
                 animate={errors.services && shake ? "shake" : "static"}
                 variants={shakeVariants}
@@ -367,7 +367,9 @@ const Contact = () => {
                     whileTap="tap"
                     className={`w-full p-3 h-12 border-box hover:bg-[#242424] cursor-pointer hover:text-white hover:border-[#242424] text-[#242424] border flex justify-between items-center ${
                       isButtonSelected(button) ? "bg-[#EDD750]" : "bg-white"
-                    } ${errors.services ? "border-[#F85B4C] text-[#F85B4C]" : ""}`}
+                    } ${
+                      errors.services ? "border-[#F85B4C] text-[#F85B4C]" : ""
+                    }`}
                     onClick={() => toggleButton(button)}
                   >
                     {button}
@@ -388,7 +390,9 @@ const Contact = () => {
                   </motion.div>
                 ))}
                 {errors.services && (
-                  <p className="text-[#F85B4C] text-sm">Please select at least one service</p>
+                  <p className="text-[#fff] text-sm">
+                    Please select at least one service
+                  </p>
                 )}
               </motion.div>
             </div>
@@ -408,13 +412,15 @@ const Contact = () => {
                 >
                   <input
                     className={`bg-white text-[#242424] w-full p-3 h-12 border-box border ${
-                      errors.name ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
+                      errors.name
+                        ? "border-[#F85B4C] placeholder-[#F85B4C]"
+                        : ""
                     }`}
                     type="text"
                     placeholder={errors.name ? "Name is required" : "Your name"}
                     onChange={() => {
                       if (errors.name) {
-                        setErrors({...errors, name: false});
+                        setErrors({ ...errors, name: false });
                       }
                     }}
                   />
@@ -425,13 +431,15 @@ const Contact = () => {
                 >
                   <input
                     className={`bg-white text-[#242424] p-3 w-full h-12 border-box border ${
-                      errors.email ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
+                      errors.email
+                        ? "border-[#F85B4C] placeholder-[#F85B4C]"
+                        : ""
                     }`}
                     type="text"
-                    placeholder={errors.email ? "Email is required" : "Email"}
+                    placeholder={"Email"}
                     onChange={() => {
                       if (errors.email) {
-                        setErrors({...errors, email: false});
+                        setErrors({ ...errors, email: false });
                       }
                     }}
                   />
@@ -442,18 +450,24 @@ const Contact = () => {
                 >
                   <input
                     className={`bg-white text-[#242424] p-3 w-full h-12 border-box border ${
-                      errors.company ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
+                      errors.company
+                        ? "border-[#F85B4C] placeholder-[#F85B4C]"
+                        : ""
                     }`}
                     type="text"
-                    placeholder={errors.company ? "Company is required" : "Company name"}
+                    placeholder={"Company name"}
                     onChange={() => {
                       if (errors.company) {
-                        setErrors({...errors, company: false});
+                        setErrors({ ...errors, company: false });
                       }
                     }}
                   />
                 </motion.div>
-                <div className="relative">
+                <motion.div
+                  animate={errors.company && shake ? "shake" : "static"}
+                  variants={shakeVariants}
+                  className="relative"
+                >
                   <textarea
                     className="bg-white border text-[#242424] h-46 p-3 w-full"
                     placeholder={displayPlaceholder}
@@ -470,7 +484,7 @@ const Contact = () => {
                   {isTyping && (
                     <div className="absolute right-3 bottom-3 w-2 h-5 bg-[#242424] animate-pulse"></div>
                   )}
-                </div>
+                </motion.div>
                 <div onClick={handleSubmit}>
                   <Button
                     variant="primary"
