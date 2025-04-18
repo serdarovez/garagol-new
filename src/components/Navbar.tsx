@@ -6,8 +6,9 @@ const Navbar = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // const [ setIsAnimating] = useState(false);
   const [menuHeight, setMenuHeight] = useState(0);
+  const [showMobileButton, setShowMobileButton] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -18,25 +19,34 @@ const Navbar = () => {
       } else {
         setIsScrolled(false);
       }
+
+      // Mobile button hide/show logic
+      if (window.innerWidth < 768) { // Only for mobile
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+          // Scrolling down
+          setShowMobileButton(false);
+        } else if (window.scrollY < lastScrollY) {
+          // Scrolling up
+          setShowMobileButton(true);
+        }
+      }
+      setLastScrollY(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const toggleMobileMenu = () => {
     if (isMobileMenuOpen) {
       // Closing animation
-      // setIsAnimating(true);
       setTimeout(() => {
         setIsMobileMenuOpen(false);
-        // setIsAnimating(false);
       }, 300);
     } else {
-      // Opening
+      // Opening - show the button when menu is opened
+      setShowMobileButton(true);
       setIsMobileMenuOpen(true);
-      // setIsAnimating(true);
-      // setTimeout(() => setIsAnimating(false), 10);
     }
   };
 
@@ -68,7 +78,7 @@ const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="w-full bg-white fixed  lg:p-3 xl:p-3 p-1 z-50 top-0">
+    <div className="w-full bg-white fixed lg:p-3 xl:p-3 p-1 z-50 top-0">
       {/* First Line - Logo and Hamburger */}
       <div className="container flex items-center w-full justify-between">
         <Link to={`/`}>
@@ -208,7 +218,6 @@ const Navbar = () => {
                 stroke="#242424"
                 strokeWidth="2"
                 strokeLinecap="round"
-
               />
 
               {/* Middle line - fades out */}
@@ -217,7 +226,6 @@ const Navbar = () => {
                 stroke="#242424"
                 strokeWidth="2"
                 strokeLinecap="round"
-
               />
 
               {/* Bottom line - transforms to top-left diagonal of X */}
@@ -233,8 +241,12 @@ const Navbar = () => {
       </div>
 
       {/* Second Line - Get Estimate Button (Mobile Only) */}
-      <div className="md:hidden container my-[4vw] ">
-        <Link to={`/estimate`} className="w-full block">
+      <div 
+        className={`md:hidden container  transition-all duration-300 ease-in-out ${
+          showMobileButton ? "opacity-100 max-h-20" : "opacity-0 max-h-0 overflow-hidden"
+        }`}
+      >
+        <Link to={`/estimate`} className="w-full my-[4vw] block">
           <Button
             variant="primary"
             title="Get Estimate"
