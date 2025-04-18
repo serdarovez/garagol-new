@@ -37,14 +37,14 @@ const Home = () => {
 
   return (
     <div className=" xl:h-screen h-auto lg:h-screen lg:py-0 xl:py-0 py-10 bg-[#242424] text-white flex items-end justify-items-end ">
-      <div className="container lg:pt-0 xl:pt-0 pt-20 xl:h-[60vh] h-full lg:h-[60vh]">
-        <div className="text-5xl lg:text-7xl xl:text-7xl font-[700] leading-[1.1]">
+      <div className="container lg:pt-0 xl:pt-0 pt-30 xl:h-[60vh] h-full lg:h-[60vh]">
+        <div className="text-3xl lg:text-7xl xl:text-7xl font-[700] leading-[1.1]">
           <span className="">{text}</span>
           <span className="animate-pulse text-[#EDD750] ">|</span>{" "}
           {/* Cursor */}
           <br /> IT Consulting Reinvented.
         </div>
-        <div className="font-[400] text-2xl lg:text-3xl xl:text-3xl  my-10 ">
+        <div className="font-[400] text-xl lg:text-3xl xl:text-3xl  my-5 ">
           You dream it. We build it—securely, beautifully, and ready for scale.
         </div>
         <div className="flex flex-col lg:flex-row xl:flex-row justify-start items-center gap-5">

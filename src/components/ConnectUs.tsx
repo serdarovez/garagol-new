@@ -80,13 +80,13 @@ const ConnectUs = () => {
                   <span className="absolute text-[#EDD750] font-[AtkinsonItalic] -z-1 text-8xl left-0 -top-5">
                     {index + 1}
                   </span>
-                  <h3 className="text-4xl z-2 font-[700] mb-6">
+                  <h3 className="text-3xl z-2 font-[700] mb-6">
                     {service.title}
                   </h3>
                 </div>
                 <div className="flex-1 flex flex-col">
                   <div className="">
-                    <p className="mb-4 text-2xl text-start">
+                    <p className="mb-4 text-xl text-start">
                       {service.description}
                     </p>
                   </div>

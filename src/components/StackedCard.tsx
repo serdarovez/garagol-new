@@ -20,12 +20,12 @@ const StackedCard = ({
         <h3 className="text-3xl font-bold  mb-5">{title}</h3>
         <div className="flex items-start justify-between">
           <div>
-            <p className=" mb-4 text-2xl">{description}</p>
+            <p className=" mb-4 text-xl">{description}</p>
 
             <ul className="space-y-2 list-disc list-inside">
               {features.map((feature: string, index: number) => (
                 <li key={index} className=" ">
-                  <span className="text-2xl">{feature}</span>
+                  <span className="text-xl">{feature}</span>
                 </li>
               ))}
             </ul>

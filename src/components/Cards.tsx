@@ -102,10 +102,10 @@ const Cards = () => {
             >
               <div className="p-6 flex justify-between lg:flex-row xl:flex-row flex-col lg:items-end xl:items-end items-center">
                 <div className="  xl:w-3/5 w-full lg:w-3/5">
-                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-[700]  mb-8 font-[AtkinsonBold]">
+                  <h3 className="text-3xl md:text-3xl lg:text-6xl font-[700]  mb-8 font-[AtkinsonBold]">
                     {service.title}
                   </h3>
-                  <p className=" text-xl md:text-2xl lg:text-2xl font-[400]  mb-4 ">
+                  <p className=" text-xl md:text-xl lg:text-xl font-[400]  mb-4 ">
                     {service.description}
                   </p>
                 </div>
@@ -117,7 +117,7 @@ const Cards = () => {
                         title={feature}
                         key={index}
                       >
-                        {/* <span className="text-2xl">{feature}</span> */}
+                        {/* <span className="text-xl">{feature}</span> */}
                       </Button>
                     ))}
                   </div>

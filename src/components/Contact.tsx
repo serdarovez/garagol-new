@@ -338,10 +338,10 @@ const Contact = () => {
     <div id="inquiry" className="bg-[#8675F2]">
       <div className="min-h-screen px-0 container p-10 text-white flex flex-col">
         <div className="p-10 px-0">
-          <h3 className="text-5xl md:text-5xl lg:text-6xl font-[700] mb-5">
+          <h3 className="text-3xl md:text-3xl lg:text-6xl font-[700] mb-5">
             How can we help you?
           </h3>
-          <p className="mb-4 font-[400] text-2xl lg:text-3xl xl:text-3xl">
+          <p className="mb-4 font-[400] text-xl lg:text-3xl xl:text-3xl">
             Tell us what you need, and we'll go the extra mile to help you
             succeed.
           </p>

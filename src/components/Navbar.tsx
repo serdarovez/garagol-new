@@ -106,13 +106,23 @@ const Navbar = () => {
             {/* Animated Text */}
             <div className="overflow-hidden relative h-14 w-64">
               <div
-                className={`absolute flex flex-col transition-all duration-500 ease-in-out ${
+                className={`absolute  hidden lg:flex xl:flex md:flex flex-col transition-all duration-500 ease-in-out ${
                   isHovering || !isScrolled
                     ? "translate-x-0"
                     : "-translate-x-full"
                 }`}
               >
-                <h1 className="font-[700] lg:text-2xl xl:text-2xl text-lg whitespace-nowrap">
+                <h1 className="font-[700] lg:text-xl xl:text-xl text-lg whitespace-nowrap">
+                  Garagol
+                </h1>
+                <span className="font-[400] whitespace-nowrap">
+                  Consulting and Solutions Company.
+                </span>
+              </div>
+              <div
+                className={`absolute  flex lg:hidden xl:hidden md:hidden flex-col transition-all duration-500 ease-in-out `}
+              >
+                <h1 className="font-[700] lg:text-xl xl:text-xl text-lg whitespace-nowrap">
                   Garagol
                 </h1>
                 <span className="font-[400] whitespace-nowrap">
@@ -162,7 +172,7 @@ const Navbar = () => {
           <Link to={`/estimate`}>
             <Button
               variant="primary"
-              title="Get estimate"
+              title="Get Estimate"
               class="cursor-pointer"
             />
           </Link>
@@ -223,11 +233,11 @@ const Navbar = () => {
       </div>
 
       {/* Second Line - Get Estimate Button (Mobile Only) */}
-      <div className="md:hidden container mt-2">
+      <div className="md:hidden container my-2 ">
         <Link to={`/estimate`} className="w-full block">
           <Button
             variant="primary"
-            title="Get estimate"
+            title="Get Estimate"
             class="w-full text-center cursor-pointer"
           />
         </Link>

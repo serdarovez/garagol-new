@@ -297,14 +297,14 @@ const Calculator = () => {
                 <motion.h1
                   variants={formItemVariants}
                   custom={0}
-                  className="text-5xl font-bold mb-5"
+                  className="text-3xl font-bold mb-5"
                 >
                   You're just one step away!
                 </motion.h1>
                 <motion.p
                   variants={formItemVariants}
                   custom={1}
-                  className="text-2xl mb-12"
+                  className="text-xl mb-12"
                 >
                   Fill out the form to get complete details and pricing.
                 </motion.p>

@@ -54,7 +54,7 @@ const Footer = ({ type }: FooterProps) => {
               </defs>
             </svg>
             <div>
-              <h1 className="font-[700] text-2xl">Garagol</h1>
+              <h1 className="font-[700] text-xl">Garagol</h1>
               <span className="font-[400]">
                 Consulting and Solutions Company.
               </span>

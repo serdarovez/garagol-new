@@ -42,7 +42,7 @@ const Gurantee = () => {
   return (
     <div id="commitment" className=" bg-[#f9f9f9]">
       <div className="lg:py-30 xl:py-30 py-20 container ">
-        <div className="title">Our commitment to your success</div>
+        <div className="title">Our commitment </div>
         <div className="paragraph">
           We ensure the highest quality of work, with the fastest delivery
           times.
@@ -57,7 +57,7 @@ const Gurantee = () => {
                 <h3 className="text-3xl font-bold ">{service.title}</h3>
                 <div className="  lg:flex-row items-start justify-items-start xl:flex-row md:flex gap-5 flex-col ">
                   <div className="mt-5">
-                    <p className=" mb-2 text-2xl text-start">
+                    <p className=" mb-2 text-xl text-start">
                       {service.description}
                     </p>
                   </div>

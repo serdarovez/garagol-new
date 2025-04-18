@@ -67,7 +67,7 @@ export const Accordion: React.FC<AccordionProps> = ({
           />
         </svg>
         <span
-          className={`text-xl md:text-2xl lg:text-2xl font-bold transition-colors duration-200 ${
+          className={`text-xl md:text-xl lg:text-xl font-bold transition-colors duration-200 ${
             isOpen ? "text-[#242424]" : "text-white group-hover:text-[#242424]"
           }`}
         >
@@ -81,7 +81,7 @@ export const Accordion: React.FC<AccordionProps> = ({
       >
         <div className="p-4 flex gap-5">
           <div style={{ width: 32 }}></div>
-          <div className="text-xl md:text-2xl lg:text-2xl text-[#242424] font-[400]">
+          <div className="text-xl md:text-xl lg:text-xl text-[#242424] font-[400]">
             {answer}
           </div>
         </div>
