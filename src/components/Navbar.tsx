@@ -95,8 +95,8 @@ const Navbar = () => {
             {/* Logo SVG */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="63"
-              height="63"
+              width="53"
+              height="53"
               viewBox="0 0 63 63"
               fill="none"
               className="transition-transform lg:w-auto xl:w-auto duration-300"
@@ -147,7 +147,7 @@ const Navbar = () => {
             </div>
           </div>
         </Link>
-        <div className="hidden md:flex gap-x-10 2xl:gap-x-10 items-center text-gray-700 font-medium text-lg justify-center mt-4">
+        <div className="hidden md:flex gap-x-10 2xl:gap-x-10 items-center text-gray-700 font-medium text-lg justify-center ">
           <div className="relative group cursor-pointer transition-colors">
             <span
               className="mx-2 cursor-pointer"
