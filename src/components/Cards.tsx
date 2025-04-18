@@ -81,11 +81,14 @@ const Cards = () => {
   }, []);
   return (
     <div id="services" className="container pb-20">
-      <div ref={titleRef} className="sticky  lg:w-3/5 xl:w-3/5 w-full lg:mt-20 xl:mt-30 mt-10 lg:top-30 xl:top-30 top-20">
-        <div className="title">Our services</div>
+      <div
+        ref={titleRef}
+        className="sticky  lg:w-3/5 xl:w-3/5 w-full lg:mt-20 xl:mt-30 mt-10 lg:top-30 xl:top-30 top-20"
+      >
+        <div className="title">Our Services</div>
         <div className="paragraph">
-          We design, develop, and deliver secure, high-performance solutions
-          tailored to your business needs.
+          Tailored, high-performance solutions designed and developed with your
+          business in mind.
         </div>
       </div>
       <div ref={containerRef} className="w-full  flex flex-col gap-5 ">

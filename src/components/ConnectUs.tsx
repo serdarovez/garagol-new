@@ -53,6 +53,10 @@ const ConnectUs = () => {
     <div id="process" className="bg-white">
       <div className="lg:pt-20 xl:pt-20 lg:pb-30 xl:pb-30 pb-20 container overflow-hidden">
         <div className="title">Our process</div>
+        <div className="paragraph">
+          Efficient steps, measurable results – our proven pathway to
+          excellence.
+        </div>
 
         <motion.div
           className="flex flex-col md:flex-row xl:mt-20 mt-10 lg:mt-20 gap-4"
@@ -80,13 +84,13 @@ const ConnectUs = () => {
                   <span className="absolute text-[#EDD750] font-[AtkinsonItalic] -z-1 text-8xl left-0 -top-5">
                     {index + 1}
                   </span>
-                  <h3 className="text-3xl z-2 font-[700] mb-6">
+                  <h3 className=" lg:text-4xl xl:text-4xl text-3xl z-2 font-[700] mb-6">
                     {service.title}
                   </h3>
                 </div>
                 <div className="flex-1 flex flex-col">
                   <div className="">
-                    <p className="mb-4 text-xl text-start">
+                    <p className="mb-4 lg:text-2xl xl:text-2xl text-xl text-start">
                       {service.description}
                     </p>
                   </div>

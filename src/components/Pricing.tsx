@@ -21,7 +21,7 @@ const Pricing = () => {
   return (
     <div className="bg-[#242424] py-16 my-10">
       <div className="container text-white">
-        <div className="text-xl lg:text-xl xl:text-xl">
+        <div className="text-xl lg:text-2xl xl:text-2xl">
           Plan your budget confidently by requesting a detailed project estimate
           today. Need answers first or want personalized advice? Ask a question
           – our team is here to provide the guidance you need.

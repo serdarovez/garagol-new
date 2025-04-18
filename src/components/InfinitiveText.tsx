@@ -107,7 +107,7 @@ const InfiniteScrollingText = () => {
     <div className="overflow-hidden w-full py-5 bg-[#242424]">
       {/* First line - alternates between right-to-left and left-to-right */}
       <motion.div
-        className="whitespace-nowrap text-3xl font-bold mb-3"
+        className="whitespace-nowrap lg:text-5xl xl:text-5xl text-3xl font-bold mb-3"
         animate={controls1}
       >
         {renderText(repeatedText1, sentences1, highlightedSentence1)}
@@ -115,7 +115,7 @@ const InfiniteScrollingText = () => {
 
       {/* Second line - alternates between left-to-right and right-to-left */}
       <motion.div
-        className="whitespace-nowrap text-3xl font-bold"
+        className="whitespace-nowrap lg:text-5xl xl:text-5xl text-3xl font-bold"
         animate={controls2}
       >
         {renderText(repeatedText2, sentences2, highlightedSentence2)}

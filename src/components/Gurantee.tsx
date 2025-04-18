@@ -15,22 +15,26 @@ const Gurantee = () => {
     },
     {
       title: "Ongoing Support",
-      description: "For urgent issues, we do our best to respond within two hours, keeping your operations running smoothly.",
+      description:
+        "For urgent issues, we do our best to respond within two hours, keeping your operations running smoothly.",
       icon: support,
     },
     {
       title: "Compliant Development",
-      description: "Every line of code is carefully reviewed to reduce vulnerabilities and safeguard your data.",
+      description:
+        "Every line of code is carefully reviewed to reduce vulnerabilities and safeguard your data.",
       icon: safe,
     },
     {
       title: "Scalability Assurance",
-      description: "We guide you in scaling your solutions over time, ensuring they grow along with your business.",
+      description:
+        "We guide you in scaling your solutions over time, ensuring they grow along with your business.",
       icon: scalable,
     },
     {
       title: "Transparent Pricing",
-      description: "Competitive global rates with no hidden fees or unexpected charges.",
+      description:
+        "Competitive global rates with no hidden fees or unexpected charges.",
       icon: money,
     },
     {
@@ -42,10 +46,10 @@ const Gurantee = () => {
   return (
     <div id="commitment" className=" bg-[#f9f9f9]">
       <div className="lg:py-30 xl:py-30 py-20 container ">
-        <div className="title">Our commitment </div>
+        <div className="title">Our Commitment </div>
         <div className="paragraph">
-          We ensure the highest quality of work, with the fastest delivery
-          times.
+          Dedicated to quality, speed, and continuous support to drive your
+          success.
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2   mt-10  gap-5">
           {services.map((service) => (
