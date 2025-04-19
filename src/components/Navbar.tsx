@@ -184,7 +184,7 @@ const Navbar = () => {
             </span>
             <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25"></div>
           </div>
-          {isHomePage && (
+          
             <Link to={`/estimate`}>
               <Button
                 variant="primary"
@@ -192,7 +192,6 @@ const Navbar = () => {
                 class="cursor-pointer"
               />
             </Link>
-          )}
         </div>
         {/* Mobile Hamburger Menu Button */}
         <div className="md:hidden flex items-center">

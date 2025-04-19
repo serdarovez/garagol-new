@@ -207,15 +207,14 @@ const Calculator = () => {
           {showQuestions ? (
             <motion.div
               key="questions"
-              className="grow  flex container justify-center items-center h-screen mt-10 mx-auto"
+              className="grow  flex container justify-center lg:items-start items-center min-h-screen mt-40 mx-auto"
               initial="hidden"
               animate="visible"
               exit="exit"
               variants={questionVariants}
             >
-              <div>
-                {/* Q
-              uestion */}
+              <div className="md:w-4/7">
+                {/* Question */}
                 <div className="relative mb-10 p-3">
                   <span className="absolute text-[#EDD750] font-[AtkinsonItalic] text-8xl left-0 -top-5">
                     {currentQuestionIndex + 1}
@@ -282,7 +281,7 @@ const Calculator = () => {
                     <motion.div
                       whileTap={{ scale: 0.95 }}
                       onClick={handlePrevious}
-                      className="w-full lg:w-max xl:w-max "
+                      className="w-full  "
                     >
                       <Button
                         title="Previous question"
