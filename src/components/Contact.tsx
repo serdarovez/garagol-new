@@ -348,7 +348,7 @@ const Contact = () => {
           <div className="grid mt-20 grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 lg:gap-5 xl:gap-5 gap-10">
             <div className="">
               <div className="relative mb-10 p-3">
-                <span className="absolute text-[#EDD750] font-[AtkinsonItalic] text-8xl left-0 -top-5">
+                <span className="absolute text-[#EDD750] font-[AtkinsonItalic]  text-8xl left-0 -top-5">
                   1
                 </span>
                 <div className="text-3xl z-2 relative font-[700]">

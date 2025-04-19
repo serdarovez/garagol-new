@@ -116,6 +116,7 @@ const Cards = () => {
                   <div className="flex lg:w-2/3 xl:w-2/3  lg:mx-auto xl:mx-auto lg:justify-end xl:justify-end flex-wrap gap-3 ">
                     {service.features.map((feature: string, index: number) => (
                       <Button
+                        //@ts-ignore
                         variant={service.type}
                         title={feature}
                         key={index}

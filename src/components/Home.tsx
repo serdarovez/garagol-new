@@ -36,7 +36,7 @@ const Home = () => {
   }, [text, isDeleting, loopNum]);
 
   return (
-    <div className=" xl:h-screen h-dvh  lg:h-screen lg:py-0 xl:py-0 py-10 bg-[#242424] text-white flex items-end justify-items-end ">
+    <div className=" xl:h-dvh h-dvh  lg:h-screen lg:py-0 xl:py-0 py-10 bg-[#242424] text-white flex items-end justify-items-end ">
       <div className="container flex flex-col items-center justify-center lg:justify-items-start xl:items-start xl:justify-items-start lg:items-start lg:pt-0 xl:pt-0  xl:h-[60vh] h-full lg:h-[60vh]">
         <div>
           <div className="text-5xl lg:text-7xl xl:text-7xl font-[700] leading-[1.1]">
