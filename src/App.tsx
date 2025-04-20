@@ -19,6 +19,7 @@ const AppContent = () => {
       top: 0,
     });
   }, [location]);
+  
 
   return (
     <div className="relative cursor-none">
@@ -35,14 +36,18 @@ const AppContent = () => {
       </AnimatePresence>
 
       {showContent && (
-        <>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <Navbar />
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/estimate" element={<FAQ />} />
+            <Route path="/estimate"  element={<FAQ />} />
             <Route path="/calculator" element={<Calculator />} />
           </Routes>
-        </>
+        </motion.div>
       )}
     </div>
   );
