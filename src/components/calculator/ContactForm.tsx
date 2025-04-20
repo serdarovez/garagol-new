@@ -38,21 +38,20 @@ const ContactForm = ({
       opacity: 1,
       transition: {
         when: "beforeChildren",
-        staggerChildren: 0.15, // Increased stagger for more noticeable sequence
+        staggerChildren: 0.15,
       },
     },
   };
 
   const item = {
-    hidden: { opacity: 0, y: -30 }, // Start higher up
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         type: "spring",
         damping: 10,
         stiffness: 100,
-        duration: 0.5 
       },
     },
     shake: {
@@ -98,24 +97,20 @@ const ContactForm = ({
     >
       <div className="w-[95vw] md:w-3/7 text-center mx-auto">
         {/* Title - appears first */}
-        <motion.h1 
-          variants={item}
-          className="text-3xl font-bold mb-5"
-        >
+        <motion.h1 variants={item} className="text-3xl font-bold mb-5">
           You're just one step away!
         </motion.h1>
 
         {/* Subtitle - appears second */}
-        <motion.p 
-          variants={item}
-          className="text-xl mb-12"
-        >
+        <motion.p variants={item} className="text-xl mb-12">
           Fill out the form to get complete details and pricing.
         </motion.p>
 
         {/* Status messages - appears third */}
         {submitStatus === "success" && (
           <motion.div
+            initial="hidden"
+            animate="visible"
             variants={item}
             className="mb-6 p-4 bg-green-100 text-green-800 rounded"
           >
@@ -125,6 +120,8 @@ const ContactForm = ({
 
         {submitStatus === "error" && (
           <motion.div
+            initial="hidden"
+            animate="visible"
             variants={item}
             className="mb-6 p-4 bg-red-100 text-red-800 rounded"
           >
@@ -133,12 +130,9 @@ const ContactForm = ({
         )}
 
         {/* Form fields - each appears in sequence */}
-        <motion.div className="flex flex-col gap-5">
+        <motion.div variants={container} className="flex flex-col gap-5">
           {/* Name input - appears fourth */}
-          <motion.div
-            variants={item}
-            animate={errors.name ? "shake" : "visible"}
-          >
+          <motion.div variants={item}>
             <input
               name="name"
               value={formData.name}
@@ -151,7 +145,7 @@ const ContactForm = ({
               required
             />
             {errors.name && (
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -163,10 +157,7 @@ const ContactForm = ({
           </motion.div>
 
           {/* Email input - appears fifth */}
-          <motion.div
-            variants={item}
-            animate={errors.email ? "shake" : "visible"}
-          >
+          <motion.div variants={item}>
             <input
               name="email"
               value={formData.email}
@@ -179,7 +170,7 @@ const ContactForm = ({
               required
             />
             {errors.email && (
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -191,10 +182,7 @@ const ContactForm = ({
           </motion.div>
 
           {/* Company input - appears sixth */}
-          <motion.div
-            variants={item}
-            animate={errors.company ? "shake" : "visible"}
-          >
+          <motion.div variants={item}>
             <input
               name="company"
               value={formData.company}
@@ -207,7 +195,7 @@ const ContactForm = ({
               required
             />
             {errors.company && (
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
