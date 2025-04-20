@@ -50,19 +50,23 @@ const QuestionContainer = ({
       transition={{ duration: 0.3 }}
     >
       <div className="md:w-4/7">
-        <Question 
-          index={currentQuestionIndex} 
-          question={currentQuestion.question} 
+        <Question
+          index={currentQuestionIndex}
+          question={currentQuestion.question}
         />
 
         <div className="flex flex-col mt-10 gap-3">
-          {currentQuestion.answers.map((answer) => (
+          {currentQuestion.answers.map((answer: any) => (
             <AnswerItem
               key={answer}
               answer={answer}
               isSelected={isAnswerSelected(answer)}
               hasError={validationError}
-              svgIcon={selectedSvgs[currentQuestionIndex]}
+              svgIcon={
+                currentQuestion.multiSelect
+                  ? selectedSvgs[answer]
+                  : selectedSvgs[currentQuestionIndex]
+              }
               onClick={() => onAnswerSelect(answer)}
             />
           ))}

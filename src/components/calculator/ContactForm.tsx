@@ -32,22 +32,32 @@ const ContactForm = ({
   });
 
   // Animation variants
-  const containerVariants = {
+  const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         when: "beforeChildren",
-        staggerChildren: 0.1,
+        staggerChildren: 0.15, // Increased stagger for more noticeable sequence
       },
     },
   };
 
-  const itemVariants = {
-    tap: { scale: 0.98 },
+  const item = {
+    hidden: { opacity: 0, y: -30 }, // Start higher up
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { 
+        type: "spring",
+        damping: 10,
+        stiffness: 100,
+        duration: 0.5 
+      },
+    },
     shake: {
-      x: [0, -5, 5, -5, 5, 0],
-      transition: { duration: 0.5 },
+      x: [0, -10, 10, -10, 10, 0],
+      transition: { duration: 0.6 },
     },
   };
 
@@ -59,7 +69,6 @@ const ContactForm = ({
       ...prev,
       [name]: value,
     }));
-    // Clear error when user starts typing
     if (errors[name as keyof typeof errors]) {
       setErrors((prev) => ({
         ...prev,
@@ -69,16 +78,12 @@ const ContactForm = ({
   };
 
   const handleSubmit = () => {
-    // Validate inputs
     const newErrors = {
       name: !formData.name.trim(),
       email: !formData.email.trim(),
       company: !formData.company.trim(),
     };
-
     setErrors(newErrors);
-
-    // If no errors, proceed with submission
     if (!Object.values(newErrors).some(Boolean)) {
       onSubmit(formData);
     }
@@ -88,22 +93,30 @@ const ContactForm = ({
     <motion.div
       initial="hidden"
       animate="visible"
-      variants={containerVariants}
+      variants={container}
       className="grow flex items-center h-screen relative"
     >
       <div className="w-[95vw] md:w-3/7 text-center mx-auto">
-        <motion.h1 variants={itemVariants} className="text-3xl font-bold mb-5">
+        {/* Title - appears first */}
+        <motion.h1 
+          variants={item}
+          className="text-3xl font-bold mb-5"
+        >
           You're just one step away!
         </motion.h1>
 
-        <motion.p variants={itemVariants} className="text-xl mb-12">
+        {/* Subtitle - appears second */}
+        <motion.p 
+          variants={item}
+          className="text-xl mb-12"
+        >
           Fill out the form to get complete details and pricing.
         </motion.p>
 
+        {/* Status messages - appears third */}
         {submitStatus === "success" && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            variants={item}
             className="mb-6 p-4 bg-green-100 text-green-800 rounded"
           >
             Thank you! Your message has been sent successfully.
@@ -112,20 +125,18 @@ const ContactForm = ({
 
         {submitStatus === "error" && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            variants={item}
             className="mb-6 p-4 bg-red-100 text-red-800 rounded"
           >
             Something went wrong. Please try again later.
           </motion.div>
         )}
 
-        <motion.div
-          variants={containerVariants}
-          className="flex flex-col gap-5"
-        >
+        {/* Form fields - each appears in sequence */}
+        <motion.div className="flex flex-col gap-5">
+          {/* Name input - appears fourth */}
           <motion.div
-            variants={itemVariants}
+            variants={item}
             animate={errors.name ? "shake" : "visible"}
           >
             <input
@@ -139,10 +150,21 @@ const ContactForm = ({
               placeholder="Your name*"
               required
             />
+            {errors.name && (
+              <motion.p 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-[#F85B4C] text-sm text-left mt-1"
+              >
+                Please enter your name
+              </motion.p>
+            )}
           </motion.div>
 
+          {/* Email input - appears fifth */}
           <motion.div
-            variants={itemVariants}
+            variants={item}
             animate={errors.email ? "shake" : "visible"}
           >
             <input
@@ -156,10 +178,21 @@ const ContactForm = ({
               placeholder="Email*"
               required
             />
+            {errors.email && (
+              <motion.p 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-[#F85B4C] text-sm text-left mt-1"
+              >
+                Please enter a valid email
+              </motion.p>
+            )}
           </motion.div>
 
+          {/* Company input - appears sixth */}
           <motion.div
-            variants={itemVariants}
+            variants={item}
             animate={errors.company ? "shake" : "visible"}
           >
             <input
@@ -173,9 +206,20 @@ const ContactForm = ({
               placeholder="Company name*"
               required
             />
+            {errors.company && (
+              <motion.p 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-[#F85B4C] text-sm text-left mt-1"
+              >
+                Please enter your company name
+              </motion.p>
+            )}
           </motion.div>
 
-          <motion.div variants={itemVariants}>
+          {/* Submit button - appears last */}
+          <motion.div variants={item}>
             <Button
               variant="primary"
               title={isSubmitting ? "Sending..." : "Submit"}

@@ -378,12 +378,12 @@ const Contact = () => {
                         variants={checkmarkVariants}
                         initial="hidden"
                         animate="visible"
-                        className="bg-white p-1 border"
+                        className="bg-white"
                       >
                         <img
                           src={getButtonSvg(button)}
                           alt="Selected"
-                          className="w-5 h-5"
+                          className="w-8 h-8"
                         />
                       </motion.div>
                     )}

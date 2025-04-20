@@ -9,7 +9,13 @@ interface AnswerItemProps {
   onClick: () => void;
 }
 
-const AnswerItem = ({ answer, isSelected, hasError, svgIcon, onClick }: AnswerItemProps) => {
+const AnswerItem = ({
+  answer,
+  isSelected,
+  hasError,
+  svgIcon,
+  onClick,
+}: AnswerItemProps) => {
   return (
     <motion.div
       variants={{
@@ -39,9 +45,9 @@ const AnswerItem = ({ answer, isSelected, hasError, svgIcon, onClick }: AnswerIt
           }}
           initial="hidden"
           animate="visible"
-          className="bg-white p-1 border"
+          className=""
         >
-          <img src={svgIcon} alt="Selected" className="w-5 h-5" />
+          <img src={svgIcon} alt="Selected" className="w-8 h-8" />
         </motion.div>
       )}
     </motion.div>

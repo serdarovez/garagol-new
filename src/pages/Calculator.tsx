@@ -1,6 +1,6 @@
 // components/Calculator.tsx
 import { useState } from "react";
-import {  AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Footer from "../components/Footer";
 import random1 from "../assets/1.svg";
 import random2 from "../assets/2.svg";
@@ -8,10 +8,17 @@ import random3 from "../assets/3.svg";
 import random4 from "../assets/4.svg";
 import random5 from "../assets/5.svg";
 import random6 from "../assets/6.svg";
+import random7 from "../assets/7.svg";
+import random8 from "../assets/8.svg";
+import random9 from "../assets/9.svg";
+import random10 from "../assets/10.svg";
+import random11 from "../assets/11.svg";
+import random12 from "../assets/12.svg";
+import random13 from "../assets/13.svg";
+import random14 from "../assets/14.svg";
 import QuestionContainer from "../components/calculator/QuestionContainer";
 import ContactForm from "../components/calculator/ContactForm";
 import emailjs from "@emailjs/browser";
-
 
 const questions = [
   {
@@ -75,7 +82,22 @@ const questions = [
   },
 ];
 
-const svgImages = [random1, random2, random3, random4, random5, random6];
+const svgImages = [
+  random1,
+  random2,
+  random3,
+  random4,
+  random5,
+  random6,
+  random7,
+  random8,
+  random9,
+  random10,
+  random11,
+  random12,
+  random13,
+  random14,
+];
 
 const Calculator = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -89,34 +111,58 @@ const Calculator = () => {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
-  const handleAnswerSelect = (answer: string) => {
-    const randomSvg = svgImages[Math.floor(Math.random() * svgImages.length)];
+
+  const [availableSvgs, setAvailableSvgs] = useState([...svgImages]);
+
+  const handleAnswerSelect = (answer: any) => {
     const currentQuestion = questions[currentQuestionIndex];
 
     if (currentQuestion.multiSelect) {
       const currentSelection =
         (selectedAnswers[currentQuestionIndex] as string[]) || [];
-      const newSelection = currentSelection.includes(answer)
-        ? currentSelection.filter((item) => item !== answer)
-        : [...currentSelection, answer];
+      const isDeselecting = currentSelection.includes(answer);
+
+      let newSelection: string[];
+      let updatedSvgs = { ...selectedSvgs };
+      let updatedAvailableSvgs = [...availableSvgs];
+
+      if (isDeselecting) {
+        // Deselecting - return the SVG to available pool
+        newSelection = currentSelection.filter((item) => item !== answer);
+        const returnedSvg = selectedSvgs[answer];
+        if (returnedSvg) {
+          updatedAvailableSvgs.push(returnedSvg);
+          delete updatedSvgs[answer];
+        }
+      } else {
+        // Selecting - assign a random SVG from available pool
+        newSelection = [...currentSelection, answer];
+        if (updatedAvailableSvgs.length > 0) {
+          const randomIndex = Math.floor(
+            Math.random() * updatedAvailableSvgs.length
+          );
+          const selectedSvg = updatedAvailableSvgs[randomIndex];
+          updatedSvgs[answer] = selectedSvg;
+          updatedAvailableSvgs = updatedAvailableSvgs.filter(
+            (_, i) => i !== randomIndex
+          );
+        }
+      }
 
       setSelectedAnswers((prev) => ({
         ...prev,
         [currentQuestionIndex]: newSelection,
       }));
 
-      if (newSelection.length > 0) {
-        setSelectedSvgs((prev) => ({
-          ...prev,
-          [currentQuestionIndex]: randomSvg,
-        }));
-      }
+      setSelectedSvgs(updatedSvgs);
+      setAvailableSvgs(updatedAvailableSvgs);
     } else {
+      // Single select - same as before
+      const randomSvg = svgImages[Math.floor(Math.random() * svgImages.length)];
       setSelectedAnswers((prev) => ({
         ...prev,
         [currentQuestionIndex]: answer,
       }));
-
       setSelectedSvgs((prev) => ({
         ...prev,
         [currentQuestionIndex]: randomSvg,
