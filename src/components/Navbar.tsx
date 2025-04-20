@@ -185,7 +185,7 @@ const Navbar = () => {
             <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25"></div>
           </div>
           
-            <Link to={`/estimate`}>
+            <Link to="/estimate">
               <Button
                 variant="primary"
                 title="Get Estimate"
