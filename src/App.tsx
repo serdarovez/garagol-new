@@ -44,6 +44,7 @@ const AppContent = () => {
           <Navbar />
           <Routes>
             <Route path="/" element={<Main />} />
+            <Route path="*" element={<Main />} />
             <Route path="/estimate"  element={<FAQ />} />
             <Route path="/calculator" element={<Calculator />} />
           </Routes>
