@@ -35,6 +35,18 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, [text, isDeleting, loopNum]);
 
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: "smooth",
+      });
+    }
+    // navigate("/", { state: { scrollTo: sectionId } });
+  };
+
   return (
     <div className=" xl:h-dvh h-dvh  lg:h-screen lg:py-0 xl:py-0 py-10 bg-[#242424] text-white flex items-end justify-items-end ">
       <div className="container flex flex-col items-center justify-center lg:justify-items-start xl:items-start xl:justify-items-start lg:items-start lg:pt-0 xl:pt-0  xl:h-[60vh] h-full lg:h-[60vh]">
@@ -54,14 +66,14 @@ const Home = () => {
               variant="primary"
               title="Get in touch"
               class="font-[700] lg:w-max xl:w-max lg:text-start xl:text-start text-center w-full"
-              onClick={() => console.log("Button clicked!")}
+              onClick={() => scrollToSection("inquiry")}
               clickable={true}
             />
             <Button
               variant="outline"
               title="Explore Our Services"
               class="font-[700] lg:w-max xl:w-max lg:text-start xl:text-start text-center w-full "
-              onClick={() => console.log("Button clicked!")}
+              onClick={() => scrollToSection("services")}
               clickable={true}
             />
           </div>
