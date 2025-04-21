@@ -14,8 +14,6 @@ const CustomCursor = () => {
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
       return; // Don't set up cursor events for touch devices
     }
-    alert(isTouchDevice)
-    console.log(isTouchDevice)
 
 
     const moveCursor = (e: MouseEvent) => {
