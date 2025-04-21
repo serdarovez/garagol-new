@@ -5,8 +5,16 @@ const CustomCursor = () => {
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isVisible, setIsVisible] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // Check if the device is touch-enabled
+    setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+      return; // Don't set up cursor events for touch devices
+    }
+
     const moveCursor = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
 
@@ -43,6 +51,11 @@ const CustomCursor = () => {
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
+
+  // Don't render anything if it's a touch device
+  if (isTouchDevice) {
+    return null;
+  }
 
   return (
     <div
