@@ -11,13 +11,13 @@ interface ContactFormProps {
     message?: string;
   }) => void;
   isSubmitting: boolean;
-  submitStatus: "idle" | "success" | "error";
+  // submitStatus: "idle" | "success" | "error";
 }
 
 const ContactForm = ({
   onSubmit,
   isSubmitting,
-  submitStatus,
+  // submitStatus,
 }: ContactFormProps) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -107,7 +107,7 @@ const ContactForm = ({
         </motion.p>
 
         {/* Status messages - appears third */}
-        {submitStatus === "success" && (
+        {/* {submitStatus === "success" && (
           <motion.div
             initial="hidden"
             animate="visible"
@@ -127,7 +127,7 @@ const ContactForm = ({
           >
             Something went wrong. Please try again later.
           </motion.div>
-        )}
+        )} */}
 
         {/* Form fields - each appears in sequence */}
         <motion.div variants={container} className="flex flex-col gap-5">

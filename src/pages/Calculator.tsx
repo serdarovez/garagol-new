@@ -19,6 +19,7 @@ import random14 from "../assets/14.svg";
 import QuestionContainer from "../components/calculator/QuestionContainer";
 import ContactForm from "../components/calculator/ContactForm";
 import emailjs from "@emailjs/browser";
+import StatusPage from "../components/StatusPage";
 
 const questions = [
   {
@@ -267,11 +268,33 @@ const Calculator = () => {
               onPrevious={handlePrevious}
             />
           ) : (
-            <ContactForm
-              onSubmit={handleFormSubmit}
-              isSubmitting={isSubmitting}
-              submitStatus={submitStatus}
-            />
+            <>
+              {submitStatus === "success" && (
+                <StatusPage
+                  title="Thank you!"
+                  body="Your submission has been received!"
+                  buttonLink="/"
+                  buttonTitle="Home page"
+                  status="success"
+                />
+              )}
+              {submitStatus === "idle" && (
+                <ContactForm
+                  onSubmit={handleFormSubmit}
+                  isSubmitting={isSubmitting}
+                  // submitStatus={submitStatus}
+                />
+              )}
+              {submitStatus === "error" && (
+                <StatusPage
+                  title="Oops!"
+                  body="Something went wrong while submitting the form."
+                  buttonLink="/calculator"
+                  buttonTitle="Try again"
+                  status="error"
+                />
+              )}
+            </>
           )}
         </AnimatePresence>
       </div>
