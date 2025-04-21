@@ -82,19 +82,26 @@ ContactFormProps) => {
   };
 
   const handleSubmit = () => {
-    const newErrors = {
-      name: !formData.name.trim(),
-      email: !formData.email.trim(),
-      company: !formData.company.trim(),
-    };
+    // Email regex for validation
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
+    const newErrors = {
+      name: !formData.name.trim() ? "Name is required" : "",
+      email: !formData.email.trim()
+        ? "Email is required"
+        : !emailRegex.test(formData.email.trim())
+        ? "Please enter a valid email address"
+        : "",
+      company: !formData.company.trim() ? "Company is required" : "",
+    };
+    //@ts-ignore
     setErrors(newErrors);
 
-    // Trigger shake animation for empty fields
+    // Trigger shake animation for fields with errors
     setShouldShake({
-      name: newErrors.name,
-      email: newErrors.email,
-      company: newErrors.company,
+      name: !!newErrors.name,
+      email: !!newErrors.email,
+      company: !!newErrors.company,
     });
 
     // Reset shake after animation completes
@@ -106,7 +113,10 @@ ContactFormProps) => {
       });
     }, 600);
 
-    if (!Object.values(newErrors).some(Boolean)) {
+    // Check if there are any errors (non-empty error messages)
+    const hasErrors = Object.values(newErrors).some((error) => error !== "");
+
+    if (!hasErrors) {
       onSubmit(formData);
     }
   };
