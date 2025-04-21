@@ -61,11 +61,11 @@ const Home = () => {
             You dream it. We build it—securely, beautifully, and ready for
             scale.
           </div>
-          <div className="flex flex-col mt-20 lg:flex-row xl:flex-row justify-start items-center gap-5">
+          <div className="flex flex-col mt-20  lg:flex-row xl:flex-row justify-start items-center gap-5">
             <Button
               variant="primary"
               title="Get in touch"
-              class="font-[700] lg:w-max xl:w-max lg:text-start xl:text-start text-center w-full"
+              class="font-[700] z-10 lg:w-max xl:w-max lg:text-start xl:text-start text-center w-full"
               onClick={() => scrollToSection("inquiry")}
               clickable={true}
             />
