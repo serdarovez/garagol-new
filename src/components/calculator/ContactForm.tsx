@@ -17,8 +17,8 @@ interface ContactFormProps {
 const ContactForm = ({
   onSubmit,
   isSubmitting,
-  // submitStatus,
-}: ContactFormProps) => {
+}: // submitStatus,
+ContactFormProps) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,6 +26,11 @@ const ContactForm = ({
     message: "",
   });
   const [errors, setErrors] = useState({
+    name: false,
+    email: false,
+    company: false,
+  });
+  const [shouldShake, setShouldShake] = useState({
     name: false,
     email: false,
     company: false,
@@ -54,6 +59,10 @@ const ContactForm = ({
         stiffness: 100,
       },
     },
+  };
+
+  // Shake animation variant
+  const shake = {
     shake: {
       x: [0, -10, 10, -10, 10, 0],
       transition: { duration: 0.6 },
@@ -73,6 +82,10 @@ const ContactForm = ({
         ...prev,
         [name]: false,
       }));
+      setShouldShake((prev) => ({
+        ...prev,
+        [name]: false,
+      }));
     }
   };
 
@@ -82,7 +95,25 @@ const ContactForm = ({
       email: !formData.email.trim(),
       company: !formData.company.trim(),
     };
+
     setErrors(newErrors);
+
+    // Trigger shake animation for empty fields
+    setShouldShake({
+      name: newErrors.name,
+      email: newErrors.email,
+      company: newErrors.company,
+    });
+
+    // Reset shake after animation completes
+    setTimeout(() => {
+      setShouldShake({
+        name: false,
+        email: false,
+        company: false,
+      });
+    }, 600);
+
     if (!Object.values(newErrors).some(Boolean)) {
       onSubmit(formData);
     }
@@ -106,104 +137,99 @@ const ContactForm = ({
           Fill out the form to get complete details and pricing.
         </motion.p>
 
-        {/* Status messages - appears third */}
-        {/* {submitStatus === "success" && (
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={item}
-            className="mb-6 p-4 bg-green-100 text-green-800 rounded"
-          >
-            Thank you! Your message has been sent successfully.
-          </motion.div>
-        )}
-
-        {submitStatus === "error" && (
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={item}
-            className="mb-6 p-4 bg-red-100 text-red-800 rounded"
-          >
-            Something went wrong. Please try again later.
-          </motion.div>
-        )} */}
-
         {/* Form fields - each appears in sequence */}
         <motion.div variants={container} className="flex flex-col gap-5">
           {/* Name input - appears fourth */}
-          <motion.div variants={item}>
-            <input
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className={`w-full p-3 h-12 bg-white text-[#242424] border-box border ${
-                errors.name ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
-              }`}
-              type="text"
-              placeholder="Your name*"
-              required
-            />
-            {errors.name && (
-              <motion.p
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-[#F85B4C] text-sm text-left mt-1"
-              >
-                Please enter your name
-              </motion.p>
-            )}
+          <motion.div
+            variants={item}
+            // animate={"visible"}
+            //@ts-ignore
+            // variants={item}
+          >
+            <motion.div
+              animate={shouldShake.name ? "shake" : "none"}
+              variants={{
+                shake: {
+                  x: [0, -10, 10, -10, 10, 0],
+                  transition: { duration: 0.6 },
+                },
+                none: {},
+              }}
+            >
+              <input
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className={`w-full p-3 h-12 bg-white text-[#242424] border-box border ${
+                  errors.name ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
+                }`}
+                type="text"
+                placeholder="Your name*"
+                required
+              />
+            </motion.div>
           </motion.div>
 
           {/* Email input - appears fifth */}
-          <motion.div variants={item}>
-            <input
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className={`w-full p-3 h-12 bg-white text-[#242424] border-box border ${
-                errors.email ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
-              }`}
-              type="email"
-              placeholder="Email*"
-              required
-            />
-            {errors.email && (
-              <motion.p
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-[#F85B4C] text-sm text-left mt-1"
-              >
-                Please enter a valid email
-              </motion.p>
-            )}
+          <motion.div
+            variants={item}
+            // animate={"visible"}
+            //@ts-ignore
+            // variants={item}
+          >
+            <motion.div
+              animate={shouldShake.email ? "shake" : "none"}
+              variants={{
+                shake: {
+                  x: [0, -10, 10, -10, 10, 0],
+                  transition: { duration: 0.6 },
+                },
+                none: {},
+              }}
+            >
+              <input
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={`w-full p-3 h-12 bg-white text-[#242424] border-box border ${
+                  errors.email ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
+                }`}
+                type="email"
+                placeholder="Email*"
+                required
+              />
+            </motion.div>
           </motion.div>
 
           {/* Company input - appears sixth */}
-          <motion.div variants={item}>
-            <input
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              className={`w-full p-3 h-12 bg-white text-[#242424] border-box border ${
-                errors.company ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
-              }`}
-              type="text"
-              placeholder="Company name*"
-              required
-            />
-            {errors.company && (
-              <motion.p
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-[#F85B4C] text-sm text-left mt-1"
-              >
-                Please enter your company name
-              </motion.p>
-            )}
+          <motion.div
+            variants={item}
+            // animate={"visible"}
+            //@ts-ignore
+            // variants={item}
+          >
+            <motion.div
+              animate={shouldShake.company ? "shake" : "none"}
+              variants={{
+                shake: {
+                  x: [0, -10, 10, -10, 10, 0],
+                  transition: { duration: 0.6 },
+                },
+                none: {},
+              }}
+            >
+              <input
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                className={`w-full p-3 h-12 bg-white text-[#242424] border-box border ${
+                  errors.company ? "border-[#F85B4C] placeholder-[#F85B4C]" : ""
+                }`}
+                type="text"
+                placeholder="Company name*"
+                required
+              />
+            </motion.div>
           </motion.div>
 
           {/* Submit button - appears last */}
