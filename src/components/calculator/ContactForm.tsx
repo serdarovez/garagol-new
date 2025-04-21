@@ -61,14 +61,6 @@ ContactFormProps) => {
     },
   };
 
-  // Shake animation variant
-  const shake = {
-    shake: {
-      x: [0, -10, 10, -10, 10, 0],
-      transition: { duration: 0.6 },
-    },
-  };
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
