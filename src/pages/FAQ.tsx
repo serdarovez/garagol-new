@@ -89,13 +89,15 @@ function FAQ() {
               />
             </Link>
           </div>
-          <div className=" md:flex  p-1  items-center mb-20 lg:mb-0 xl:mb-0 justify-center  bg-[#EDD750] ">
-            {/* place gif here  */}
-            <img
-              src={randomGif}
-              alt="Animation showing calculator process"
-              className="w-full -translate-4  max-w-[400px] h-auto "
-            />
+          <div className="ps-4  ">
+            <div className=" md:flex   mx-auto items-center mb-20 lg:mb-0 xl:mb-0 justify-center inline-block w-full  bg-[#EDD750] ">
+              {/* place gif here  */}
+              <img
+                src={randomGif}
+                alt="Animation showing calculator process"
+                className="w-full -translate-4  max-w-[400px] h-auto "
+              />
+            </div>
           </div>
         </div>
         {questions.map((question, index) => (
