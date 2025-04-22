@@ -192,6 +192,13 @@ const Navbar = () => {
                 class="cursor-pointer"
               />
             </Link>
+            <Link to="/calculator">
+              <Button
+                variant="primary"
+                title="Calculator"
+                class="cursor-pointer"
+              />
+            </Link>
         </div>
         {/* Mobile Hamburger Menu Button */}
         <div className="md:hidden flex items-center">
