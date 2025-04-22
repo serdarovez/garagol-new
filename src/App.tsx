@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Routes, Route, HashRouter, useLocation } from "react-router-dom";
+import { Routes, Route, BrowserRouter, useLocation} from "react-router-dom"; // Changed to BrowserRouter
 import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
 import CustomCursor from "./components/CustomCursor";
@@ -8,7 +8,6 @@ import SplashScreen from "./components/SplashScreen";
 import FAQ from "./pages/FAQ";
 import Calculator from "./pages/Calculator";
 
-// Create a wrapped component that uses router hooks
 const AppContent = () => {
   const [showSplash, setShowSplash] = useState(true);
   const [showContent, setShowContent] = useState(false);
@@ -19,12 +18,11 @@ const AppContent = () => {
       top: 0,
     });
   }, [location]);
-  
 
   return (
     <div className="relative cursor-none">
       <CustomCursor />
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {showSplash && (
           <SplashScreen
             onComplete={() => {
@@ -37,16 +35,18 @@ const AppContent = () => {
 
       {showContent && (
         <motion.div
+          key={location.pathname} // Important for page transitions
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
           <Navbar />
-          <Routes>
+          <Routes location={location}>
             <Route path="/" element={<Main />} />
-            <Route path="*" element={<Main />} />
-            <Route path="/estimate"  element={<FAQ />} />
+            <Route path="/estimate" element={<FAQ />} />
             <Route path="/calculator" element={<Calculator />} />
+            <Route path="*" element={<Main />} />
           </Routes>
         </motion.div>
       )}
@@ -54,12 +54,11 @@ const AppContent = () => {
   );
 };
 
-// Main App component that provides the router context
 const App = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AppContent />
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
