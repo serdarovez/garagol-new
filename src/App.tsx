@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Routes, Route, BrowserRouter, useLocation} from "react-router-dom"; // Changed to BrowserRouter
+import { Routes, Route, BrowserRouter, useLocation } from "react-router-dom"; // Changed to BrowserRouter
 import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
 import CustomCursor from "./components/CustomCursor";
@@ -20,8 +20,8 @@ const AppContent = () => {
   }, [location]);
 
   return (
-    <div className="relative cursor-none">
-      <CustomCursor />
+    <div className="">
+      {/* <CustomCursor />
       <AnimatePresence mode="wait">
         {showSplash && (
           <SplashScreen
@@ -40,7 +40,7 @@ const AppContent = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-        >
+        > */}
           <Navbar />
           <Routes location={location}>
             <Route path="/" element={<Main />} />
@@ -48,8 +48,8 @@ const AppContent = () => {
             <Route path="/calculator" element={<Calculator />} />
             <Route path="*" element={<Main />} />
           </Routes>
-        </motion.div>
-      )}
+        {/* </motion.div> */}
+      {/* )} */}
     </div>
   );
 };
