@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
 import { Routes, Route, BrowserRouter, useLocation } from "react-router-dom"; // Changed to BrowserRouter
 import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
-import CustomCursor from "./components/CustomCursor";
-import SplashScreen from "./components/SplashScreen";
+// import CustomCursor from "./components/CustomCursor";
+// import SplashScreen from "./components/SplashScreen";
 import FAQ from "./pages/FAQ";
 import Calculator from "./pages/Calculator";
 
 const AppContent = () => {
-  const [showSplash, setShowSplash] = useState(true);
-  const [showContent, setShowContent] = useState(false);
+  // const [showSplash, setShowSplash] = useState(true);
+  // const [showContent, setShowContent] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
