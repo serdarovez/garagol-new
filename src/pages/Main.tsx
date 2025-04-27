@@ -1,4 +1,4 @@
-import useScrollToElement from "../hooks/useScrollToElement";
+// import useScrollToElement from "../hooks/useScrollToElement";
 import Cards from "../components/Cards";
 import ConnectUs from "../components/ConnectUs";
 import Contact from "../components/Contact";
@@ -9,7 +9,7 @@ import InfiniteScrollingText from "../components/InfinitiveText";
 import Pricing from "../components/Pricing";
 
 const Main = () => {
-  // useScrollToElement();
+  // useScrollToEl`ement();
 
   return (
     <div className="z-0">
