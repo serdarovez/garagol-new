@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Routes, Route, BrowserRouter, useLocation} from "react-router-dom"; // Changed to BrowserRouter
 import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
-import CustomCursor from "./components/CustomCursor";
+// import CustomCursor from "./components/CustomCursor";
 import SplashScreen from "./components/SplashScreen";
 import FAQ from "./pages/FAQ";
 import Calculator from "./pages/Calculator";
