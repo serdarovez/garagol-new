@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Routes, Route, BrowserRouter, useLocation} from "react-router-dom"; // Changed to BrowserRouter
+import { Routes, Route, BrowserRouter, useLocation, Navigate} from "react-router-dom"; // Changed to BrowserRouter
 import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
 import CustomCursor from "./components/CustomCursor";
@@ -43,9 +43,10 @@ const AppContent = () => {
         >
           <Navbar />
           <Routes location={location}>
-            <Route path="/" element={<Main />} />
+            <Route path="/main" element={<Main />} />
             <Route path="/estimate" element={<FAQ />} />
             <Route path="/calculator" element={<Calculator />} />
+            <Route path="/" element={<Navigate to="/main" replace />} />
           </Routes>
         </motion.div>
       )}
