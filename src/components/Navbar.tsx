@@ -248,11 +248,9 @@ const Navbar = () => {
               class="w-full text-center cursor-pointer"
             />
           </Link>
-          <Link to={'/estimate'} >
-          estimate
-          </Link>
         </div>
       )}
+      <Link to={"/estimate"}>estimate</Link>
 
       {/* Mobile Menu Dropdown */}
       <div
