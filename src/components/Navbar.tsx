@@ -241,16 +241,18 @@ const Navbar = () => {
               : "opacity-0 max-h-0 overflow-hidden"
           }`}
         >
-          <Link to={`/estimate`} className="w-full my-[4vw] block">
+          {/* <Link to={`/estimate`} className="w-full my-[4vw] block"> */}
             <Button
               variant="primary"
               title="Get Estimate"
               class="w-full text-center cursor-pointer"
+              onClick={() => {
+                navigate('/estimate')
+              }}
             />
-          </Link>
+          {/* </Link> */}
         </div>
       )}
-      <Link to={"/estimate"}>estimate</Link>
 
       {/* Mobile Menu Dropdown */}
       <div
