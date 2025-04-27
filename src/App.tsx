@@ -46,7 +46,6 @@ const AppContent = () => {
             <Route path="/" element={<Main />} />
             <Route path="/estimate" element={<FAQ />} />
             <Route path="/calculator" element={<Calculator />} />
-            <Route path="*" element={<Main />} />
           </Routes>
         </motion.div>
       )}
