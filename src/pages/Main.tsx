@@ -12,7 +12,7 @@ const Main = () => {
   useScrollToElement();
 
   return (
-    <div className="z-0">
+    <div className="">
       <Home />
       <Cards />
       <Pricing />
