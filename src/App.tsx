@@ -20,8 +20,8 @@ const AppContent = () => {
   }, [location]);
 
   return (
-    <div className="relative cursor-none">
-      <CustomCursor />
+    <div className="relative ">
+      {/* <CustomCursor /> */}
       <AnimatePresence mode="wait">
         {showSplash && (
           <SplashScreen
