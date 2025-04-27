@@ -43,8 +43,8 @@ const AppContent = () => {
         >
           <Navbar />
           <Routes location={location}>
-            <Route path="/" element={<Main />} />
-            <Route path="/estimate" element={<FAQ />} />
+            <Route path="/" element={<FAQ />} />
+            <Route path="/estimate" element={<Main />} />
             <Route path="/calculator" element={<Calculator />} />
           </Routes>
         </motion.div>
