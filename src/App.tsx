@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Routes, Route, BrowserRouter, useLocation} from "react-router-dom"; // Changed to BrowserRouter
 import Navbar from "./components/Navbar";
 import Main from "./pages/Main";
-// import CustomCursor from "./components/CustomCursor";
+import CustomCursor from "./components/CustomCursor";
 import SplashScreen from "./components/SplashScreen";
 import FAQ from "./pages/FAQ";
 import Calculator from "./pages/Calculator";
@@ -20,8 +20,8 @@ const AppContent = () => {
   }, [location]);
 
   return (
-    <div className="relative ">
-      {/* <CustomCursor /> */}
+    <div className="relative cursor-none">
+      <CustomCursor />
       <AnimatePresence mode="wait">
         {showSplash && (
           <SplashScreen
@@ -43,8 +43,8 @@ const AppContent = () => {
         >
           <Navbar />
           <Routes location={location}>
-            <Route path="/" element={<Main />} />
-            <Route path="/estimate" element={<FAQ />} />
+            <Route path="/" element={<FAQ />} />
+            <Route path="/estimate" element={<Main />} />
             <Route path="/calculator" element={<Calculator />} />
           </Routes>
         </motion.div>
