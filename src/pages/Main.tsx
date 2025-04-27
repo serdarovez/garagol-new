@@ -9,7 +9,7 @@ import InfiniteScrollingText from "../components/InfinitiveText";
 import Pricing from "../components/Pricing";
 
 const Main = () => {
-  useScrollToElement();
+  // useScrollToElement();
 
   return (
     <div className="z-0">
