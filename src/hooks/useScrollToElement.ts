@@ -5,28 +5,31 @@ const useScrollToElement = () => {
   const location = useLocation();
 
   useEffect(() => {
+    if (!location) return;
+
     const scrollToSection = (id: string) => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else {
-        // Optional fallback: scroll to top if element not found
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      const tryScroll = () => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          console.warn(`Element #${id} not found!`);
+        }
+      };
+
+      // Try scrolling after 1 animation frame + fallback
+      requestAnimationFrame(() => {
+        setTimeout(tryScroll, 0);
+      });
     };
 
     if (location.state && (location.state as any).scrollTo) {
       const sectionId = (location.state as any).scrollTo;
-      requestAnimationFrame(() => {
-        scrollToSection(sectionId);
-      });
-      // Only clear the history once
+      scrollToSection(sectionId);
       window.history.replaceState({}, document.title, window.location.pathname);
     } else if (location.hash) {
       const sectionId = location.hash.substring(1);
-      requestAnimationFrame(() => {
-        scrollToSection(sectionId);
-      });
+      scrollToSection(sectionId);
     }
   }, [location]);
 };

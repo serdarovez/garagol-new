@@ -185,20 +185,12 @@ const Navbar = () => {
             <div className="absolute bottom-0 left-0 w-0 cursor-pointer group-hover:w-full h-1/2 -z-1 bg-[#8675F2] bg-opavity-25"></div>
           </div>
 
-          <Link
-            to="/estimate"
-            onClick={(e) => {
-              e.preventDefault();
-              console.log("Would navigate to /estimate");
-              setTimeout(() => navigate("/estimate"), 100);
-            }}
-          >
-            <Button
-              variant="primary"
-              title="Get Estimate"
-              class="cursor-pointer"
-            />
-          </Link>
+          <Button
+            variant="primary"
+            title="Get Estimate"
+            class="cursor-pointer"
+            onClick={() => navigate("/estimate")}
+          />
         </div>
         {/* Mobile Hamburger Menu Button */}
         <div className="md:hidden flex items-center">
@@ -242,14 +234,14 @@ const Navbar = () => {
           }`}
         >
           {/* <Link to={`/estimate`} className="w-full my-[4vw] block"> */}
-            <Button
-              variant="primary"
-              title="Get Estimate"
-              class="w-full text-center cursor-pointer"
-              onClick={() => {
-                navigate('/estimate')
-              }}
-            />
+          <Button
+            variant="primary"
+            title="Get Estimate"
+            class="w-full text-center cursor-pointer"
+            onClick={() => {
+              navigate("/estimate");
+            }}
+          />
           {/* </Link> */}
         </div>
       )}
