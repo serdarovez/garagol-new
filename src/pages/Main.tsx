@@ -6,7 +6,7 @@ import Cards from "../components/Cards";
 // import Gurantee from "../components/Gurantee";
 import Home from "../components/Home";
 // import InfiniteScrollingText from "../components/InfinitiveText";
-// import Pricing from "../components/Pricing";
+import Pricing from "../components/Pricing";
 
 const Main = () => {
   useScrollToElement();
@@ -16,8 +16,8 @@ const Main = () => {
       {/* hello world */}
       <Home />
       <Cards />
-      {/*
       <Pricing />
+      {/*
       <ConnectUs />
       <InfiniteScrollingText />
       <Gurantee />
