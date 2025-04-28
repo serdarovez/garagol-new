@@ -4,7 +4,7 @@ import useScrollToElement from "../hooks/useScrollToElement";
 // import Contact from "../components/Contact";
 // import Footer from "../components/Footer";
 // import Gurantee from "../components/Gurantee";
-// import Home from "../components/Home";
+import Home from "../components/Home";
 // import InfiniteScrollingText from "../components/InfinitiveText";
 // import Pricing from "../components/Pricing";
 
@@ -13,8 +13,9 @@ const Main = () => {
 
   return (
     <div className="mt-40">
-      hello world
-      {/* <Home />
+      {/* hello world */}
+      <Home />
+      {/*
       <Cards />
       <Pricing />
       <ConnectUs />
