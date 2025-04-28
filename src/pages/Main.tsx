@@ -1,6 +1,6 @@
 import useScrollToElement from "../hooks/useScrollToElement";
 import Cards from "../components/Cards";
-// import ConnectUs from "../components/ConnectUs";
+import ConnectUs from "../components/ConnectUs";
 // import Contact from "../components/Contact";
 // import Footer from "../components/Footer";
 // import Gurantee from "../components/Gurantee";
@@ -17,8 +17,8 @@ const Main = () => {
       <Home />
       <Cards />
       <Pricing />
-      {/*
       <ConnectUs />
+      {/*
       <InfiniteScrollingText />
       <Gurantee />
       <Contact />
