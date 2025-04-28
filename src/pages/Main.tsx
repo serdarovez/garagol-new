@@ -1,5 +1,5 @@
 import useScrollToElement from "../hooks/useScrollToElement";
-// import Cards from "../components/Cards";
+import Cards from "../components/Cards";
 // import ConnectUs from "../components/ConnectUs";
 // import Contact from "../components/Contact";
 // import Footer from "../components/Footer";
@@ -12,11 +12,11 @@ const Main = () => {
   useScrollToElement();
 
   return (
-    <div className="mt-40">
+    <div className="">
       {/* hello world */}
       <Home />
-      {/*
       <Cards />
+      {/*
       <Pricing />
       <ConnectUs />
       <InfiniteScrollingText />
