@@ -5,7 +5,7 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Gurantee from "../components/Gurantee";
 import Home from "../components/Home";
-// import InfiniteScrollingText from "../components/InfinitiveText";
+import InfiniteScrollingText from "../components/InfinitiveText";
 import Pricing from "../components/Pricing";
 
 const Main = () => {
@@ -18,12 +18,10 @@ const Main = () => {
       <Cards />
       <Pricing />
       <ConnectUs />
+      <InfiniteScrollingText />
       <Gurantee />
       <Contact />
-      <Footer type="black" /> 
-      {/*
-      <InfiniteScrollingText />
-      */}
+      <Footer type="black" />
     </div>
   );
 };
